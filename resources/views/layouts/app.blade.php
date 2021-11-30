@@ -23,85 +23,28 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    {{-- <style>
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
-        /* Layout large screens */
-        @media screen and (min-width: 760px)
-        {
-            #container
-            {
-                display: grid;
-                grid-template-columns: 1fr 7fr;
-                grid-template-rows: 1fr 6fr 1fr;
-                grid-gap: 12px;
-                max-width: 80vw;
-                min-height: 90vh;
-                margin: 0 auto;
-                grid-template-areas:
-                "header header"
-                "navbar main"
-                "footer footer"     }
-            }
+    @livewireStyles
 
-            /* Layout for small screens */
-            @media screen and (max-width: 760px)
-            {
-                #container
-                {
-                    display: grid;
-                    grid-template-columns: 1fr;
-                    grid-template-rows: 1fr 3fr 6fr 1fr;
-                    grid-gap: 12px;
-                    max-width: 80vw;
-                    min-height: 100vh;
-                    margin: 0 auto;
-                    grid-template-areas:
-                    "header"
-                    "navbar"
-                    "main"
-                    "footer"
-                }
-            }
+</head>
 
-            header{
-                grid-area: header;
-            }
+<body class="bg-gray-400">
 
-            nav{
-                grid-area: navbar;
-            }
+    <section id="container" class="bg-gray-400">
 
-            main{
-                grid-area: main;
-            }
+        <header class="card flex-row place-content-between items-center bg-gray-500 mt-3">@include('sections.header')</header>
 
-            footer{
-                grid-area: footer;
-            }
+        <nav class="card flex-col bg-blue-500">@include('sections.navbar')</nav>
 
-        </style> --}}
+        <main class="card bg-gray-200">@yield('content')</main>
 
-        @livewireStyles
+        <footer class="card flex-row place-content-center items-center bg-gray-500 mb-3">@include('sections.footer')</footer>
 
-    </head>
+    </section>
 
-    <body class="bg-gray-400">
+    @livewireScripts
 
-        <section id="container" class="bg-gray-400">
+</body>
 
-            <header class="card flex-row place-content-between items-center bg-gray-500 mt-3">@include('sections.header')</header>
-
-            <nav class="card flex-col bg-blue-500">@include('sections.navbar')</nav>
-
-            <main class="card bg-gray-200">@yield('content')</main>
-
-            <footer class="card flex-row place-content-center items-center bg-gray-500 mb-3">@include('sections.footer')</footer>
-
-        </section>
-
-        @livewireScripts
-
-    </body>
-
-    </html>
+</html>
