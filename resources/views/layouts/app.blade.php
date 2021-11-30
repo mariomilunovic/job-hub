@@ -24,7 +24,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <style>
+    {{-- <style>
 
         /* Layout large screens */
         @media screen and (min-width: 760px)
@@ -80,7 +80,7 @@
                 grid-area: footer;
             }
 
-        </style>
+        </style> --}}
 
         @livewireStyles
 
