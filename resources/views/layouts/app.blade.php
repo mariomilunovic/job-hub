@@ -24,7 +24,82 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        /* CSS Grid page layout */
 
+        /* Layout for large screens */
+        @media screen and (min-width: 760px)
+        {
+            #container
+            {
+                display: grid;
+                grid-template-columns: 1fr 7fr;
+                grid-template-rows: 1fr 6fr 1fr;
+                grid-gap: 12px;
+                max-width: 80vw;
+                min-height: 90vh;
+                margin: 0 auto;
+                grid-template-areas:
+                "header header"
+                "navbar main"
+                "footer footer"
+            }
+        };
+
+        /* Layout for small screens */
+        @media screen and (max-width: 760px)
+        {
+            #container
+            {
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr 3fr 6fr 1fr;
+                grid-gap: 12px;
+                max-width: 80vw;
+                min-height: 100vh;
+                margin: 0 auto;
+                grid-template-areas:
+                "header"
+                "navbar"
+                "main"
+                "footer"
+            }
+        };
+
+        header{
+            grid-area: header;
+        }
+
+        nav{
+            grid-area: navbar;
+        }
+
+        main{
+            grid-area: main;
+        }
+
+        footer{
+            grid-area: footer;
+        }
+
+
+        /* Tailwind customization */
+        .btn {
+            @apply font-bold py-2 px-4 rounded
+        }
+
+        .btn-blue {
+            @apply bg-blue-500 text-white
+        }
+
+        .btn-blue:hover {
+            @apply bg-blue-400
+        }
+
+        .card {
+            @apply flex rounded-md shadow-lg
+        }
+    </style>
     @livewireStyles
 
 </head>
