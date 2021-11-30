@@ -14,5 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('test');
 });
+
+//USER CONTROLLER
+Route::get('users',[UserController::class,'index'])->name('users.index')->middleware('check_roles:administrator');
