@@ -31884,78 +31884,90 @@ video {
 
 /* Layout for large screens */
 
-/* @media screen and (min-width: 760px)
+@media screen and (min-width: 760px)
 {
-    #container
+  #container
     {
-        display: grid;
-        grid-template-columns: 1fr 7fr;
-        grid-template-rows: 1fr 6fr 1fr;
-        grid-gap: 12px;
-        max-width: 80vw;
-        min-height: 90vh;
-        margin: 0 auto;
-        grid-template-areas:
+    display: grid;
+    grid-template-columns: 1fr 7fr;
+    grid-template-rows: 1fr 6fr 1fr;
+    grid-gap: 12px;
+    max-width: 80vw;
+    min-height: 90vh;
+    margin: 0 auto;
+    grid-template-areas:
         "header header"
         "navbar main"
         "footer footer"
-    }
-}; */
+  }
+}
 
 /* Layout for small screens */
 
-/* @media screen and (max-width: 760px)
+@media screen and (max-width: 760px)
 {
-    #container
+  #container
     {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr 3fr 6fr 1fr;
-        grid-gap: 12px;
-        max-width: 80vw;
-        min-height: 100vh;
-        margin: 0 auto;
-        grid-template-areas:
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 3fr 6fr 1fr;
+    grid-gap: 12px;
+    max-width: 80vw;
+    min-height: 100vh;
+    margin: 0 auto;
+    grid-template-areas:
         "header"
         "navbar"
         "main"
         "footer"
-    }
-};
+  }
+}
 
 header{
-    grid-area: header;
+  grid-area: header;
 }
 
 nav{
-    grid-area: navbar;
+  grid-area: navbar;
 }
 
 main{
-    grid-area: main;
+  grid-area: main;
 }
 
 footer{
-    grid-area: footer;
-} */
+  grid-area: footer;
+}
 
 /* Tailwind customization */
 
-/* .btn {
-    @apply font-bold py-2 px-4 rounded
+.btn {
+  border-radius: 0.25rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-weight: 700
 }
 
 .btn-blue {
-    @apply bg-blue-500 text-white
+  --tw-bg-opacity: 1;
+  background-color: rgba(59, 130, 246, var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgba(255, 255, 255, var(--tw-text-opacity))
 }
 
 .btn-blue:hover {
-    @apply bg-blue-400
+  --tw-bg-opacity: 1;
+  background-color: rgba(96, 165, 250, var(--tw-bg-opacity))
 }
 
 .card {
-    @apply flex rounded-md shadow-lg
-} */
+  display: flex;
+  border-radius: 0.375rem;
+  --tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
+}
 
 @media (min-width: 640px) {
   .sm\:container {
