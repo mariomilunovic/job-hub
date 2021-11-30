@@ -1,4 +1,4 @@
-<div class="flex flex-col justify-center text-md font-semibold mt-3">
+<div class="flex flex-col justify-center text-md font-semibold mt-5">
 
 
     <a href="{{route('users.index')}}" class="flex items-center text-white opacity-75 hover:opacity-100 hover:bg-blue-600 py-2 pl-5 nav-item " >
