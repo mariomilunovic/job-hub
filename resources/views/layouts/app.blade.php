@@ -13,7 +13,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+
+    <script type="text/javascript" src="{{ asset('js/app.js') }}" defer></script>
     <script defer src="https://unpkg.com/alpinejs@3.5.1/dist/cdn.min.js"></script>
     <script src="https://kit.fontawesome.com/028d9002c0.js" crossorigin="anonymous"></script>
 
@@ -23,7 +24,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css">
 
     @livewireStyles
 
