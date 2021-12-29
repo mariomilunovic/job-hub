@@ -38,7 +38,7 @@
 
         <nav class="card flex-col bg-blue-500">@include('sections.navbar')</nav>
 
-        <main class="card bg-gray-200">@yield('content')</main>
+        <main class="card bg-gray-300 justify-center items-center">@yield('content')</main>
 
         <footer class="card flex-row place-content-center items-center bg-gray-500 mb-3">@include('sections.footer')</footer>
 
