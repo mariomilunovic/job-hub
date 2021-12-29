@@ -9,6 +9,7 @@ class LogoutController extends Controller
     function logout()
     {
         auth()->logout();
+        toast()->success('Uspešna odjava')->push();
         return redirect(route('showHome'))->with('success', 'Uspešna odjava');
     }
 }

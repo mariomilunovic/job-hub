@@ -41,6 +41,7 @@ class RegisterController extends Controller
         if($newUser)
         {
             auth()->attempt($request->only('email','password'));
+            toast()->success('Uspešna registracija')->push();
             return redirect(route('showDashboard'))->with('success', 'Registracija uspešna');
         }
         else

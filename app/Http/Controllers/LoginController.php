@@ -19,8 +19,10 @@ class LoginController extends Controller
         ]);
 
         if (!auth()->attempt($request->only('email', 'password'),$request->input('remember'))) {
+            toast()->danger('Neispravni email ili lozinka')->push();
             return back()->with('error', 'Neispravni podaci');
         }
+        toast()->success('Uspešna prijava')->push();
         return redirect(route('showDashboard'))->with('success', 'Prijava uspešna');
     }
 }

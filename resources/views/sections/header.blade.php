@@ -24,11 +24,11 @@
 <div x-data="{ isOpen: false }" class="mr-4">
     <div class="relative flex items-center">
         <div class="pr-2 font-semibold text-white">{{ auth()->user()->firstname}}  {{ auth()->user()->lastname}}</div>
-        <button @click="isOpen = !isOpen" class="z-10 w-12 h-12 overflow-hidden border-4 border-gray-400 rounded-full hover:border-gray-300 focus:border-gray-300 focus:outline-none">
+        <button @click="isOpen = !isOpen" class="z-50 w-12 h-12 overflow-hidden border-4 border-gray-400 rounded-full hover:border-gray-300 focus:border-gray-300 focus:outline-none">
             <img src="/images/ui/user-icon.png">
         </button>
 
-        <div x-show="isOpen" class="absolute right-0 w-32 py-2 text-center bg-white rounded-lg shadow-lg top-14">
+        <div x-show="isOpen" class="z-50 absolute right-0 w-32 py-2 text-center bg-white rounded-lg shadow-lg top-14">
             <a href="{{route('users.profile')}}" class="block px-4 py-2 account-link hover:bg-blue-400">Profil</a>
             <a href="{{route('logout')}}" class="block px-4 py-2 account-link hover:bg-blue-400">Odjava</a>
         </div>
