@@ -16,12 +16,15 @@ class CheckRoles
      */
     public function handle(Request $request, Closure $next, ...$permitted_roles)
     {
+
+        // Da li je neko ulogovan?
         if($request->user() === null)
         {
             return redirect('login')->with('error','Niste ulogovani');
 
         }
 
+        // Da li ima definisanih dozvola ili dozvola nije potrebna
         if($request->user()->hasAnyRoles($permitted_roles) || !$permitted_roles)
         {
             return $next($request);

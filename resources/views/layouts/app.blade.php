@@ -34,13 +34,15 @@
 
     <section id="container" class="bg-gray-400">
 
-        <header class="card flex-row place-content-between items-center bg-gray-500 mt-3">@include('sections.header')</header>
+        <header class="flex-row items-center mt-3 bg-gray-500 card place-content-between">@include('sections.header')</header>
 
-        <nav class="card flex-col bg-blue-500">@include('sections.navbar')</nav>
+        <nav class="flex-col bg-blue-500 card">@include('sections.navbar')</nav>
 
-        <main class="card bg-gray-300 justify-center items-center">@yield('content')</main>
+        {{-- <output class="flex-col card">@include('sections.message')</output> --}}
 
-        <footer class="card flex-row place-content-center items-center bg-gray-500 mb-3">@include('sections.footer')</footer>
+        <main class="items-center justify-center bg-gray-300 card">@yield('content')</main>
+
+        <footer class="flex-row items-center mb-3 bg-gray-500 card place-content-center">@include('sections.footer')</footer>
 
     </section>
 

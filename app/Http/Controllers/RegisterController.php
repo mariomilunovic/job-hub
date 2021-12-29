@@ -24,7 +24,7 @@ class RegisterController extends Controller
         return view('auth.register');
     }
 
-    function register(Request $request)
+    function registerUser(Request $request)
     {
         $userData = $this->validateUser();
 
@@ -41,7 +41,7 @@ class RegisterController extends Controller
         if($newUser)
         {
             auth()->attempt($request->only('email','password'));
-            return redirect(route('show_dashboard'))->with('success', 'Registracija uspešna');
+            return redirect(route('showDashboard'))->with('success', 'Registracija uspešna');
         }
         else
         {

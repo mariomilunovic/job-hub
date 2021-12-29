@@ -3,6 +3,26 @@
 @tailwind utilities;
 
 
+@layer utilities {
+    @variants responsive {
+        .text-shadow {
+            text-shadow: 0 2px 4px rgba(0,0,0,0.20);
+        }
+
+        .text-shadow-md {
+            text-shadow: 0 4px 8px rgba(0,0,0,0.12), 0 2px 4px rgba(0,0,0,0.4);
+        }
+
+        .text-shadow-lg {
+            text-shadow: 0 15px 30px rgba(0,0,0,0.11), 0 5px 15px rgba(0,0,0,0.6);
+        }
+
+        .text-shadow-none {
+            text-shadow: none;
+        }
+    }
+}
+
 /* CSS Grid page layout */
 /* Layout for large screens */
 @media screen and (min-width: 760px)
@@ -11,13 +31,14 @@
     {
         display: grid;
         grid-template-columns: 1fr 7fr;
-        grid-template-rows: 1fr 6fr 1fr;
+        grid-template-rows: 3fr 14fr 2fr;
         grid-gap: 12px;
         max-width: 80vw;
         min-height: 90vh;
         margin: 0 auto;
         grid-template-areas:
         "header header"
+        /* "navbar output" */
         "navbar main"
         "footer footer"
     }
@@ -30,7 +51,7 @@
     {
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr 3fr 6fr 1fr;
+        grid-template-rows: 2fr 4fr 14fr 1fr;
         grid-gap: 12px;
         max-width: 80vw;
         min-height: 100vh;
@@ -38,6 +59,7 @@
         grid-template-areas:
         "header"
         "navbar"
+        /* "output" */
         "main"
         "footer"
     }

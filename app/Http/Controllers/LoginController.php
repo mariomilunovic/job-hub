@@ -11,9 +11,8 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
-    public function login(Request $request)
+    public function loginUser(Request $request)
     {
-//        dd($request->remember);
         $this->validate($request, [
             'email' => 'required|email|max:255',
             'password' => 'required|min:6|max:20'
@@ -22,6 +21,6 @@ class LoginController extends Controller
         if (!auth()->attempt($request->only('email', 'password'),$request->input('remember'))) {
             return back()->with('error', 'Neispravni podaci');
         }
-        return redirect(route('show_dashboard'))->with('success', 'Prijava uspešna');
+        return redirect(route('showDashboard'))->with('success', 'Prijava uspešna');
     }
 }

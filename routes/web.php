@@ -23,6 +23,22 @@ Route::get('/', function () {
     return view('test');
 });
 
+//PAGE CONTROLLER
+Route::get('/',[PageController::class,'showHome'])->name('showHome');
+Route::get('dashboard',[PageController::class,'showDashboard'])->name('showDashboard')->middleware('check_roles:administrator,user');
+
+//REGISTER CONTROLLER
+Route::get('register',[RegisterController::class,'showRegisterForm'])->name('showRegisterForm')->middleware('guest');
+Route::post('register',[RegisterController::class,'registerUser'])->name('registerUser');
+
+//LOGIN CONTROLLER
+Route::get('login',[LoginController::class,'showLoginForm'])->name('showLoginForm')->middleware('guest');
+Route::post('login',[LoginController::class,'loginUser'])->name('loginUser')->middleware('guest');
+
+//LOGOUT CONTROLLER
+Route::get('logout',[LogoutController::class,'logout'])->name('logout')->middleware('check_roles:administrator,user');
+// Route::get('logout',[LogoutController::class,'showLoginForm'])->name('redirect_login')->middleware('check_roles:administrator,manager,user');
+
 //USER CONTROLLER
 Route::get('users/profile',[UserController::class,'profile'])->name('users.profile')->middleware('check_roles:administrator');
 Route::get('users/grid',[UserController::class,'grid'])->name('users.grid')->middleware('check_roles:administrator');
@@ -35,20 +51,8 @@ Route::get('users/{user}/edit',[UserController::class,'edit'])->name('users.edit
 Route::post('users/{user}',[UserController::class,'store'])->name('users.store')->middleware('check_roles:administrator');
 Route::post('users/{user}',[UserController::class,'destroy'])->name('users.destroy')->middleware('check_roles:administrator');
 
-//PAGE CONTROLLER
-Route::get('/',[PageController::class,'showHome'])->name('show_home');
-Route::get('dashboard',[PageController::class,'showDashboard'])->name('show_dashboard')->middleware('check_roles:administrator,manager,user');
 
-//REGISTER CONTROLLER
-Route::get('register',[RegisterController::class,'showRegisterForm'])->name('register')->middleware('guest');
-Route::post('register',[RegisterController::class,'register'])->name('register');
 
-//LOGIN CONTROLLER
-Route::get('login',[LoginController::class,'showLoginForm'])->name('show_login')->middleware('guest');
-Route::post('login',[LoginController::class,'login'])->name('login')->middleware('guest');
 
-// //LOGOUT CONTROLLER
-// Route::post('logout',[LogoutController::class,'logout'])->name('logout')->middleware('check_roles:administrator,manager,user');
-// Route::get('logout',[LogoutController::class,'showLoginForm'])->name('redirect_login')->middleware('check_roles:administrator,manager,user');
 
 

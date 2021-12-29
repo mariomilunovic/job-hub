@@ -2,28 +2,38 @@
 
 @section('content')
 
-<form action="{{route('login')}}" method="post" class="w-full max-w-sm p-3">
+<form action="{{route('registerUser')}}" method="post" class="w-full max-w-sm p-3">
     @csrf
 
-    <h2 class="font-bold text-xl text-gray-500">Prijava</h2>
-    <hr class="mb-6">
+    <h2 class="text-xl font-bold text-gray-500">Registracija</h2>
+    <hr class="mb-6 border-2 border-gray-500 rounded drop-shadow">
 
-    <label class="mt-4 text-sm text-gray-500 font-bold" for="email">Email</label>
-    <input type="text" id="email" name="email" placeholder="Unesi email adresu" value="{{old('email')}}" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
+    <label for="firstname" class="mt-4 text-sm font-bold text-gray-500">Ime</label>
+    <input type="text" id="firstname" name="firstname" placeholder="Unesi ime" value="{{old('firstname')}}" class="w-full px-4 py-2 leading-tight text-gray-700 bg-gray-200 border-2 border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-purple-500">
+    <div class="mb-3 text-sm text-red-500">@error ('firstname'){{ $message }}@enderror</div>
+
+    <label for="lastname" class="mt-4 text-sm font-bold text-gray-500">Prezime</label>
+    <input type="text" id="lastname" name="lastname" placeholder="Unesi prezime" value="{{old('lastname')}}" class="w-full px-4 py-2 leading-tight text-gray-700 bg-gray-200 border-2 border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-purple-500">
+    <div class="mb-3 text-sm text-red-500">@error ('lastname'){{ $message }}@enderror</div>
+
+    <label for="email" class="mt-4 text-sm font-bold text-gray-500">Email</label>
+    <input type="text" id="email" name="email" placeholder="Unesi email" value="{{old('email')}}" class="w-full px-4 py-2 leading-tight text-gray-700 bg-gray-200 border-2 border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-purple-500">
     <div class="mb-3 text-sm text-red-500">@error ('email'){{ $message }}@enderror</div>
 
-    <label class="mt-4 text-sm text-gray-500 font-bold" for="password">Lozinka</label>
-    <input type="text" id="password" name="password" placeholder="Unesi lozinku" value="{{old('password')}}" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
+    <label for="password" class="mt-4 text-sm font-bold text-gray-500">Lozinka</label>
+    <input type="text" id="password" name="password" placeholder="Unesi lozinku" value="{{old('password')}}" class="w-full px-4 py-2 leading-tight text-gray-700 bg-gray-200 border-2 border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-purple-500">
+    <div class="mb-3 text-sm text-red-500">@error ('password'){{ $message }}@enderror</div>
+
+    <label for="password_confirmation" class="mt-4 text-sm font-bold text-gray-500" >Ponovi lozinku</label>
+    <input type="text" id="password" name="password_confirmation" placeholder="Ponovi lozinku" value="{{old('password')}}" class="w-full px-4 py-2 leading-tight text-gray-700 bg-gray-200 border-2 border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-purple-500">
     <div class="text-sm text-red-500">@error ('password'){{ $message }}@enderror</div>
 
-    <input class="mr-2 mt-4 leading-tight" type="checkbox">
-    <span class="text-sm">Zapamti me</span>
 
-    <button type="submit" class="mt-5 w-full shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
-        Prijava
+    <button type="submit" class="w-full px-4 py-2 mt-5 font-bold text-white bg-purple-500 rounded shadow hover:bg-purple-400 focus:shadow-outline focus:outline-none">
+        Registruj se
     </button>
 
-    <a href="register" class="text-sm font-semibold text-blue-600">Napravi novi nalog</a>
+    <a href="{{route('showLoginForm')}}" class="text-sm font-semibold text-blue-600">Već imam nalog</a>
 
 </form>
 

@@ -17,6 +17,8 @@ class User extends Authenticatable
      *
      * @var string[]
      */
+
+  //protected $guarded = []; //postavlja sva polja na fillable
     protected $fillable = [
         'firstname',
         'lastname',
@@ -67,7 +69,7 @@ class User extends Authenticatable
     }
 
 
-    // da li user ima makar jednu rolu iz niza $roles
+    // da li user ima makar jednu rolu iz zadatog niza potrebnih rola datih na kraju rute u web.php
     public function hasAnyRoles($roles): bool
     {
         if (is_array($roles)) {
@@ -86,7 +88,7 @@ class User extends Authenticatable
         return false;
     }
 
-    // funkcije  za proveru  skill-a
+    // da li user poseduje zadati skill
     public function hasSkill($skill): bool
     {
         if($this->skills()->where('name',$skill)->first())
