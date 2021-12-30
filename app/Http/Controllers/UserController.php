@@ -19,7 +19,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::orderBy('updated_at','desc')->paginate(5);
-        return view('users.index', compact('users'));
+        return view('models.user.index', compact('users'));
     }
 
     /**
@@ -67,7 +67,7 @@ class UserController extends Controller
         $user=User::find($id);
         $userSkills = $user->skills;
 
-        return view('users.show')
+        return view('models.user.show')
             ->with('user',$user)
             ->with('userSkills',$userSkills);
     }
