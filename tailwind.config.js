@@ -1,5 +1,6 @@
 module.exports = {
 
+    // mode: 'jit',
     purge: [
 
         './storage/framework/views/*.php',

@@ -29,7 +29,7 @@
     <div class="text-sm text-red-500">@error ('password'){{ $message }}@enderror</div>
 
 
-    <button type="submit" class="w-full px-4 py-2 mt-5 font-bold text-white bg-purple-500 rounded shadow hover:bg-purple-400 focus:shadow-outline focus:outline-none">
+    <button type="submit" class="w-full px-4 py-2 mt-5 font-bold text-white rounded shadow bg-yellow-500 hover:bg-yellow-600 focus:shadow-outline focus:outline-none">
         Registruj se
     </button>
 

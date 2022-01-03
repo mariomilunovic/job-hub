@@ -19,7 +19,7 @@
     <input class="mt-4 mr-2 leading-tight" type="checkbox">
     <span class="text-sm">Zapamti me</span>
 
-    <button type="submit" class="w-full px-4 py-2 mt-5 font-bold text-white bg-purple-500 rounded shadow hover:bg-purple-400 focus:shadow-outline focus:outline-none">
+    <button type="submit" class="w-full px-4 py-2 mt-5 font-bold text-white bg-purple-500 rounded shadow hover:bg-purple-600 focus:shadow-outline focus:outline-none">
         Prijava
     </button>
 

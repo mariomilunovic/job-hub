@@ -72,6 +72,15 @@ class UserController extends Controller
             ->with('userSkills',$userSkills);
     }
 
+    public function profile()
+    {
+        $loggedUser=auth()->user();
+        $userSkills = $loggedUser->skills;
+        return view ('models.user.show')
+            ->with('user',$loggedUser)
+            ->with('userSkills',$userSkills);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

@@ -3,6 +3,8 @@
 @tailwind utilities;
 
 
+
+/* adding custom shadow tags */
 @layer utilities {
     @variants responsive {
         .text-shadow {
@@ -33,12 +35,11 @@
         grid-template-columns: 1fr 7fr;
         grid-template-rows: 3fr 14fr 2fr;
         grid-gap: 12px;
-        max-width: 80vw;
+        max-width: 95vw;
         min-height: 90vh;
         margin: 0 auto;
         grid-template-areas:
         "header header"
-        /* "navbar output" */
         "navbar main"
         "footer footer"
     }
@@ -53,13 +54,12 @@
         grid-template-columns: 1fr;
         grid-template-rows: 2fr 4fr 14fr 1fr;
         grid-gap: 12px;
-        max-width: 80vw;
+        max-width: 95vw;
         min-height: 100vh;
         margin: 0 auto;
         grid-template-areas:
         "header"
         "navbar"
-        /* "output" */
         "main"
         "footer"
     }

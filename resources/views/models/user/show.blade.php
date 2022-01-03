@@ -12,52 +12,54 @@
 
     <table class="table-auto p-6">
         <tr>
-            <td>Ime</td>
-            <td>{{$user->firstname}} </td>
+            <td class="pr-4 py-2">Ime:</td>
+            <td class="px-4 py-2">{{$user->firstname}} </td>
         </tr>
 
         <tr>
-            <td>Prezime</td>
-            <td>{{$user->lastname}} </td>
+            <td class="pr-4 py-2">Prezime:</td>
+            <td class="px-4 py-2">{{$user->lastname}} </td>
         </tr>
 
         <tr>
-            <td>Email</td>
-            <td><a href="mailto:{{$user->email}}">{{$user->email}}</a></td>
+            <td class="pr-4 py-2">Email:</td>
+            <td class="px-4 py-2"><a href="mailto:{{$user->email}}">{{$user->email}}</a></td>
         </tr>
 
         <tr>
-            <td>Stanje</td>
-            <td>{{$user->balance}} RSD</td>
+            <td class="pr-4 py-2">Stanje:</td>
+            <td class="px-4 py-2">{{$user->balance}} RSD</td>
         </tr>
 
         <tr>
-            <td>Veštine</td>
+            <td class="pr-4 py-2">Veštine:</td>
 
             @if($userSkills->count()>0)
-            <td>
-                @foreach ($userSkills as $skill)
-                <span class="font-weight-bold btn btn-warning btn-sm">{{$skill->name}} - LEVEL {{$skill->pivot->points}}</span>
-
-                @endforeach
+            <td class="px-4 py-2">
+                Korisnik ima {{$userSkills->count()}} veština
+                <a href="{{route('skills.index',$user->id)}}" class="w-full px-4 font-bold text-white bg-purple-500 rounded shadow hover:bg-purple-400 focus:shadow-outline focus:outline-none">Prikaži</a>
             </td>
             @else
-            <td>Korisnik nema ni jednu veštinu</td>
+            <td class="px-4 py-2">Korisnik nema ni jednu veštinu</td>
             @endif
         </tr>
 
         <tr>
-            <td>Poslovi</td>
+            <td class="pr-4 py-2">Poslovi:</td>
             @if ($user->jobs)
-            <td>{{$user->jobs->count}} objavljenih poslova</td>
+            <td class="px-4 py-2">
+                {{$user->jobs->count}} objavljenih poslova
+                <a href="{{route('skills.index',$user->id)}}" class="w-full px-4 font-bold text-white bg-purple-500 rounded shadow hover:bg-purple-400 focus:shadow-outline focus:outline-none">Prikaži</a>
+            </td>
+
             @else
-            <td>Korisnik nema objavljenih poslova</td>
+            <td class="px-4 py-2">Korisnik nema objavljenih poslova</td>
             @endif
         </tr>
 
         <tr>
-            <td>Nalog kreiran</td>
-            <td>{{$user->updated_at}} ({{Carbon\Carbon::parse($user->created_at)->diffForHumans()}})</td>
+            <td class="pr-4 py-2">Nalog kreiran:</td>
+            <td class="px-4 py-2">{{$user->updated_at}} ({{Carbon\Carbon::parse($user->created_at)->diffForHumans()}})</td>
         </tr>
 
     </table>

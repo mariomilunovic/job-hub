@@ -51,6 +51,10 @@ Route::get('users/{user}',[UserController::class,'show'])->name('users.show')->m
 // Route::post('users/{user}',[UserController::class,'store'])->name('users.store')->middleware('check_roles:administrator');
 // Route::post('users/{user}',[UserController::class,'destroy'])->name('users.destroy')->middleware('check_roles:administrator');
 
+//SKILLS CONTROLLER
+Route::get('index',[SkillController::class,'index'])->name('skills.index')->middleware('check_roles:administrator,user');
+// Route::get('logout',[LogoutController::class,'showLoginForm'])->name('redirect_login')->middleware('check_roles:administrator,manager,user');
+
 
 
 
