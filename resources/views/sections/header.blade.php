@@ -27,7 +27,7 @@
             <img src="/images/ui/user-icon.png">
         </button>
 
-        <div x-show="isOpen" class="z-50 absolute right-0 w-32 py-2 text-center bg-white rounded-lg shadow-lg top-14">
+        <div x-show="isOpen" class="z-50 absolute right-0 w-32 py-2 text-center bg-white rounded-lg shadow-lg top-14" x-cloak>
             <a href="{{route('users.profile')}}" class="block px-4 py-2 account-link hover:bg-blue-400">Profil</a>
             <a href="{{route('logout')}}" class="block px-4 py-2 account-link hover:bg-blue-400">Odjava</a>
         </div>

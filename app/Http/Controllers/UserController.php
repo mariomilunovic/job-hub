@@ -30,7 +30,7 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::all();
-        return view('users.create')->with('roles',$roles);
+        return view('models.user.create')->with('roles',$roles);
     }
 
     /**
@@ -53,6 +53,7 @@ class UserController extends Controller
 
         $newUser->roles()->attach($role);
 
+        toast()->success('Uspešna prijava')->push();
         return redirect(route('users.index'))->with('success','Korisnik je uspešno unet');
     }
 
@@ -79,6 +80,11 @@ class UserController extends Controller
         return view ('models.user.show')
             ->with('user',$loggedUser)
             ->with('userSkills',$userSkills);
+    }
+
+    public function search()
+    {
+        return view('models.user.search');
     }
 
     /**

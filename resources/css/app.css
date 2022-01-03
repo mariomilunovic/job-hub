@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 
+/* hidding alpine.js components on refresh */
+[x-cloak] { display: none !important; }
+
 
 /* adding custom shadow tags */
 @layer utilities {
@@ -33,7 +36,7 @@
     {
         display: grid;
         grid-template-columns: 1fr 7fr;
-        grid-template-rows: 3fr 14fr 2fr;
+        grid-template-rows: 2fr 14fr 2fr;
         grid-gap: 12px;
         max-width: 95vw;
         min-height: 90vh;

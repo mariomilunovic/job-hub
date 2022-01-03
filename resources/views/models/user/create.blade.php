@@ -2,10 +2,10 @@
 
 @section('content')
 
-<form action="{{route('registerUser')}}" method="post" class="w-full max-w-sm p-3">
+<form action="{{route('users.store')}}" method="post" class="w-full max-w-sm p-3">
     @csrf
 
-    <h2 class="text-xl font-bold text-gray-500">Registracija</h2>
+    <h2 class="text-xl font-bold text-gray-500">Unos novog korisnika</h2>
     <hr class="mb-6 border-2 border-gray-500 rounded drop-shadow">
 
     <label for="firstname" class="mt-4 text-sm font-bold text-gray-500">Ime</label>
@@ -20,6 +20,15 @@
     <input type="text" id="email" name="email" placeholder="Unesi email" value="{{old('email')}}" class="w-full px-4 py-2 leading-tight text-gray-700 bg-gray-200 border-2 border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-purple-500">
     <div class="mb-3 text-sm text-red-500">@error ('email'){{ $message }}@enderror</div>
 
+    <label for="role_id" class="mt-4 text-sm font-bold text-gray-500">Uloga</label>
+    <select id="role_id" name="role_id" class="w-full px-4 py-2 leading-tight text-gray-700 bg-gray-200 border-2 border-gray-200 rounded focus:outline-none focus:bg-white focus:border-purple-500">
+        <option value="">Izaberite ulogu</option>
+        @foreach($roles as $role )
+            <option value="{{$role->id}}">{{$role->name}}</option>
+        @endforeach
+    </select>
+    <div class="mb-3 text-sm text-red-500">@error('role_id'){{ $message }}@enderror</div>
+
     <label for="password" class="mt-4 text-sm font-bold text-gray-500">Lozinka</label>
     <input type="password" id="password" name="password" placeholder="Unesi lozinku" value="{{old('password')}}" class="w-full px-4 py-2 leading-tight text-gray-700 bg-gray-200 border-2 border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-purple-500">
     <div class="mb-3 text-sm text-red-500">@error ('password'){{ $message }}@enderror</div>
@@ -30,10 +39,10 @@
 
 
     <button type="submit" class="w-full px-4 py-2 mt-5 font-bold text-white rounded shadow bg-yellow-500 hover:bg-yellow-600 focus:shadow-outline focus:outline-none">
-        Registruj se
+        Unesi
     </button>
 
-    <a href="{{route('showLoginForm')}}" class="text-sm font-semibold text-blue-600">Već imam nalog</a>
+
 
 </form>
 

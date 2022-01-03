@@ -7,7 +7,7 @@
             Poslovi
         </button>
 
-        <div x-show="expanded" x-collapse class="text-white text-sm text-center bg-gray-600">
+        <div x-show="expanded" x-collapse class="text-white text-sm text-center bg-gray-600" x-cloak>
             <a class="block hover:bg-gray-500 py-2" href="{{route('users.index')}}">Svi poslovi</a>
             <a class="block hover:bg-gray-500 py-2" href="{{route('users.index')}}">Moji poslovi</a>
             <a class="block hover:bg-gray-500 py-2" href="{{route('users.index')}}">Objavi posao</a>
@@ -22,7 +22,7 @@
             Ponude
         </button>
 
-        <div x-show="expanded" x-collapse class="text-white text-sm text-center bg-gray-600">
+        <div x-show="expanded" x-collapse class="text-white text-sm text-center bg-gray-600" x-cloak>
             <a class="block hover:bg-gray-500 py-2" href="{{route('users.index')}}">Poslate ponude</a>
             <a class="block hover:bg-gray-500 py-2" href="{{route('users.index')}}">Primljene ponude</a>
         </div>
@@ -37,7 +37,7 @@
             Veštine
         </button>
 
-        <div x-show="expanded" x-collapse class="text-white text-sm text-center bg-gray-600">
+        <div x-show="expanded" x-collapse class="text-white text-sm text-center bg-gray-600" x-cloak>
             <a class="block hover:bg-gray-500 py-2" href="{{route('users.index')}}">Sve veštine</a>
             <a class="block hover:bg-gray-500 py-2" href="{{route('users.index')}}">Moje veštine</a>
             <a class="block hover:bg-gray-500 py-2" href="{{route('users.index')}}">Unesi novu</a>
@@ -52,7 +52,7 @@
             Novac
         </button>
 
-        <div x-show="expanded" x-collapse class="text-white text-sm text-center bg-gray-600">
+        <div x-show="expanded" x-collapse class="text-white text-sm text-center bg-gray-600" x-cloak>
             <a class="block hover:bg-gray-500 py-2" href="{{route('users.index')}}">Transakcije</a>
             <a class="block hover:bg-gray-500 py-2" href="{{route('users.index')}}">Uplata</a>
             <a class="block hover:bg-gray-500 py-2" href="{{route('users.index')}}">Isplata</a>
@@ -67,9 +67,10 @@
             Korisnici
         </button>
 
-        <div x-show="expanded" x-collapse class="text-white text-sm text-center bg-gray-600">
+        <div x-show="expanded" x-collapse class="text-white text-sm text-center bg-gray-600" x-cloak>
             <a class="block hover:bg-gray-500 py-2" href="{{route('users.index')}}">Svi korisnici</a>
-            <a class="block hover:bg-gray-500 py-2" href="{{route('users.index')}}">Unesi novog</a>
+            <a class="block hover:bg-gray-500 py-2" href="{{route('users.create')}}">Unesi novog</a>
+            <a class="block hover:bg-gray-500 py-2" href="{{route('users.search')}}">Pretraga</a>
 
         </div>
 

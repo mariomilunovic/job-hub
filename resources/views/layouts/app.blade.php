@@ -42,9 +42,9 @@
 
         <nav class="flex-col bg-blue-500 card">@include('sections.navbar')</nav>
 
-        <main class="relative flex items-center place-content-center bg-gray-300 card">
+        <main class="relative flex place-content-center bg-gray-300 card">
             <div class="absolute right-0 top-0"><livewire:toasts/></div>
-            <div>@yield('content')</div>
+            <div class="py-4">@yield('content')</div>
 
         </main>
 
