@@ -38,7 +38,7 @@
         </button>
 
         <div x-show="expanded" x-collapse class="text-white text-sm text-center bg-gray-600" x-cloak>
-            <a class="block hover:bg-gray-500 py-2" href="{{route('users.index')}}">Sve veštine</a>
+            <a class="block hover:bg-gray-500 py-2" href="{{route('skills.index')}}">Sve veštine</a>
             <a class="block hover:bg-gray-500 py-2" href="{{route('users.index')}}">Moje veštine</a>
             <a class="block hover:bg-gray-500 py-2" href="{{route('users.index')}}">Unesi novu</a>
         </div>
