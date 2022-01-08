@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
 
     <meta charset="UTF-8">
@@ -32,7 +32,7 @@
 
 </head>
 
-<body class="bg-gray-400 antialiased">
+<body class="bg-gray-400 antialiased z-0">
 
     {{-- <livewire:toasts/> --}}
 
@@ -40,7 +40,7 @@
 
         <header class="flex-row items-center mt-3 bg-gray-500 card place-content-between">@include('sections.header')</header>
 
-        <nav class="flex-col bg-blue-500 card">@include('sections.navbar')</nav>
+        <nav class="flex-col bg-blue-600 card">@include('sections.navbar')</nav>
 
         <main class="relative flex place-content-center bg-gray-300 card">
             <div class="absolute right-0 top-0"><livewire:toasts/></div>

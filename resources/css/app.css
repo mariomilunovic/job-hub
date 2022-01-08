@@ -86,8 +86,9 @@ footer{
 
 
 /* Tailwind customization */
-.btn {
-    @apply font-bold py-2 px-4 rounded
+
+.card {
+    @apply flex rounded-md shadow-lg
 }
 
 .btn-blue-small {
@@ -102,9 +103,29 @@ footer{
     @apply py-2 px-3 text-xs font-medium text-center text-white bg-yellow-500 hover:bg-yellow-600 focus:ring-4 focus:ring-yellow-300 rounded-lg mr-2 mb-2 dark:focus:ring-yellow-900
 }
 
-.card {
-    @apply flex rounded-md shadow-lg
+.btn-gray-small {
+    @apply py-2 px-3 text-xs font-medium text-center text-white bg-gray-600 hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 rounded-lg mr-2 mb-2 dark:focus:ring-gray-900
 }
+
+.btn-purple-small {
+    @apply px-4 font-bold text-white bg-purple-500 rounded shadow hover:bg-purple-400
+}
+
+.btn-blue-medium {
+    @apply py-2 px-3 font-medium text-center shadow text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 rounded-lg  mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800
+}
+
+.btn-red-medium {
+    @apply py-2 px-3 font-medium text-center shadow text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:ring-red-300  rounded-lg  mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900
+}
+
+.btn-yellow-medium {
+    @apply py-2 px-3 font-medium text-center shadow text-white bg-yellow-500 hover:bg-yellow-600 focus:ring-4 focus:ring-yellow-300 rounded-lg mr-2 mb-2 dark:focus:ring-yellow-900
+}
+
+
+
+
 
 
 

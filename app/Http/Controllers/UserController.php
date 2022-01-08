@@ -7,7 +7,8 @@ use App\Models\Category;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-
+use Monolog\Handler\FirePHPHandler;
+use PhpParser\NodeVisitor\FirstFindingVisitor;
 
 class UserController extends Controller
 {
@@ -53,33 +54,36 @@ class UserController extends Controller
 
         $newUser->roles()->attach($role);
 
-        toast()->success('Uspešna prijava')->push();
-        return redirect(route('users.index'))->with('success','Korisnik je uspešno unet');
+        toast()->success('Uspešan unos novog korisnika')->push();
+        return redirect(route('users.show',$newUser));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  User $user
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        $user=User::find($id);
-        $userSkills = $user->skills;
+        // $user=User::find($id);
 
         return view('models.user.show')
             ->with('user',$user)
-            ->with('userSkills',$userSkills);
+            ->with('userSkills',$user->skills)
+            ->with('userBids',$user->skills)
+            ->with('userJobs',$user->jobs);
     }
 
     public function profile()
     {
-        $loggedUser=auth()->user();
-        $userSkills = $loggedUser->skills;
-        return view ('models.user.show')
-            ->with('user',$loggedUser)
-            ->with('userSkills',$userSkills);
+        $user=auth()->user();
+
+        return view('models.user.show')
+            ->with('user',$user)
+            ->with('userSkills',$user->skills)
+            ->with('userBids',$user->skills)
+            ->with('userJobs',$user->jobs);
     }
 
     public function search()
@@ -90,13 +94,16 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  User $user
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
+
         $roles = Role::all();
-        return view('users.edit')->with(['user'=>$user,'roles'=>$roles]);
+        return view('models.user.edit')
+            ->with('user', $user)
+            ->with('roles',$roles);
     }
 
     /**
@@ -106,20 +113,46 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        request()->validate([
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|confirmed|min:6|max:20',
+            'role_id' => 'required'
+        ]);
+
+        // dd($user);
+
+        $user->firstname = request('firstname');
+        $user->lastname = request('lastname');
+        $user->password = request('password');
+
+        $role = Role::where('id',$user->role_id)->first();
+        $user->roles()->detach($role);
+
+
+
+        $role = Role::where('id',request('role_id'))->first();
+        $user->roles()->attach($role);
+
+        $user->save();
+        toast()->success('Uspešna izmena podataka korisnika')->push();
+        return redirect(route('users.show',$user));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  User $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete(); //softdeleted
+        toast()->success('Korisnički nalog je obrisan')->push();
+        return redirect(route('users.index'));
     }
 
     public function validateUser()

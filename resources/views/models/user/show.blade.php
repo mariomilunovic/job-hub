@@ -7,37 +7,43 @@
 <hr class="mb-6 border-2 border-gray-500 rounded drop-shadow">
 
 <!-- Table -->
-<div class="px-4 py-4 w-full shadow-lg rounded border border-gray-200 bg-gray-200">
+<div class="w-full px-4 py-4 bg-gray-200 border border-gray-200 rounded shadow-lg">
 
 
-    <table class="table-auto p-6">
+    <table class="p-6 table-fixed">
+
         <tr>
-            <td class="pr-4 py-2">Ime:</td>
+            <td class="py-2 pr-4">ID:</td>
+            <td class="px-4 py-2">{{$user->id}} </td>
+        </tr>
+        <tr>
+            <td class="py-2 pr-4">Ime:</td>
             <td class="px-4 py-2">{{$user->firstname}} </td>
         </tr>
 
         <tr>
-            <td class="pr-4 py-2">Prezime:</td>
+            <td class="py-2 pr-4">Prezime:</td>
             <td class="px-4 py-2">{{$user->lastname}} </td>
         </tr>
 
         <tr>
-            <td class="pr-4 py-2">Email:</td>
+            <td class="py-2 pr-4">Uloga:</td>
+            <td class="px-4 py-2">{{$user->roles()->first()->name}} </td>
+        </tr>
+
+        <tr>
+            <td class="py-2 pr-4">Email:</td>
             <td class="px-4 py-2"><a href="mailto:{{$user->email}}">{{$user->email}}</a></td>
         </tr>
 
         <tr>
-            <td class="pr-4 py-2">Stanje:</td>
-            <td class="px-4 py-2">{{$user->balance}} RSD</td>
-        </tr>
+            <td class="py-2 pr-4">Veštine:</td>
 
-        <tr>
-            <td class="pr-4 py-2">Veštine:</td>
+            @if($userSkills)
+            <td  class="px-4 py-2">
+                <span class="pr-4">{{$userSkills->count()}}</span>
+                <a href="{{route('skills.user',$user)}}" class="btn-purple-small">Prikaži</a>
 
-            @if($userSkills->count()>0)
-            <td class="px-4 py-2">
-                Korisnik ima {{$userSkills->count()}} veština
-                <a href="{{route('skills.index',$user->id)}}" class="w-full px-4 font-bold text-white bg-purple-500 rounded shadow hover:bg-purple-400 focus:shadow-outline focus:outline-none">Prikaži</a>
             </td>
             @else
             <td class="px-4 py-2">Korisnik nema ni jednu veštinu</td>
@@ -45,11 +51,12 @@
         </tr>
 
         <tr>
-            <td class="pr-4 py-2">Poslovi:</td>
-            @if ($user->jobs)
+            <td class="py-2 pr-4">Poslovi:</td>
+            @if ($userJobs)
             <td class="px-4 py-2">
-                {{$user->jobs->count}} objavljenih poslova
-                <a href="{{route('skills.index',$user->id)}}" class="w-full px-4 font-bold text-white bg-purple-500 rounded shadow hover:bg-purple-400 focus:shadow-outline focus:outline-none">Prikaži</a>
+                <span class="pr-4">{{$userJobs->count()}}</span>
+                <a href="{{route('jobs.user',$user)}}" class="btn-purple-small">Prikaži</a>
+
             </td>
 
             @else
@@ -58,10 +65,41 @@
         </tr>
 
         <tr>
-            <td class="pr-4 py-2">Nalog kreiran:</td>
+            <td class="py-2 pr-4">Ponude:</td>
+            @if ($userBids)
+            <td class="px-4 py-2">
+                <span class="pr-4">{{$userBids->count()}}</span>
+                <a href="{{route('bids.user',$user)}}" class="btn-purple-small">Prikaži</a>
+
+            </td>
+
+            @else
+            <td class="px-4 py-2">Korisnik nema datih ponuda</td>
+            @endif
+        </tr>
+
+        <tr>
+            <td class="py-2 pr-4">Stanje:</td>
+            <td class="px-4 py-2">{{$user->balance}} RSD</td>
+        </tr>
+
+        <tr>
+            <td class="py-2 pr-4">Nalog kreiran:</td>
             <td class="px-4 py-2">{{$user->updated_at}} ({{Carbon\Carbon::parse($user->created_at)->diffForHumans()}})</td>
         </tr>
 
     </table>
 
+    <hr class="mb-6 border-2 border-gray-200 rounded drop-shadow">
+
+    <form action="{{route('users.destroy',$user)}}" method="post">
+        @csrf
+        <div class="flex-col">
+            <a href="{{route('users.edit',$user)}}" class="block btn-blue-medium">Izmeni</a>
+
+        </div>
+        <button type="submit" class="block w-full btn-red-medium">
+            Obriši
+        </button>
+    </form>
     @endsection

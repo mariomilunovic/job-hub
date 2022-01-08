@@ -7,6 +7,7 @@ use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\JobController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,27 +38,30 @@ Route::post('login',[LoginController::class,'loginUser'])->name('loginUser')->mi
 
 //LOGOUT CONTROLLER
 Route::get('logout',[LogoutController::class,'logout'])->name('logout')->middleware('check_roles:administrator,user');
-// Route::get('logout',[LogoutController::class,'showLoginForm'])->name('redirect_login')->middleware('check_roles:administrator,manager,user');
 
 //USER CONTROLLER
 Route::get('users',[UserController::class,'index'])->name('users.index')->middleware('check_roles:administrator');
 Route::get('users/profile',[UserController::class,'profile'])->name('users.profile')->middleware('check_roles:administrator');
-// Route::get('users/grid',[UserController::class,'grid'])->name('users.grid')->middleware('check_roles:administrator');
 Route::get('users/search',[UserController::class,'search'])->name('users.search')->middleware('check_roles:administrator');
 Route::get('users/create',[UserController::class,'create'])->name('users.create')->middleware('check_roles:administrator');
 Route::get('users/{user}',[UserController::class,'show'])->name('users.show')->middleware('check_roles:administrator,user');
 Route::post('users/store',[UserController::class,'store'])->name('users.store')->middleware('check_roles:administrator');
-// Route::get('users/{user}/edit',[UserController::class,'edit'])->name('users.edit')->middleware('check_roles:administrator,manager,user');
-// Route::post('users/{user}',[UserController::class,'store'])->name('users.store')->middleware('check_roles:administrator');
-// Route::post('users/{user}',[UserController::class,'destroy'])->name('users.destroy')->middleware('check_roles:administrator');
+Route::get('users/{user}/edit',[UserController::class,'edit'])->name('users.edit')->middleware('check_roles:administrator,manager,user');
+Route::post('users/{user}/update',[UserController::class,'update'])->name('users.update')->middleware('check_roles:administrator');
+Route::post('users/{user}',[UserController::class,'destroy'])->name('users.destroy')->middleware('check_roles:administrator');
 
 //SKILLS CONTROLLER
-Route::get('index',[SkillController::class,'index'])->name('skills.index')->middleware('check_roles:administrator,user');
-// Route::get('logout',[LogoutController::class,'showLoginForm'])->name('redirect_login')->middleware('check_roles:administrator,manager,user');
+Route::get('skills',[SkillController::class,'index'])->name('skills.index')->middleware('check_roles:administrator,user');
+Route::get('skills/create',[SkillController::class,'create'])->name('skills.create')->middleware('check_roles:administrator');
+Route::get('skills/{user}',[SkillController::class,'user_skills'])->name('skills.user')->middleware('check_roles:administrator,user');
+Route::post('skills/store',[SkillController::class,'store'])->name('skills.store')->middleware('check_roles:administrator');
+
+//BIDS CONTROLLER
+Route::get('bids/{user_id}',[BidController::class,'user'])->name('bids.user')->middleware('check_roles:administrator,user');
 
 
-
-
-
-
+//JOBS CONTROLLER
+Route::get('jobs}',[JobController::class,'index'])->name('jobs.index')->middleware('check_roles:administrator,user');
+Route::get('jobs/{job}',[JobController::class,'show'])->name('jobs.show')->middleware('check_roles:administrator,user');
+Route::get('jobs/{user}',[JobController::class,'user_jobs'])->name('jobs.user')->middleware('check_roles:administrator,user');
 
