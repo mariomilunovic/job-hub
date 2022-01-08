@@ -39,7 +39,9 @@
 
         <div x-show="expanded" x-collapse class="text-sm text-center text-white bg-gray-600" x-cloak>
             <a class="block py-2 transition duration-500 ease-in-out hover:bg-gray-500" href="{{route('skills.index')}}">Sve veštine</a>
+            @if(auth()->user())
             <a class="block py-2 transition duration-500 ease-in-out hover:bg-gray-500" href="{{route('skills.user',auth()->user())}}">Moje veštine</a>
+           @endif
             <a class="block py-2 transition duration-500 ease-in-out hover:bg-gray-500" href="{{route('skills.create')}}">Unesi novu</a>
         </div>
 
