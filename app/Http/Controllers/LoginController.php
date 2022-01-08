@@ -6,12 +6,12 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
-    public function showLoginForm()
+    public function form()
     {
         return view('auth.login');
     }
 
-    public function loginUser(Request $request)
+    public function login(Request $request)
     {
         $this->validate($request, [
             'email' => 'required|email|max:255',
@@ -23,6 +23,6 @@ class LoginController extends Controller
             return back()->with('error', 'Neispravni podaci');
         }
         toast()->success('Uspešna prijava')->push();
-        return redirect(route('showDashboard'))->with('success', 'Prijava uspešna');
+        return redirect(route('page.dashboard'));
     }
 }

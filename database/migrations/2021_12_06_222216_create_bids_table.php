@@ -30,7 +30,7 @@ class CreateBidsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
 
             $table->unsignedBigInteger('job_id');
-            $table->foreign('job_id')->references('id')->on('jobs');
+            $table->foreign('job_id')->references('id')->on('jobs')->onDelete("cascade");
         });
     }
 

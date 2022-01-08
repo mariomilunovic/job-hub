@@ -55,7 +55,7 @@ class UserController extends Controller
         $newUser->roles()->attach($role);
 
         toast()->success('Uspešan unos novog korisnika')->push();
-        return redirect(route('users.show',$newUser));
+        return redirect(route('user.show',$newUser));
     }
 
     /**
@@ -139,7 +139,7 @@ class UserController extends Controller
 
         $user->save();
         toast()->success('Uspešna izmena podataka korisnika')->push();
-        return redirect(route('users.show',$user));
+        return redirect(route('user.show',$user));
     }
 
     /**
@@ -152,7 +152,7 @@ class UserController extends Controller
     {
         $user->delete(); //softdeleted
         toast()->success('Korisnički nalog je obrisan')->push();
-        return redirect(route('users.index'));
+        return redirect(route('user.index'));
     }
 
     public function validateUser()

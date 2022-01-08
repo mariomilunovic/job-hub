@@ -19,12 +19,12 @@ class SkillController extends Controller
 
     }
 
-    public function user_skills( User $user)
+    public function user( User $user)
     {
         $userSkills = $user->skills()->get();
         $allCategories = Category::all();
 
-        return view ('models.skill.user_skills')
+        return view ('models.skill.user')
         ->with('userSkills',$userSkills)
         ->with('allCategories',$allCategories);
     }
@@ -42,7 +42,7 @@ class SkillController extends Controller
         Skill::create($this->validateSkill());
 
         toast()->success('Uspešan unos nove veštine')->push();
-        return redirect(route('skills.index'));
+        return redirect(route('skill.index'));
     }
 
 

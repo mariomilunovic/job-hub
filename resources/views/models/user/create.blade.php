@@ -2,7 +2,8 @@
 
 @section('content')
 
-<form action="{{route('users.store')}}" method="post" class="w-full max-w-sm p-3">
+<form action="{{route('user.store')}}" method="post" class="w-full max-w-sm p-3">
+
     @csrf
 
     <h2 class="text-xl font-bold text-gray-500">Unos novog korisnika</h2>
@@ -24,7 +25,7 @@
     <select id="role_id" name="role_id" class="w-full px-4 py-2 leading-tight text-gray-700 bg-gray-200 border-2 border-gray-200 rounded focus:outline-none focus:bg-white focus:border-purple-500">
         <option value="">Izaberite ulogu</option>
         @foreach($roles as $role )
-            <option value="{{$role->id}}">{{$role->name}}</option>
+        <option value="{{$role->id}}">{{$role->name}}</option>
         @endforeach
     </select>
     <div class="mb-3 text-sm text-red-500">@error('role_id'){{ $message }}@enderror</div>
@@ -41,8 +42,6 @@
     <button type="submit" class="w-full px-4 py-2 mt-5 font-bold text-white rounded shadow bg-yellow-500 hover:bg-yellow-600 focus:shadow-outline focus:outline-none">
         Unesi
     </button>
-
-
 
 </form>
 

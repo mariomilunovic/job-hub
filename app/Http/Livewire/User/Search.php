@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Users;
+namespace App\Http\Livewire\User;
 
 use Livewire\Component;
 use App\Models\Role;
@@ -86,6 +86,6 @@ class Search extends Component
 
     public function render()
     {
-        return view('livewire.users.search');
+        return view('livewire.user.search');
     }
 }

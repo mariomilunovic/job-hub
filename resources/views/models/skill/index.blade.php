@@ -16,13 +16,11 @@
     @endforeach
 
     @if (auth()->user()->hasRole('administrator'))
-    <a href="{{route('skills.create',$category)}}"><span class="btn-yellow-small text-shadow"> + dodaj </span></a>
+    <a href="{{route('skill.create',$category)}}"><span class="btn-yellow-small text-shadow"> + dodaj </span></a>
     <br>
     @endif
 </div>
 @endforeach
-
-<br>
 
 
 @endsection

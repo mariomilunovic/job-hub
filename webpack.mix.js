@@ -1,6 +1,7 @@
 const mix = require('laravel-mix');
 const tailwindcss = require('tailwindcss');
 
+
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -17,3 +18,6 @@ mix.js('resources/js/app.js', 'public/js')
         require('tailwindcss'),
         require('autoprefixer'),
     ]);
+
+
+

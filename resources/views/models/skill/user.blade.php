@@ -7,9 +7,6 @@
 <hr class="mb-3 border-2 border-gray-500 rounded">
 
 
-
-
-
 @foreach($userSkills as $skill)
 
 @if (true)
@@ -21,13 +18,5 @@
 @endif
 
 @endforeach
-
-
-</div>
-
-
-
-<br>
-
 
 @endsection

@@ -42,7 +42,7 @@
             @if($userSkills)
             <td  class="px-4 py-2">
                 <span class="pr-4">{{$userSkills->count()}}</span>
-                <a href="{{route('skills.user',$user)}}" class="btn-purple-small">Prikaži</a>
+                <a href="{{route('skill.user',$user)}}" class="btn-purple-small">Prikaži</a>
 
             </td>
             @else
@@ -55,7 +55,7 @@
             @if ($userJobs)
             <td class="px-4 py-2">
                 <span class="pr-4">{{$userJobs->count()}}</span>
-                <a href="{{route('jobs.user',$user)}}" class="btn-purple-small">Prikaži</a>
+                <a href="{{route('job.user',$user)}}" class="btn-purple-small">Prikaži</a>
 
             </td>
 
@@ -69,7 +69,7 @@
             @if ($userBids)
             <td class="px-4 py-2">
                 <span class="pr-4">{{$userBids->count()}}</span>
-                <a href="{{route('bids.user',$user)}}" class="btn-purple-small">Prikaži</a>
+                <a href="{{route('bid.user',$user)}}" class="btn-purple-small">Prikaži</a>
 
             </td>
 
@@ -92,14 +92,18 @@
 
     <hr class="mb-6 border-2 border-gray-200 rounded drop-shadow">
 
-    <form action="{{route('users.destroy',$user)}}" method="post">
-        @csrf
-        <div class="flex-col">
-            <a href="{{route('users.edit',$user)}}" class="block btn-blue-medium">Izmeni</a>
+    <form action="{{route('user.destroy',$user)}}" method="post">
 
+        @method('delete')
+        @csrf
+
+        <div class="flex-col">
+            <a href="{{route('user.edit',$user)}}" class="block btn-blue-medium">Izmeni</a>
         </div>
+
         <button type="submit" class="block w-full btn-red-medium">
             Obriši
         </button>
+
     </form>
     @endsection

@@ -2,7 +2,9 @@
 
 @section('content')
 
-<form action="{{route('users.update',$user)}}" method="post" class="w-full max-w-sm p-3">
+<form action="{{route('user.update',$user)}}" method="post" class="w-full max-w-sm p-3">
+
+    @method('put')
     @csrf
 
     <h2 class="text-xl font-bold text-gray-500">Izmena korisnika</h2>
@@ -44,7 +46,7 @@
         <button type="submit" class="w-full mt-3 btn-blue-medium">
             Potvrdi izmene
         </button>
-        <a href="{{route('users.show',$user)}}" class="block btn-red-medium">Odustani</a>
+        <a href="{{route('user.show',$user)}}" class="block btn-red-medium">Odustani</a>
     </div>
 
 

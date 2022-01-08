@@ -21,7 +21,7 @@ class CreateJobSkillTable extends Migration
             $table->timestamps();
 
             $table->unique(['job_id','skill_id']);
-            $table->foreign('job_id')->references('id')->on('jobs');
+            $table->foreign('job_id')->references('id')->on('jobs')->onDelete("cascade");
             $table->foreign('skill_id')->references('id')->on('skills');
         });
     }

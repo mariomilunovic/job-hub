@@ -57,7 +57,7 @@
                         <div class="text-left">{{$user->roles()->first()->name}}</div>
                     </td>
                     <td class="px-4 py-2">
-                        <a href="{{route('users.show',$user->id)}}" class="w-full px-4 font-bold text-white bg-purple-500 rounded shadow hover:bg-purple-400 focus:shadow-outline focus:outline-none">Prikaži</a>
+                        <a href="{{route('user.show',$user)}}" class="w-full px-4 font-bold text-white bg-purple-500 rounded shadow hover:bg-purple-400 focus:shadow-outline focus:outline-none">Prikaži</a>
                     </td>
                 </tr>
 

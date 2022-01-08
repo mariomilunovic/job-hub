@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form action="{{route('loginUser')}}" method="post" class="w-full max-w-sm p-3">
+<form action="{{route('login.login')}}" method="post" class="w-full max-w-sm p-3">
     @csrf
 
     <h2 class="text-xl font-bold text-gray-500">Prijava</h2>
@@ -23,7 +23,7 @@
         Prijava
     </button>
 
-    <a href="{{route('showRegisterForm')}}" class="text-sm font-semibold text-blue-600">Napravi novi nalog</a>
+    <a href="{{route('register.form')}}" class="text-sm font-semibold text-blue-600">Napravi novi nalog</a>
 
 </form>
 

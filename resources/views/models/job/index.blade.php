@@ -36,7 +36,7 @@
 
                 </div>
                 <div class="justify-items-end">
-                    <a href="{{route('jobs.show',$job)}}"><span class="btn-purple-small text-shadow">Detalji </span></a>
+                    <a href="{{route('job.show',$job)}}"><span class="btn-purple-small text-shadow">Detalji </span></a>
                 </div>
 
             </div>

@@ -16,8 +16,11 @@
 
     @toastScripts
     <script defer src="https://unpkg.com/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
-    <script type="text/javascript" src="{{ asset('js/app.js') }}" defer></script>
+    <script defer src="https://unpkg.com/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script>
     <script defer src="https://unpkg.com/alpinejs@3.5.1/dist/cdn.min.js"></script>
+
+    <script type="text/javascript" src="{{ asset('js/app.js') }}" defer></script>
+    
     <script src="https://kit.fontawesome.com/028d9002c0.js" crossorigin="anonymous"></script>
 
     <!-- Fonts -->

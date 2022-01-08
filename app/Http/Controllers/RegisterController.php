@@ -19,12 +19,12 @@ class RegisterController extends Controller
         ]);
     }
 
-    function showRegisterForm()
+    function form()
     {
         return view('auth.register');
     }
 
-    function registerUser(Request $request)
+    function register(Request $request)
     {
         $userData = $this->validateUser();
 

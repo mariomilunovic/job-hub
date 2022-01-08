@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form action="{{route('skills.store')}}" method="post" class="w-full max-w-sm p-3">
+<form action="{{route('skill.store')}}" method="post" class="w-full max-w-sm p-3">
     @csrf
 
     <h2 class="text-xl font-bold text-gray-500">Unos nove veštine</h2>
@@ -26,8 +26,7 @@
     <button type="submit" class="block w-full btn-yellow-medium mt-5 ">
         Unesi
     </button>
-    <a href="{{route('skills.index')}}" class="block w-full btn-red-medium mt-5">Odustani</a>
-
+    <a href="{{route('skill.index')}}" class="block w-full btn-red-medium mt-5">Odustani</a>
 
 
 </form>

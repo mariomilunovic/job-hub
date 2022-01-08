@@ -13,8 +13,8 @@
 
 @guest
 <ul class="flex">
-    <li><a class="text-white text-sm font-bold bg-yellow-500 hover:bg-yellow-600 shadow rounded px-3 py-2 text-center mr-2 mb-2" href="{{route('showRegisterForm')}}">Registracija</a></li>
-    <li><a class="text-white text-sm font-bold bg-purple-500 hover:bg-purple-600 shadow rounded px-3 py-2 text-center mr-4 mb-2" href="{{route('showLoginForm')}}">Prijava</a></li>
+    <li><a class="text-white text-sm font-bold bg-yellow-500 hover:bg-yellow-600 shadow rounded px-3 py-2 text-center mr-2 mb-2" href="{{route('register.form')}}">Registracija</a></li>
+    <li><a class="text-white text-sm font-bold bg-purple-500 hover:bg-purple-600 shadow rounded px-3 py-2 text-center mr-4 mb-2" href="{{route('login.form')}}">Prijava</a></li>
 </ul>
 @endguest
 
@@ -28,8 +28,8 @@
         </button>
 
         <div x-show="isOpen" class="z-50 absolute right-0 w-32 py-2 text-center bg-white rounded-lg shadow-lg top-14" x-cloak>
-            <a href="{{route('users.profile')}}" class="block px-4 py-2 account-link hover:bg-blue-400">Profil</a>
-            <a href="{{route('logout')}}" class="block px-4 py-2 account-link hover:bg-blue-400">Odjava</a>
+            <a href="{{route('user.show',auth()->user())}}" class="block px-4 py-2 account-link hover:bg-blue-400">Profil</a>
+            <a href="{{route('logout.logout')}}" class="block px-4 py-2 account-link hover:bg-blue-400">Odjava</a>
         </div>
     </div>
 </div>

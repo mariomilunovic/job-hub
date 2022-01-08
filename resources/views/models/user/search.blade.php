@@ -3,6 +3,6 @@
 
 @section('content')
 
-@livewire('users.search')
+@livewire('user.search')
 
 @endsection

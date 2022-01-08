@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form action="{{route('registerUser')}}" method="post" class="w-full max-w-sm p-3">
+<form action="{{route('register.register')}}" method="post" class="w-full max-w-sm p-3">
     @csrf
 
     <h2 class="text-xl font-bold text-gray-500">Registracija</h2>
@@ -33,7 +33,7 @@
         Registruj se
     </button>
 
-    <a href="{{route('showLoginForm')}}" class="text-sm font-semibold text-blue-600">Već imam nalog</a>
+    <a href="{{route('login.form')}}" class="text-sm font-semibold text-blue-600">Već imam nalog</a>
 
 </form>
 

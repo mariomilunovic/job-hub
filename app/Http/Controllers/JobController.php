@@ -19,4 +19,12 @@ class JobController extends Controller
     {
         return view('models.job.show')->with('job',$job);
     }
+
+    public function destroy (Job $job)
+    {
+        $job->delete();
+        toast()->success('Posao je obrisan')->push();
+        return redirect(route('job.index'));
+
+    }
 }
