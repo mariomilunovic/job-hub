@@ -8,9 +8,9 @@
     <h2 class="text-xl font-bold text-gray-500">Prikaz svih informacija o poslu</h2>
     <hr class="mb-3 border-2 border-gray-500 rounded">
 
-    <div>
+    <div class="flex-col justify-items-center">
         <!-- Job Card -->
-        <div class="card bg-cyan-500 flex-col p-2 mb-3">
+        <div class="card  bg-cyan-500 flex-col p-2 mb-3">
 
             <div class="flex justify-between mb-1">
                 <div class="text-sm"><span class="font-bold">VLASNIK:</span> {{$job->user->firstname}} {{$job->user->lastname}}</div>

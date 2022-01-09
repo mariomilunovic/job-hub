@@ -9,6 +9,8 @@ class Job extends Model
 {
     use HasFactory;
 
+    protected $guarded = []; //postavlja sva polja na fillable
+
     public function skills()
     {
         return $this->belongsToMany(Skill::class);
