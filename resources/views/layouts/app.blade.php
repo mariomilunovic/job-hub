@@ -41,17 +41,17 @@
 
     <section id="container" class="bg-gray-400">
 
-        <header class="flex-row items-center mt-3 bg-gray-500 card place-content-between">@include('sections.header')</header>
+        <header class="flex-row items-center mt-3 bg-gray-500 card place-content-between svg-jigsaw">@include('sections.header')</header>
 
         <nav class="flex-col bg-blue-600 card">@include('sections.navbar')</nav>
 
-        <main class="relative flex place-content-center bg-gray-300 card overflow-y-scroll h-screen p-3">
+        <main class="relative flex place-content-center bg-gray-300 card overflow-y-scroll h-screen p-3 svg-dots">
             <div class="absolute right-0 top-0"><livewire:toasts/></div>
             <div class="py-4 w-11/12 max-w-3xl">@yield('content')</div>
 
         </main>
 
-        <footer class="flex-row items-center mb-3 bg-gray-500 card place-content-center">@include('sections.footer')</footer>
+        <footer class="flex-row items-center mb-3 bg-gray-500 card place-content-center svg-jigsaw">@include('sections.footer')</footer>
 
     </section>
 

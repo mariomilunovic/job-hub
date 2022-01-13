@@ -21,13 +21,14 @@
 
                 <div id="header" class="flex justify-between mb-1">
                     <div class="text-sm">
-                        <span class="font-bold">POSLODAVAC :</span>
-                        <span>{{$job->user->firstname}} {{$job->user->lastname}}</span>
-                    </div>
-                    <div class="text-sm">
                         <span class="font-bold">VEŠTINA :</span>
                         <span>{{$job->skills->first()->category->name}} / {{$job->skills->first()->name}}</span>
                     </div>
+                    <div class="text-sm">
+                        <span class="font-bold">POSLODAVAC :</span>
+                        <span>{{$job->user->firstname}} {{$job->user->lastname}}</span>
+                    </div>
+
                 </div>
 
                 <hr class="mb-1 border-gray-500 rounded border-1">
@@ -43,8 +44,8 @@
                 <hr class="my-1 border-gray-500 rounded border-1">
 
                 <div id="footer" class="flex justify-between mb-1">
-                    <div class="text-sm"><span class="font-bold">STATUS POSLA :</span>  {{$job->status->name}}</div>
                     <div class="text-sm"><span class="font-bold">VREDNOST POSLA :</span>  {{$job->reward}}€</div>
+                    <div class="text-sm"><span class="font-bold">STATUS POSLA :</span>  {{$job->status->name}}</div>
                     <div class="text-sm"><span class="font-bold">KREIRAN :</span>  {{$job->created_at}}</div>
                 </div>
 
