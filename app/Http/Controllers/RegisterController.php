@@ -42,11 +42,12 @@ class RegisterController extends Controller
         {
             auth()->attempt($request->only('email','password'));
             toast()->success('Uspešna registracija')->push();
-            return redirect(route('showDashboard'))->with('success', 'Registracija uspešna');
+            return redirect(route('page.dashboard'));
         }
         else
         {
-            return back()->with('error', 'Došlo je do greške prilikom upisa u bazu');
+            toast()->success('Došlo je do greške prilikom upisa u bazu')->push();
+            return back();
         }
     }
 }
