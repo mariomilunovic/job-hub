@@ -6,7 +6,7 @@
 
     <!-- Title -->
     <div>
-        <h2 class="text-xl font-bold text-gray-500">Prikaz svih objavljenih poslova</h2>
+        <h2 class="text-xl font-bold text-gray-500">Prikaz mojih poslova</h2>
         <hr class="mb-3 border-2 border-gray-500 rounded">
     </div>
 
@@ -17,7 +17,8 @@
         @foreach ($allJobs as $job)
         <!-- Card -->
         <a href="{{route('job.show',$job)}}">
-            <div class="card flex-col transition duration-500 ease-in-out hover:cursor-pointer p-2 mb-3 {{ $job->user_id == auth()->user()->id ? "bg-orange-300 hover:bg-orange-400":"bg-blue-300 hover:bg-blue-400" }}">
+
+            <div class="flex-col p-2 mb-3 transition duration-500 ease-in-out bg-orange-300 card hover:bg-orange-400 hover:cursor-pointer">
 
                 <div id="header" class="flex justify-between mb-1">
                     <div class="text-sm">
@@ -48,14 +49,10 @@
                     <div class="text-sm"><span class="font-bold">KREIRAN :</span>  {{$job->created_at}}</div>
                 </div>
 
-                {{-- <div class="justify-items-end">
-                    <a href="{{route('job.show',$job)}}"><span class="btn-purple-small text-shadow">Detalji </span></a>
-                </div> --}}
-
             </div>
 
         </a>
-
+        <!-- Card End -->
         @endforeach
 
         {{$allJobs->links()}}

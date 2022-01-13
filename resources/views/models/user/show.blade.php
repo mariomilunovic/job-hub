@@ -4,7 +4,7 @@
 
 <!-- Title -->
 <h2 class="text-xl font-bold text-gray-500">Prikaz detaljnih podataka o korisniku</h2>
-<hr class="mb-6 border-2 border-gray-500 rounded drop-shadow">
+<hr class="mb-2 border-2 border-gray-500 rounded drop-shadow">
 
 <!-- Table -->
 <div class="w-full px-4 py-4 bg-gray-200 border border-gray-200 rounded shadow-lg">
@@ -98,10 +98,10 @@
         @csrf
 
         <div class="flex-col">
-            <a href="{{route('user.edit',$user)}}" class="block btn-blue-medium">Izmeni</a>
+            <a href="{{route('user.edit',$user)}}" class="block w-full btn-blue-medium mt-5">Izmeni</a>
         </div>
 
-        <button type="submit" class="block w-full btn-red-medium">
+        <button type="submit" class="block w-full btn-red-medium mt-5">
             Obriši
         </button>
 

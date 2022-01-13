@@ -20,7 +20,7 @@
     <script defer src="https://unpkg.com/alpinejs@3.5.1/dist/cdn.min.js"></script>
 
     <script type="text/javascript" src="{{ asset('js/app.js') }}" defer></script>
-    
+
     <script src="https://kit.fontawesome.com/028d9002c0.js" crossorigin="anonymous"></script>
 
     <!-- Fonts -->
@@ -45,9 +45,9 @@
 
         <nav class="flex-col bg-blue-600 card">@include('sections.navbar')</nav>
 
-        <main class="relative flex place-content-center bg-gray-300 card">
+        <main class="relative flex place-content-center bg-gray-300 card overflow-y-scroll h-screen p-3">
             <div class="absolute right-0 top-0"><livewire:toasts/></div>
-            <div class="py-4">@yield('content')</div>
+            <div class="py-4 w-11/12 max-w-3xl">@yield('content')</div>
 
         </main>
 

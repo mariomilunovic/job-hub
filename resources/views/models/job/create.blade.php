@@ -13,7 +13,7 @@
         @csrf
 
         <!-- Job Card -->
-        <div class="card bg-yellow-200 flex-col p-2 mb-3">
+        <div class="card bg-orange-300 flex-col p-2 mb-3">
 
             <label for="skill_id" class="text-sm mx-4 mt-3 font-bold text-gray-500">Izaberi kategoriju</label>
             <select id="skill_id" name="skill_id" class="mx-4 px-1 py-1 leading-tight text-gray-700 bg-gray-200 border-2 border-gray-200 rounded focus:outline-none focus:bg-white focus:border-purple-500">
@@ -21,7 +21,7 @@
                 @foreach($allCategories as $category )
                 @foreach($category->skills as $skill )
 
-                <option value="{{$skill->id}}">{{$category->name}}/{{$skill->name}}</option>
+                <option value="{{$skill->id}}" {{ (old("skill_id") == $skill->id ? "selected":"") }}>{{$category->name}}/{{$skill->name}}</option>
 
                 @endforeach
                 @endforeach

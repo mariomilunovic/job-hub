@@ -2,66 +2,98 @@
 
 @section('content')
 
-<div class="flex-col justify-items-center p-3 ">
+<div class="flex-col">
 
     <!-- Title -->
-    <h2 class="text-xl font-bold text-gray-500">Prikaz svih informacija o poslu</h2>
-    <hr class="mb-3 border-2 border-gray-500 rounded">
+    <div>
+        <h2 class="text-xl font-bold text-gray-500">Prikaz svih informacija o poslu</h2>
+        <hr class="mb-3 border-2 border-gray-500 rounded">
+    </div>
 
-    <div class="flex-col justify-items-center">
-        <!-- Job Card -->
-        <div class="card  bg-cyan-500 flex-col p-2 mb-3">
+    <!-- Job Card -->
+    <div class="card flex-col transition duration-500 ease-in-out hover:cursor-pointer p-2 mb-3 {{ $job->user_id == auth()->user()->id ? "bg-orange-300 hover:bg-orange-400":"bg-blue-300 hover:bg-blue-400" }}">
 
-            <div class="flex justify-between mb-1">
-                <div class="text-sm"><span class="font-bold">VLASNIK:</span> {{$job->user->firstname}} {{$job->user->lastname}}</div>
-                <div class="text-sm"><span class="font-bold">VEŠTINA:</span> {{$job->skills->first()->category->name}} / {{$job->skills->first()->name}}</div>
+        <div id="header" class="flex justify-between mb-1">
+            <div class="text-sm">
+                <span class="font-bold">POSLODAVAC :</span>
+                <span>{{$job->user->firstname}} {{$job->user->lastname}}</span>
             </div>
-
-            <hr class="mb-1 border-1 border-gray-500 rounded">
-
-            <div id="description" class="flex-col">
-                <div>{{$job->description}}</div>
-            </div>
-
-            <hr class="mb-1 border-1 border-gray-500 rounded">
-
-            <div class="flex items-end justify-between mb-1">
-                <div class="flex-col">
-                    <div class="text-sm"><span class="font-bold">STATUS:</span>  {{$job->status->name}}</div>
-                    <div class="text-sm font-bold"><span class="font-bold">VREDNOST:</span>  {{$job->reward}}</div>
-                </div>
-                <div class="text-sm"><span class="font-bold">KREIRAN:</span>  {{$job->created_at}}</div>
-
+            <div class="text-sm">
+                <span class="font-bold">VEŠTINA :</span>
+                <span>{{$job->skills->first()->category->name}} / {{$job->skills->first()->name}}</span>
             </div>
         </div>
-        <!-- End of Job Card -->
 
-        <!-- Buttons -->
-        <div class="flex justify-between">
-            <div class="flex">
-                <a href="{{route('job.index')}}"><span class="btn-gray-small text-shadow"> Nazad </span></a>
+        <hr class="mb-1 border-gray-500 rounded border-1">
+
+        <div id="description" class="flex-col">
+            <div class="text-sm">
+                <span class="font-bold">OPIS :</span>
+                <span>{{$job->description}}</span>
             </div>
-            <div class="flex">
 
-                <form action="{{route('job.destroy',$job)}}" method="post">
-
-                    @method('delete')
-                    @csrf
-
-                    <button type="submit" class="btn-red-small text-shadow m-1">
-                        Obriši
-                    </button>
-                    <a href="{{route('job.edit',$job)}}"><span class="btn-blue-small text-shadow m-1"> Izmeni </span></a>
-                    <a href="{{route('job.bids',$job)}}"><span class="btn-yellow-small text-shadow m-1"> Ponude </span></a>
-
-                </form>
-
-            </div>
         </div>
-        <!-- End of Buttons -->
+
+        <hr class="my-1 border-gray-500 rounded border-1">
+
+        <div id="footer" class="flex justify-between mb-1">
+            <div class="text-sm"><span class="font-bold">STATUS POSLA :</span>  {{$job->status->name}}</div>
+            <div class="text-sm"><span class="font-bold">VREDNOST :</span>  {{$job->reward}}</div>
+            <div class="text-sm"><span class="font-bold">KREIRAN :</span>  {{$job->created_at}}</div>
+        </div>
+
+        {{-- <div class="justify-items-end">
+            <a href="{{route('job.show',$job)}}"><span class="btn-purple-small text-shadow">Detalji </span></a>
+        </div> --}}
 
     </div>
-</div>
 
+    <!-- Buttons -->
+    <div class="flex justify-between">
+
+        <a href="{{route('job.index')}}"><span class="btn-gray-small text-shadow"> Nazad </span></a>
+
+        <div class="flex">
+
+            <form action="{{route('job.destroy',$job)}}" method="post">
+
+                @method('delete')
+                @csrf
+
+                <button type="submit" class="m-1 btn-red-small text-shadow">
+                    Obriši
+                </button>
+
+                <a href="{{route('job.edit',$job->id)}}"><span class="m-1 btn-blue-small text-shadow"> Izmeni </span></a>
+
+                @if ($job->bids->count()>0)
+                <a href="{{route('job.bids',$job->id)}}">
+                    <span class="m-1 btn-yellow-small text-shadow ">
+                        Ponude :
+                        <span class="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full">
+                            {{$job->bids->count()}}
+                        </span>
+                    </span>
+                </a>
+
+                @else
+                <a href="#">
+                    <span class="m-1 btn-gray-small text-shadow ">
+                        Ponude :
+                        <span class="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full">
+                            {{$job->bids->count()}}
+                        </span>
+                    </span>
+                </a>
+                @endif
+
+            </form>
+
+        </div>
+    </div>
+    <!-- End of Buttons -->
+
+    <!-- End of Job Card -->
+</div>
 
 @endsection

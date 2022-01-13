@@ -6,17 +6,29 @@ use Illuminate\Http\Request;
 use App\Models\Job;
 use App\Models\Category;
 use App\Models\Skill;
+use App\Models\User;
 use Auth;
 
 class JobController extends Controller
 {
     public function index()
     {
-        $allJobs = Job::orderBy('updated_at','desc')->paginate(4);
+
+        $joblist = Job::orderBy('updated_at','desc')->paginate(4);
 
         return view('models.job.index')
-        ->with(['allJobs'=>$allJobs]);
+        ->with(['allJobs'=>$joblist]);
     }
+
+    public function myjobs()
+    {
+
+        $joblist = Job::where('user_id',Auth::user()->id)->latest()->paginate(5);
+
+        return view('models.job.myjobs')
+        ->with(['allJobs'=>$joblist]);
+    }
+
 
     public function show(Job $job)
     {
@@ -74,6 +86,9 @@ class JobController extends Controller
 
     public function bids (Job $job)
     {
+        return view('models.job.bids')
+            ->with('bids', $job->bids->sortBy('created_at'))
+            ->with('job', $job);
 
     }
 }

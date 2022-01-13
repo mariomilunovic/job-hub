@@ -4,7 +4,8 @@ use App\Http\Controllers\JobController;
 
 //CUSTOM ROUTES =====>
 Route::get('job/{user}/user',[JobController::class,'user'])->name('job.user')->middleware('check_roles:administrator');
-Route::get('job/{bid}/bids',[JobController::class,'user'])->name('job.bids')->middleware('check_roles:administrator');
+Route::get('job/{job}/bids',[JobController::class,'bids'])->name('job.bids')->middleware('check_roles:administrator');
+Route::get('job/myjobs',[JobController::class,'myjobs'])->name('job.myjobs')->middleware('check_roles:administrator,user');
 
 //RESOURCE ROUTES =====> Route::resource('job', JobController::class);
 Route::get('/job',[JobController::class,'index'])->name('job.index')->middleware('check_roles:administrator,user');

@@ -9,7 +9,7 @@
 
         <div x-show="expanded_poslovi" x-collapse class="text-sm text-center text-white bg-gray-600" x-cloak>
             <a class="block py-2 transition duration-500 ease-in-out hover:bg-gray-500" href="{{route('job.index')}}">Svi poslovi</a>
-            <a class="block py-2 transition duration-500 ease-in-out hover:bg-gray-500" href="{{route('user.index')}}">Moji poslovi</a>
+            <a class="block py-2 transition duration-500 ease-in-out hover:bg-gray-500" href="{{route('job.myjobs')}}">Moji poslovi</a>
             <a class="block py-2 transition duration-500 ease-in-out hover:bg-gray-500" href="{{route('job.create')}}">Objavi posao</a>
         </div>
 
