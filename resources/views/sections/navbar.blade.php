@@ -23,6 +23,7 @@
         </button>
 
         <div x-show="expanded_ponude" x-collapse class="text-sm text-center text-white bg-gray-600" x-cloak>
+            <a class="block py-2 transition duration-500 ease-in-out hover:bg-gray-500" href="{{route('bid.index')}}">Sve ponude</a>
             <a class="block py-2 transition duration-500 ease-in-out hover:bg-gray-500" href="{{route('user.index')}}">Poslate ponude</a>
             <a class="block py-2 transition duration-500 ease-in-out hover:bg-gray-500" href="{{route('user.index')}}">Primljene ponude</a>
         </div>

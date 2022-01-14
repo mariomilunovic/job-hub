@@ -11,7 +11,7 @@
     </div>
 
     <!-- Job Card -->
-    <div class="card flex-col transition duration-500 ease-in-out hover:cursor-pointer p-2 mb-3 {{ $job->user_id == auth()->user()->id ? "bg-orange-300 hover:bg-orange-400":"bg-blue-300 hover:bg-blue-400" }}">
+    <div class="card flex-col transition duration-500 bg-blue-500 hover:bg-blue-400 ease-in-out hover:cursor-pointer p-2 mb-3 {{ $job->user_id == auth()->user()->id ? "border-4 border-red-500":"" }}">
 
         <div id="header" class="flex justify-between mb-1">
             <div class="text-sm">
@@ -20,12 +20,12 @@
             </div>
             <div class="text-sm">
                 <span class="font-bold">POSLODAVAC :</span>
-                <span>{{$job->user->firstname}} {{$job->user->lastname}}</span>
+                <span class="{{ $job->user_id == auth()->user()->id ? "font-bold text-red-400":"" }}">{{$job->user->firstname}} {{$job->user->lastname}}</span>
             </div>
 
         </div>
 
-        <hr class="mb-1 border-gray-500 rounded border-1">
+        <hr class="mb-1 border-blue-900 rounded border-1">
 
         <div id="description" class="flex-col">
             <div class="text-sm">
@@ -35,10 +35,10 @@
 
         </div>
 
-        <hr class="my-1 border-gray-500 rounded border-1">
+        <hr class="my-1 border-blue-900 rounded border-1">
 
         <div id="footer" class="flex justify-between mb-1">
-            <div class="text-sm"><span class="font-bold">VREDNOST :</span>  {{$job->reward}}</div>
+            <div class="text-sm"><span class="font-bold">VREDNOST POSLA :</span>  {{$job->reward}}€</div>
             <div class="text-sm"><span class="font-bold">STATUS POSLA :</span>  {{$job->status->name}}</div>
             <div class="text-sm"><span class="font-bold">KREIRAN :</span>  {{$job->created_at}}</div>
         </div>
@@ -51,45 +51,34 @@
 
     <!-- Buttons -->
     <div class="flex justify-between">
-
-        <a href="{{route('job.index')}}"><span class="btn-gray-small text-shadow"> Nazad </span></a>
-
-        <div class="flex">
-
-            <form action="{{route('job.destroy',$job)}}" method="post">
-
-                @method('delete')
-                @csrf
-
-                <button type="submit" class="m-1 btn-red-small text-shadow">
-                    Obriši
-                </button>
-
-                <a href="{{route('job.edit',$job->id)}}"><span class="m-1 btn-blue-small text-shadow"> Izmeni </span></a>
-
-                @if ($job->bids->count()>0)
-                <a href="{{route('job.bids',$job->id)}}">
-                    <span class="m-1 btn-yellow-small text-shadow ">
-                        Ponude :
-                        <span class="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full">
-                            {{$job->bids->count()}}
-                        </span>
+        <div>
+            <a class="btn-gray-small" href="{{route('job.index')}}">Nazad</a>
+            @if($job->user_id == auth()->user()->id)
+            <a class="btn-green-small" href="{{route('job.edit',$job)}}">Izmeni</a>
+            <a class="btn-red-small" href="{{route('job.destroy',$job)}}">Obriši</a>
+            @endif
+        </div>
+        <div>
+            @if ($job->bids->count()>0)
+            <a href="{{route('job.bids',$job)}}">
+                <span class="m-1 btn-yellow-small text-shadow ">
+                    Ponude :
+                    <span class="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full">
+                        {{$job->bids->count()}}
                     </span>
-                </a>
+                </span>
+            </a>
 
-                @else
-                <a href="#">
-                    <span class="m-1 btn-gray-small text-shadow ">
-                        Ponude :
-                        <span class="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full">
-                            {{$job->bids->count()}}
-                        </span>
+            @else
+            <a href="{{route('job.bids',$job)}}">
+                <span class="m-1 btn-gray-small text-shadow ">
+                    Ponude :
+                    <span class="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full">
+                        {{$job->bids->count()}}
                     </span>
-                </a>
-                @endif
-
-            </form>
-
+                </span>
+            </a>
+            @endif
         </div>
     </div>
     <!-- End of Buttons -->

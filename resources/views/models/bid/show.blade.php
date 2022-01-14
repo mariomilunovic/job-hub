@@ -8,7 +8,7 @@
     <hr class="mb-3 border-2 border-gray-500 rounded">
 
     <!-- Job data -->
-    <div class="card flex-col transition duration-500 ease-in-out hover:cursor-pointer p-2 mb-3 {{ $job->user_id == auth()->user()->id ? "bg-orange-300 hover:bg-orange-400":"bg-blue-300 hover:bg-blue-400" }}">
+    <div class="card flex-col transition duration-500 bg-blue-500 hover:bg-blue-400 ease-in-out hover:cursor-pointer p-2 mb-3 {{ $job->user_id == auth()->user()->id ? "border-4 border-red-500":"" }}">
 
         <div id="header" class="flex justify-between mb-1">
             <div class="text-sm">

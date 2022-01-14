@@ -5,6 +5,7 @@
 
 <div class="flex-col">
 
+
     <!-- Title -->
     <h2 class="text-xl font-bold text-gray-500">Prikaz svih veština</h2>
     <hr class="mb-2 border-2 border-gray-500 rounded">

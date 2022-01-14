@@ -14,7 +14,7 @@ class JobFactory extends Factory
     public function definition()
     {
         return [
-            'description' => $this->faker->text(500),
+            'description' => $this->faker->text(800),
             'days' => $this->faker->randomDigitNot(0),
             'reward' =>  $this->faker->randomDigitNot(0)*10,
             'rating' => $this->faker->randomDigitNot(0),

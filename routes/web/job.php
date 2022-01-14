@@ -13,5 +13,5 @@ Route::post('/job',[JobController::class,'store'])->name('job.store')->middlewar
 Route::get('/job/create',[JobController::class,'create'])->name('job.create')->middleware('check_roles:administrator,user');
 Route::get('/job/{job}',[JobController::class,'show'])->name('job.show')->middleware('check_roles:administrator');
 Route::put('/job/{job}',[JobController::class,'update'])->name('job.update')->middleware('check_roles:administrator');
-Route::delete('job/{job}',[JobController::class,'destroy'])->name('job.destroy')->middleware('check_roles:administrator');
+Route::get('job/{job}/destroy',[JobController::class,'destroy'])->name('job.destroy')->middleware('check_roles:administrator'); //edited
 Route::get('job/{job}/edit',[JobController::class,'edit'])->name('job.edit')->middleware('check_roles:administrator');

@@ -22,20 +22,26 @@ class UserSeeder extends Seeder
 
 
         $userAdministrator = User::create([
-            'firstname'=>'Mario',
-            'lastname'=>'Milunović',
-            'email'=>'mario@safemail.com',
+            'firstname'=>'Marko',
+            'lastname'=>'Marković',
+            'email'=>'marko@safemail.com',
+            'password'=>Hash::make('123123')
+        ]);
+        $userAdministrator->roles()->attach($roleAdministrator);
+
+        $userAdministrator = User::create([
+            'firstname'=>'Petar',
+            'lastname'=>'Petrović',
+            'email'=>'petar@safemail.com',
             'password'=>Hash::make('123123')
         ]);
         $userAdministrator->roles()->attach($roleAdministrator);
 
 
-
-
         $userStandard = User::create([
-            'firstname'=>'Marko',
-            'lastname'=>'Marković',
-            'email'=>'marko@safemail.com',
+            'firstname'=>'Kosta',
+            'lastname'=>'Kostić',
+            'email'=>'kosta@safemail.com',
             'password'=>Hash::make('123123')
         ]);
         $userStandard->roles()->attach($roleSandardUser);

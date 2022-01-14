@@ -13,10 +13,10 @@
         @csrf
 
         <!-- Job Card -->
-        <div class="card bg-yellow-500 flex-col p-2 mb-3">
+        <div class="card bg-blue-600 flex-col p-2 mb-3">
 
-            <label for="skill_id" class="text-sm mx-4 mt-3 font-bold text-gray-500">Izaberi kategoriju</label>
-            <select id="skill_id" name="skill_id" class="mx-4 px-1 py-1 leading-tight text-gray-700 bg-gray-200 border-2 border-gray-200 rounded focus:outline-none focus:bg-white focus:border-purple-500">
+            <label for="skill_id" class="text-sm mx-4 mt-3 font-bold text-white">Izaberi kategoriju</label>
+            <select id="skill_id" name="skill_id" class="mx-4 px-1 py-1 leading-tight text-gray-600 bg-gray-200 border-2 border-gray-200 rounded focus:outline-none focus:bg-white focus:border-purple-500">
                 <option value="">Izaberite potrebnu veštinu</option>
                 @foreach($allCategories as $category )
                 @foreach($category->skills as $skill )
@@ -29,19 +29,19 @@
             <div class="ml-2 mb-3 px-1 text-sm font-bold text-red-400">@error ('skill_id'){{ $message }}@enderror</div>
 
 
-            <label for="description" class="text-sm mx-4 font-bold text-gray-500">Opis</label>
-            <textarea type="text" name="description" class="mx-4 px-1 py-1 text-sm leading-tight text-gray-700 bg-gray-200 border-2 border-gray-200 rounded focus:outline-none focus:bg-white focus:border-purple-500" rows="7" cols="80">{{old('description')}}</textarea>
+            <label for="description" class="text-sm mx-4 font-bold text-white">Opis</label>
+            <textarea type="text" name="description" class="mx-4 px-1 py-1 text-sm leading-tight text-gray-600 bg-gray-200 border-2 border-gray-200 rounded focus:outline-none focus:bg-white focus:border-purple-500" rows="7" cols="80">{{old('description')}}</textarea>
             <div class="ml-2 mb-3 px-1 text-sm font-bold text-red-400">@error ('description'){{ $message }}@enderror</div>
 
             <div class="flex">
                 <div class="justify-items-end">
-                    <label for="reward" class="text-sm ml-4 font-bold text-gray-500">Vrednost</label>
-                    <input type="number" id="reward" name="reward" placeholder="Unesi vrednost" value="{{old('reward')}}" class="ml-2 px-1 py-1 mt-2 leading-tight text-gray-700 bg-gray-200 border-2 border-gray-200 rounded focus:outline-none focus:bg-white focus:border-purple-500">
+                    <label for="reward" class="text-sm ml-4 font-bold text-white">Vrednost</label>
+                    <input type="number" id="reward" name="reward" placeholder="Unesi vrednost" value="{{old('reward')}}" class="ml-2 px-1 py-1 mt-2 leading-tight text-gray-600 bg-gray-200 border-2 border-gray-200 rounded focus:outline-none focus:bg-white focus:border-purple-500">
                     <div class="ml-2 mb-3 px-1 text-sm font-bold text-red-400">@error ('reward'){{ $message }}@enderror</div>
                 </div>
                 <div class="justify-items-end">
-                    <label for="days" class="text-sm ml-4 w-1/3 font-bold text-gray-500">Rok</label>
-                    <input type="number" id="days" name="days" placeholder="Unesi broj dana" value="{{old('days')}}" class="ml-2 mr-4 px-1 py-1 mt-2 leading-tight text-gray-700 bg-gray-200 border-2 border-gray-200 rounded focus:outline-none focus:bg-white focus:border-purple-500">
+                    <label for="days" class="text-sm ml-4 w-1/3 font-bold text-white">Rok</label>
+                    <input type="number" id="days" name="days" placeholder="Unesi broj dana" value="{{old('days')}}" class="ml-2 mr-4 px-1 py-1 mt-2 leading-tight text-gray-600 bg-gray-200 border-2 border-gray-200 rounded focus:outline-none focus:bg-white focus:border-purple-500">
                     <div class="ml-2 mb-3 px-1 text-sm font-bold text-red-400">@error ('days'){{ $message }}@enderror</div>
                 </div>
             </div>

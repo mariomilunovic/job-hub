@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Job;
 use App\Models\Category;
 use App\Models\Skill;
-use App\Models\User;
 use Auth;
+use URL;
 
 class JobController extends Controller
 {
@@ -23,10 +23,10 @@ class JobController extends Controller
     public function myjobs()
     {
 
-        $joblist = Job::where('user_id',Auth::user()->id)->latest()->paginate(5);
+        $myJobs = Job::where('user_id',Auth::user()->id)->latest()->paginate(5);
 
         return view('models.job.myjobs')
-        ->with(['allJobs'=>$joblist]);
+        ->with(['myJobs'=>$myJobs]);
     }
 
 
@@ -39,7 +39,7 @@ class JobController extends Controller
     {
         $job->delete();
         toast()->success('Posao je obrisan')->push();
-        return redirect(route('job.index'));
+        return redirect(route('job.myjobs'));
 
     }
 
@@ -86,9 +86,17 @@ class JobController extends Controller
 
     public function bids (Job $job)
     {
-        return view('models.job.bids')
+        if($job->bids->count() == 0)
+        {
+            toast()->danger('Izabrani posao još uvek nema ponuda')->push();
+            return redirect()->back();
+        }
+        else
+        {
+            return view('models.job.bids')
             ->with('bids', $job->bids->sortBy('created_at'))
             ->with('job', $job);
+        }
 
     }
 }
