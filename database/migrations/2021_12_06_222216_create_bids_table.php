@@ -17,7 +17,7 @@ class CreateBidsTable extends Migration
             $table->id();
             $table->decimal('offer',10,2 );
             $table->tinyInteger('days');
-            $table->string('message');
+            $table->text('message');
             $table->timestamp('accepted_at')->nullable();
             $table->timestamp('finished_at')->nullable();
 
