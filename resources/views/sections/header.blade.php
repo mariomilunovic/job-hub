@@ -1,6 +1,6 @@
 
 {{-- left side --}}
-<div id="Logo" class="ml-4 whitespace-nowrap">
+<div id="Logo" class="ml-4 my-2 whitespace-nowrap">
     <a href="{{Route('page.home')}}">
         <img src="/images/ui/logo.png" alt="Job-Hub logo" class="inline-block h-20 mx-2">
 

@@ -4,13 +4,14 @@
 
 <div class="flex-col">
 
-    <!-- Title -->
+    <!-- Title start -->
     <div>
         <h2 class="text-xl font-bold text-gray-500">Prikaz svih informacija o poslu</h2>
         <hr class="mb-3 border-2 border-gray-500 rounded">
     </div>
+    <!-- Title end -->
 
-    <!-- Job Card -->
+    <!-- Job Card start -->
     <div class="card flex-col transition duration-500 bg-blue-500 hover:bg-blue-400 ease-in-out hover:cursor-pointer p-2 mb-3 {{ $job->user_id == auth()->user()->id ? "border-4 border-red-500":"" }}">
 
         <div id="header" class="flex justify-between mb-1">
@@ -42,14 +43,10 @@
             <div class="text-sm"><span class="font-bold">STATUS POSLA :</span>  {{$job->status->name}}</div>
             <div class="text-sm"><span class="font-bold">KREIRAN :</span>  {{$job->created_at}}</div>
         </div>
-
-        {{-- <div class="justify-items-end">
-            <a href="{{route('job.show',$job)}}"><span class="btn-purple-small text-shadow">Detalji </span></a>
-        </div> --}}
-
     </div>
+    <!-- Job Card end -->
 
-    <!-- Buttons -->
+    <!-- Buttons start-->
     <div class="flex justify-between">
         <div>
             <a class="btn-gray-small" href="{{route('job.index')}}">Nazad</a>
@@ -81,9 +78,9 @@
             @endif
         </div>
     </div>
-    <!-- End of Buttons -->
+    <!-- Buttons end -->
 
-    <!-- End of Job Card -->
+
 </div>
 
 @endsection

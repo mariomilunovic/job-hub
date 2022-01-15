@@ -39,7 +39,7 @@
 
     <section id="container" class="bg-gray-400 h-screen">
 
-        <header class="flex-row items-center mt-3 bg-gray-500 card place-content-between svg-cogs max-h-32">@include('sections.header')</header>
+        <header class="flex-row items-center mt-3 bg-gray-600 card place-content-between svg-cogs max-h-32">@include('sections.header')</header>
 
         <nav class="flex-col bg-blue-600 card">@include('sections.navbar')</nav>
 
@@ -49,7 +49,7 @@
 
         </main>
 
-        <footer class="flex-row items-center mb-3 bg-gray-500 card place-content-center max-h-32">@include('sections.footer')</footer>
+        <footer class="flex-row items-center mb-3 bg-gray-600 card place-content-center svg-cogs max-h-32">@include('sections.footer')</footer>
 
     </section>
 

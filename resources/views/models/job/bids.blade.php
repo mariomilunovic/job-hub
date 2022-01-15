@@ -17,7 +17,7 @@
             <div id="header" class="flex justify-between mb-1">
                 <div class="text-sm">
                     <span class="font-bold">POSLODAVAC :</span>
-                    <span>{{$job->user->firstname}} {{$job->user->lastname}}</span>
+                    <span class="{{ $job->user_id == auth()->user()->id ? "font-bold text-red-400":"" }}">{{$job->user->firstname}} {{$job->user->lastname}}</span>
                 </div>
                 <div class="text-sm">
                     <span class="font-bold">VEŠTINA :</span>
@@ -54,14 +54,19 @@
 
 
     <!-- Bids -->
-    @if ($bids->count()>0)
     @foreach ($bids as $bid)
     <a href="{{route('bid.show',$bid)}}">
         <div class="flex-col p-2 mb-3 bg-yellow-500 hover:bg-yellow-400 transition duration-500 card {{ $bid->user_id == auth()->user()->id ? "border-4 border-red-500":""}}">
 
             <div id="header" class="flex justify-between mb-1">
-                <div class="text-sm"><span class="font-bold">PONUĐAČ: {{$bid->user->firstname}} {{$bid->user->lastname}}</span></div>
-                <div class="text-sm"><span class="font-bold">PONUDA ID: {{$bid->id}}</span></div>
+                <div class="text-sm">
+                    <span class="font-bold">PONUĐAČ :</span>
+                    <span class="{{ $job->user_id == auth()->user()->id ? "font-bold text-red-400":"" }}">{{$bid->user->firstname}} {{$bid->user->lastname}}</span>
+                </div>
+                <div class="text-sm">
+                    <span class="font-bold">PONUDA ID :</span>
+                    <span class="font bold">{{$bid->id}}</span>
+                </div>
             </div>
 
             <hr class="mb-1 border-gray-500 rounded border-1">
@@ -95,9 +100,7 @@
         </div>
     </a>
     @endforeach
-    @else
-        Za ovaj posao još uvek nema ponuda
-    @endif
+
 
     {{-- {{$bids->links()}} --}}
 

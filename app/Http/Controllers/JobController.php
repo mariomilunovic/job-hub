@@ -89,14 +89,12 @@ class JobController extends Controller
         if($job->bids->count() == 0)
         {
             toast()->danger('Izabrani posao još uvek nema ponuda')->push();
-            return redirect()->back();
         }
-        else
-        {
-            return view('models.job.bids')
-            ->with('bids', $job->bids->sortBy('created_at'))
-            ->with('job', $job);
-        }
+
+        return view('models.job.bids')
+        ->with('bids', $job->bids->sortBy('created_at'))
+        ->with('job', $job);
+
 
     }
 }
