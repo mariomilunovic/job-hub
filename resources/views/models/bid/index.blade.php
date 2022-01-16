@@ -2,7 +2,22 @@
 
 @section('content')
 
-<div class="flex-col">
+
+<div class="flex-col mb-3 p-3">
+
+    <x-title title="Prikaz svih ponuda"/>
+    @foreach ($bids as $bid)
+    <x-bid :bid="$bid"/>
+    @endforeach
+
+    {{$bids->links()}}
+
+</div>
+
+
+
+
+{{-- <div class="flex-col">
     <!-- Title -->
     <div>
         <h2 class="text-xl font-bold text-gray-500">Prikaz svih ponuda</h2>
@@ -66,8 +81,8 @@
         <a href="{{route('bid.create',$job)}}"><div class="block w-full btn-green-medium text-shadow mt-5 mb-5"> Napravi svoju ponudu </div></a>
 
 
-    </div> --}}
-</div>
+    </div>
+</div> --}}
 
 
 @endsection

@@ -20,12 +20,11 @@ class JobController extends Controller
         ->with(['allJobs'=>$joblist]);
     }
 
-    public function myjobs()
+    public function my()
     {
+        $myJobs = Job::where('user_id',Auth::user()->id)->latest()->paginate(4);
 
-        $myJobs = Job::where('user_id',Auth::user()->id)->latest()->paginate(5);
-
-        return view('models.job.myjobs')
+        return view('models.job.my')
         ->with(['myJobs'=>$myJobs]);
     }
 
@@ -39,7 +38,7 @@ class JobController extends Controller
     {
         $job->delete();
         toast()->success('Posao je obrisan')->push();
-        return redirect(route('job.myjobs'));
+        return redirect(route('job.my'));
 
     }
 
@@ -80,7 +79,7 @@ class JobController extends Controller
         $newJob->skills()->attach($skill);
 
         toast()->success('Uspešna objava posla')->push();
-        return redirect(route('job.show',$newJob));
+        return redirect(route('job.my'));
 
     }
 

@@ -19,7 +19,13 @@ class CreateJobsTable extends Migration
             $table->tinyInteger('days');
             $table->unsignedDecimal('reward' );
             $table->integer('rating')->default(0);
+
+
+            $table->timestamp('bid_selected_at')->nullable();
+            $table->timestamp('work_recieved_at')->nullable();
+            $table->timestamp('work_accepted_at')->nullable();
             $table->timestamps();
+
             $table->softDeletes();
 
             $table->unsignedBigInteger('user_id');
@@ -28,7 +34,7 @@ class CreateJobsTable extends Migration
             $table->unsignedBigInteger('status_id');
             $table->foreign('status_id')->references('id')->on('job_statuses');
 
-           
+
         });
     }
 

@@ -18,10 +18,13 @@ class CreateBidsTable extends Migration
             $table->decimal('offer',10,2 );
             $table->tinyInteger('days');
             $table->text('message');
-            $table->timestamp('accepted_at')->nullable();
-            $table->timestamp('finished_at')->nullable();
 
+            $table->timestamp('bid_selected_at')->nullable();
+            $table->timestamp('work_delievered_at')->nullable();
+            $table->timestamp('work_accepted_at')->nullable();
             $table->timestamps();
+
+            $table->softDeletes();
 
             $table->unsignedBigInteger('bidstatus_id');
             $table->foreign('bidstatus_id')->references('id')->on('bid_statuses');

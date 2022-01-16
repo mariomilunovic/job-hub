@@ -3,16 +3,16 @@
 use App\Http\Controllers\UserController;
 
 //CUSTOM ROUTES =====>
-Route::get('user/search',[UserController::class,'search'])->name('user.search')->middleware('check_roles:administrator');
+Route::get('user/search',[UserController::class,'search'])->name('user.search')->middleware('check_roles:administrator,user');
 
 //RESOURCE ROUTES =====> Route::resource('user', UserController::class);
-Route::get('/user',[UserController::class,'index'])->name('user.index')->middleware('check_roles:administrator');
-Route::post('/user',[UserController::class,'store'])->name('user.store')->middleware('check_roles:administrator');
-Route::get('/user/create',[UserController::class,'create'])->name('user.create')->middleware('check_roles:administrator');
+Route::get('/user',[UserController::class,'index'])->name('user.index')->middleware('check_roles:administrator,user');
+Route::post('/user',[UserController::class,'store'])->name('user.store')->middleware('check_roles:administrator,user');
+Route::get('/user/create',[UserController::class,'create'])->name('user.create')->middleware('check_roles:administrator,user');
 Route::get('/user/{user}',[UserController::class,'show'])->name('user.show')->middleware('check_roles:administrator,user');
-Route::put('/user/{user}',[UserController::class,'update'])->name('user.update')->middleware('check_roles:administrator');
-Route::delete('user/{user}',[UserController::class,'destroy'])->name('user.destroy')->middleware('check_roles:administrator');
-Route::get('user/{user}/edit',[UserController::class,'edit'])->name('user.edit')->middleware('check_roles:administrator');
+Route::put('/user/{user}',[UserController::class,'update'])->name('user.update')->middleware('check_roles:administrator,user');
+Route::get('user/{user}/destroy',[UserController::class,'destroy'])->name('user.destroy')->middleware('check_roles:administrator,user');
+Route::get('user/{user}/edit',[UserController::class,'edit'])->name('user.edit')->middleware('check_roles:administrator,user');
 
 
 

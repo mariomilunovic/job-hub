@@ -12,7 +12,7 @@
 
     <!-- Job -->
     <a href="{{route('job.show',$job)}}">
-        <div class="card flex-col transition duration-500 bg-blue-500 hover:bg-blue-400 ease-in-out hover:cursor-pointer p-2 mb-3 {{ $job->user_id == auth()->user()->id ? "border-4 border-red-500":""}}">
+        <div class="card flex-col transition duration-500 bg-blue-400 hover:bg-blue-300 ease-in-out hover:cursor-pointer p-2 mb-3 {{ $job->user_id == auth()->user()->id ? "border-4 border-red-500":""}}">
 
             <div id="header" class="flex justify-between mb-1">
                 <div class="text-sm">
@@ -34,7 +34,7 @@
             <div id="description" class="flex-col">
                 <div class="text-sm">
                     <span class="font-bold">OPIS :</span>
-                    <span>{{Str::limit($job->description,100)}}</span>
+                    <span>{{Str::limit($job->description,200)}}</span>
                 </div>
 
             </div>
@@ -56,12 +56,12 @@
     <!-- Bids -->
     @foreach ($bids as $bid)
     <a href="{{route('bid.show',$bid)}}">
-        <div class="flex-col p-2 mb-3 bg-yellow-500 hover:bg-yellow-400 transition duration-500 card {{ $bid->user_id == auth()->user()->id ? "border-4 border-red-500":""}}">
+        <div class="flex-col p-2 mb-3 bg-yellow-400 hover:bg-yellow-300 transition duration-500 card {{ $bid->user_id == auth()->user()->id ? "border-4 border-red-500":""}}">
 
             <div id="header" class="flex justify-between mb-1">
                 <div class="text-sm">
                     <span class="font-bold">PONUĐAČ :</span>
-                    <span class="{{ $job->user_id == auth()->user()->id ? "font-bold text-red-400":"" }}">{{$bid->user->firstname}} {{$bid->user->lastname}}</span>
+                    <span class="{{ $bid->user_id == auth()->user()->id ? "font-bold text-red-500":"" }}">{{$bid->user->firstname}} {{$bid->user->lastname}}</span>
                 </div>
                 <div class="text-sm">
                     <span class="font-bold">PONUDA ID :</span>

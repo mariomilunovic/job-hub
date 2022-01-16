@@ -35,21 +35,21 @@
 
 </head>
 
-<body class="bg-gray-400 antialiased z-0">
+<body class="bg-neutral-400 antialiased z-0">
 
-    <section id="container" class="bg-gray-400 h-screen">
+    <section id="container" class="bg-neutral-400 h-screen">
 
-        <header class="flex-row items-center mt-3 bg-gray-600 card place-content-between svg-cogs max-h-32">@include('sections.header')</header>
+        <header class="card flex-row mt-3 bg-neutral-600 svg-cogs max-h-32">@include('sections.header')</header>
 
-        <nav class="flex-col bg-blue-600 card">@include('sections.navbar')</nav>
+        <nav class="card flex-col bg-blue-600">@include('sections.navbar')</nav>
 
-        <main class="relative flex place-content-center bg-gray-300 card overflow-y-auto p-3 svg-dots max-h-full">
+        <main class="card relative flex place-content-center bg-neutral-300 overflow-y-auto svg-dots">
             <div class="absolute right-0 top-0"><livewire:toasts/></div>
-            <div class="py-4 w-11/12 max-w-3xl">@yield('content')</div>
+            <div class="py-4 sm:w-800">@yield('content')</div>
 
         </main>
 
-        <footer class="flex-row items-center mb-3 bg-gray-600 card place-content-center svg-cogs max-h-32">@include('sections.footer')</footer>
+        <footer class="card flex-row items-center justify-center mb-3 bg-neutral-600 max-h-32 svg-cogs">@include('sections.footer')</footer>
 
     </section>
 
