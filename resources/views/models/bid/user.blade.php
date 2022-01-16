@@ -6,6 +6,7 @@
 <div class="flex-col mb-3 p-3">
 
     <x-title title="Prikaz mojih ponuda"/>
+    
     @foreach ($bids as $bid)
     <x-job :job="$bid->job"/>
     <x-bid :bid="$bid"/>

@@ -37,6 +37,14 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Job whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Job whereUserId($value)
  * @mixin \Eloquent
+ * @property string|null $bid_selected_at
+ * @property string|null $work_recieved_at
+ * @property string|null $work_accepted_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Bid[] $bids
+ * @property-read int|null $bids_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Job whereBidSelectedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Job whereWorkAcceptedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Job whereWorkRecievedAt($value)
  */
 class Job extends Model
 {

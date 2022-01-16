@@ -55,7 +55,7 @@
     {
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr 4fr 14fr 1fr;
+        grid-template-rows: 1fr 5fr 14fr 1fr;
         grid-gap: 11px;
         max-width: 95vw;
         min-height: 100vh;
@@ -92,7 +92,19 @@ footer{
 }
 
 .input {
-    @apply leading-tight text-gray-700 bg-gray-200 border-2 border-gray-200 rounded focus:outline-none focus:bg-white focus:border-purple-500;
+    @apply leading-tight  text-gray-700 bg-gray-200 border-2 border-gray-200 rounded focus:outline-none focus:bg-white focus:border-purple-500;
+}
+
+.menu_item {
+    @apply text-white text-shadow  bg-blue-600 shadow hover:opacity-100 hover:cursor-pointer hover:bg-blue-700;
+}
+
+.submenu_item {
+    @apply text-white text-shadow bg-neutral-600 ;
+}
+
+.submenu_text {
+    @apply block py-2 pl-16 font-semibold transition duration-500 ease-in-out hover:bg-neutral-500;
 }
 
 .btn-blue-small {

@@ -22,6 +22,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|BidStatus whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BidStatus whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Bid[] $bids
+ * @property-read int|null $bids_count
  */
 class BidStatus extends Model
 {

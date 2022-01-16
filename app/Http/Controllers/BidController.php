@@ -69,7 +69,7 @@ class BidController extends Controller
     public function user (User $user)
     {
 
-        $bids = $user->bids()->latest()->paginate(3);
+        $bids =  $user->bids()->latest()->paginate(3);
         //dd($bids);
         return view ('models.bid.user')
         ->with('bids',$bids);

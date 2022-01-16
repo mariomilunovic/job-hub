@@ -36,6 +36,19 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Bid whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Bid whereUserId($value)
  * @mixin \Eloquent
+ * @property string|null $bid_selected_at
+ * @property string|null $work_delievered_at
+ * @property string|null $work_accepted_at
+ * @property string|null $deleted_at
+ * @property-read \App\Models\BidStatus $bidstatus
+ * @property-read \App\Models\Job $job
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Transaction[] $transactions
+ * @property-read int|null $transactions_count
+ * @property-read \App\Models\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder|Bid whereBidSelectedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Bid whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Bid whereWorkAcceptedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Bid whereWorkDelieveredAt($value)
  */
 class Bid extends Model
 {
