@@ -18,19 +18,19 @@
 
 
             <label for="message" class="text-sm font-bold text-neutral-600">Poruka</label>
-            <textarea type="text" name="message" placeholder="Detaljno opišite vašu ponudu" rows="7" cols="80" class="text-sm input">{{old('description')}}</textarea>
-            <div class="text-sm font-bold text-red-500">@error ('message'){{ $message }}@enderror</div>
+            <textarea type="text" name="message" placeholder="Detaljno opišite vašu ponudu" rows="7" cols="80" class="text-sm p-1 input">{{old('description')}}</textarea>
+            <div class="mb-3 text-sm font-bold text-red-500">@error ('message'){{ $message }}@enderror</div>
 
             <div class="flex justify-between">
                 <div>
                     <label for="offer" class="block text-sm font-bold text-neutral-600">Ponuđena vrednost</label>
-                    <input type="number" id="offer" name="offer" placeholder="Unesi vrednost" value="{{old('reward')}}" class="input">
+                    <input type="number" id="offer" name="offer" placeholder="Unesi vrednost" value="{{old('reward')}}" class="p-1 input">
                     <div class="text-sm font-bold text-red-500">@error ('offer'){{ $message }}@enderror</div>
                 </div>
                 <div class="my-2"></div>
                 <div>
                     <label for="days" class="block text-sm font-bold text-neutral-600">Ponuđeni rok</label>
-                    <input type="number" id="days" name="days" placeholder="Unesi broj dana" value="{{old('days')}}" class="input">
+                    <input type="number" id="days" name="days" placeholder="Unesi broj dana" value="{{old('days')}}" class="p-1 input">
                     <div class="text-sm font-bold text-red-500">@error ('days'){{ $message }}@enderror</div>
                 </div>
             </div>

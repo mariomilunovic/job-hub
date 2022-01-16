@@ -15,6 +15,7 @@
 
     </div>
 
+    @auth
     <div x-data="{ expanded_ponude: $persist(false) }">
 
         <button @click="expanded_ponude = !expanded_ponude" class="w-full py-2 text-white bg-blue-600 shadow hover:opacity-100 hover:bg-blue-700 ">
@@ -24,11 +25,12 @@
 
         <div x-show="expanded_ponude" x-collapse class="text-sm text-center text-white bg-neutral-600" x-cloak>
             <a class="block py-2 transition duration-500 ease-in-out hover:bg-neutral-500" href="{{route('bid.index')}}">Sve ponude</a>
-            <a class="block py-2 transition duration-500 ease-in-out hover:bg-neutral-500" href="{{route('user.index')}}">Poslate ponude</a>
+            <a class="block py-2 transition duration-500 ease-in-out hover:bg-neutral-500" href="{{route('bid.user',auth()->user())}}">Poslate ponude</a>
             <a class="block py-2 transition duration-500 ease-in-out hover:bg-neutral-500" href="{{route('user.index')}}">Primljene ponude</a>
         </div>
 
     </div>
+    @endauth
 
 
     <div x-data="{ expanded_vestine: $persist(false) }">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Bid;
 use App\Models\Job;
+use App\Models\User;
 use Auth;
 
 class BidController extends Controller
@@ -54,6 +55,25 @@ class BidController extends Controller
         $bids=Bid::orderBy('updated_at','desc')->paginate(3);
         return view ('models.bid.index')
         ->with('bids',$bids);
+    }
+
+    public function destroy (Bid $bid)
+    {
+        $job = $bid->job;
+        $bid->delete();
+        toast()->success('Ponuda je obrisana')->push();
+        return redirect(route('job.bids',$job));
+
+    }
+
+    public function user (User $user)
+    {
+
+        $bids = $user->bids()->latest()->paginate(3);
+        //dd($bids);
+        return view ('models.bid.user')
+        ->with('bids',$bids);
+
     }
 
 }

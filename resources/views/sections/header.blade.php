@@ -10,16 +10,16 @@
     {{-- right side --}}
     <div class="flex">
 
-        <div>
+        <div class="">
             @guest
-            <a class="text-white text-sm font-bold bg-yellow-500 hover:bg-yellow-600 shadow rounded px-3 py-2 text-center mr-2" href="{{route('register.form')}}">Registracija</a>
-            <a class="text-white text-sm font-bold bg-purple-500 hover:bg-purple-600 shadow rounded px-3 py-2 text-center mr-2" href="{{route('login.form')}}">Prijava</a>
+            <a class="btn-amber-small mr-3" href="{{route('register.form')}}">Registracija</a>
+            <a class="btn-green-small mr-6" href="{{route('login.form')}}">Prijava</a>
             @endguest
 
         </div>
 
         @auth
-        <div x-data="{ isOpen: false }" class="mr-4">
+        <div x-data="{ isOpen: false }" class="mr-6">
 
             <div class="relative flex items-center">
 
