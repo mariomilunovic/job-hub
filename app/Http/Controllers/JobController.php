@@ -85,15 +85,16 @@ class JobController extends Controller
 
     public function bids (Job $job)
     {
-        if($job->bids->count() == 0)
+        $bids = $job->bids()->latest()->paginate(4);
+
+        if($bids->count() == 0)
         {
             toast()->danger('Izabrani posao još uvek nema ponuda')->push();
         }
 
         return view('models.job.bids')
-        ->with('bids', $job->bids->sortBy('created_at'))
+        ->with('bids', $bids)
         ->with('job', $job);
-
 
     }
 }

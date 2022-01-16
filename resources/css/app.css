@@ -91,6 +91,10 @@ footer{
     @apply flex rounded-md shadow-lg
 }
 
+.input {
+    @apply leading-tight text-gray-700 bg-gray-200 border-2 border-gray-200 rounded focus:outline-none focus:bg-white focus:border-purple-500;
+}
+
 .btn-blue-small {
     @apply py-1.5 px-3 text-sm font-medium text-center text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 rounded-md  my-1   dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800
 }
@@ -103,16 +107,20 @@ footer{
     @apply py-1.5 px-3 text-sm font-medium text-center text-white bg-yellow-500 hover:bg-yellow-600 focus:ring-4 focus:ring-yellow-400 rounded-md my-1  dark:focus:ring-yellow-900
 }
 
+.btn-amber-small {
+    @apply py-1.5 px-3 text-sm font-medium text-center text-white bg-amber-600 hover:bg-amber-700 focus:ring-4 focus:ring-amber-500 rounded-md my-1  dark:focus:ring-yellow-900
+}
+
 .btn-gray-small {
     @apply py-1.5 px-3 text-sm font-medium text-center text-white bg-neutral-600 hover:bg-neutral-700 focus:ring-4 focus:ring-neutral-500 rounded-md my-1  dark:focus:ring-neutral-900
 }
 
 .btn-gray-xs {
-    @apply py-1 px-3 text-sm font-medium text-center text-white bg-neutral-600 hover:bg-neutral-700 focus:ring-4 focus:ring-amber-500 rounded-md my-1  dark:focus:ring-neutral-900
+    @apply py-1 px-3 text-sm font-medium text-center text-white bg-neutral-600 hover:bg-neutral-700 focus:ring-4 focus:ring-neutral-500 rounded-md my-1  dark:focus:ring-neutral-900
 }
 
 .btn-amber-xs {
-    @apply py-1 px-3 text-sm font-medium text-center text-white bg-amber-600 hover:bg-amber-700 focus:ring-4 focus:ring-neutral-500 rounded-md my-1  dark:focus:ring-neutral-900
+    @apply py-1 px-3 text-sm font-medium text-center text-white bg-amber-600 hover:bg-amber-700 focus:ring-4 focus:ring-amber-500 rounded-md my-1  dark:focus:ring-neutral-900
 }
 
 .btn-green-small {

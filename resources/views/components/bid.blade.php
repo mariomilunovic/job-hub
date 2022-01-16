@@ -1,7 +1,7 @@
 <div x-data="{ expanded_menu : false }">
 
     {{-- bid card start --}}
-    <div class="card flex-col transition duration-300 bg-amber-500 hover:ring-4 hover:ring-amber-700 ease-in-out p-3 mb-3 {{ $bid->user_id == auth()->user()->id ? "border-4 border-red-500":"" }}">
+    <div class="card flex-col transition duration-300 bg-amber-500 hover:ring-2 hover:ring-amber-700 ease-in-out p-3 mb-3">
 
         {{-- bid header start --}}
         <div class="flex justify-between mb-1 items-center">
@@ -11,7 +11,7 @@
                     <span class="font-bold">PONUDA </span>
                     <span class="font-bold text-neutral-600 text-shadow">ID# {{$bid->id}}</span>
                     <span class="font-bold ml-6">KANDIDAT :</span>
-                    <span class="font-bold text-shadow {{ $bid->user_id == auth()->user()->id ? " text-red-400":"text-neutral-600 " }}">{{$bid->user->firstname}} {{$bid->user->lastname}}</span>
+                    <span class="font-bold text-shadow {{ $bid->user_id == auth()->user()->id ? " text-red-500":"text-neutral-600 " }}">{{$bid->user->firstname}} {{$bid->user->lastname}}</span>
                 </div>
 
             </div>
@@ -94,7 +94,7 @@
 
             <div>
                 {{-- <a class="btn-gray-small" href="{{route('bid.index')}}">Nazad</a> --}}
-                <a class="btn-yellow-small" href="#">Ponude</a>
+                <a class="btn-amber-xs" href="#">Ponude</a>
 
             </div>
             <div>

@@ -117,7 +117,7 @@
 
             <div>
                 {{-- <a class="btn-gray-small" href="{{route('job.index')}}">Nazad</a> --}}
-                <a class="btn-yellow-small" href="{{route('job.bids',$job)}}">Ponude</a>
+                <a class="btn-amber-small" href="{{route('job.bids',$job)}}">Ponude</a>
 
             </div>
             <div>
