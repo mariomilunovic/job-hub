@@ -1,44 +1,49 @@
 <div x-data="{ expanded_menu : false }">
 
     {{-- bid card start --}}
-    <div class="card flex-col transition duration-300 bg-amber-500 hover:ring-2 hover:ring-amber-700 ease-in-out p-3 mb-3">
+    <div class="card flex-col transition duration-300 bg-amber-500 hover:ring-4 hover:ring-neutral-600 ease-in-out p-3 mb-3 gradient_amber">
 
         {{-- bid header start --}}
-        <div class="flex justify-between mb-1 items-center">
+        <div class="sm:flex justify-between mb-1 items-center">
 
             <div class="text-sm text-white">
                 <div>
-                    <span class="font-bold">PONUDA </span>
-                    <span class="font-bold text-neutral-600 text-shadow">ID# {{$bid->id}}</span>
-                    <span class="font-bold ml-6">KANDIDAT :</span>
-                    <span class="font-bold text-shadow {{ $bid->user_id == auth()->user()->id ? " text-red-500":"text-neutral-600 " }}">{{$bid->user->firstname}} {{$bid->user->lastname}}</span>
+                    <span class="font-bold">PONUDA :</span>
+                    <span class="font-bold text-neutral-700 text-shadow mr-3">ID#{{$bid->id}}</span>
+                    <span class="font-bold">POSAO :</span>
+                    <span class="font-bold text-neutral-700 text-shadow">ID#{{$bid->job->id}}</span>
+                </div>
+                <div>
+                    <span class="font-bold">KANDIDAT :</span>
+                    <span class="font-bold text-shadow {{ $bid->user_id == auth()->user()->id ? " text-red-500":"text-neutral-700 " }}">{{$bid->user->firstname}} {{$bid->user->lastname}}</span>
+
                 </div>
 
             </div>
 
-            <div class="text-sm text-white justify-items-end">
-                <div>
-                    <span class="font-bold">STATUS :</span> <span class="font-bold text-neutral-600 text-shadow">{{$bid->bidstatus->name}}</span>
-                </div>
-
-                <div class="mx-2 whitespace-nowrap">
+            <div class="text-sm text-white sm:text-right">
+                <div class="whitespace-nowrap font-bold">
+                    POSLEDNJA PROMENA :
                     @switch($bid->bidstatus->id)
                     @case(1)
-                    <span class="font-bold">od {{$bid->created_at}}</span>
+                    <span class="font-bold text-neutral-700 text-shadow"">{{$bid->created_at}}</span>
                     @break
 
                     @case(2)
-                    <span class="font-bold">{{$bid->bid_selected_at}}</span>
+                    <span class="font-bold text-neutral-700 text-shadow"">{{$bid->bid_selected_at}}</span>
                     @break
 
                     @case(3)
-                    <span class="font-bold">{{$bid->work_delievered_at}}</span>
+                    <span class="font-bold text-neutral-700 text-shadow"">{{$bid->work_delievered_at}}</span>
                     @break
 
                     @case(4)
-                    <span class="font-bold">{{$bid->work_accepted_at}}</span>
+                    <span class="font-bold text-neutral-700 text-shadow"">{{$bid->work_accepted_at}}</span>
                     @break
                     @endswitch
+                </div>
+                <div>
+                    <span class="font-bold">STATUS :</span> <span class="font-bold text-neutral-700 text-shadow">{{$bid->bidstatus->name}}</span>
                 </div>
             </div>
         </div>
@@ -71,15 +76,16 @@
                     <i class="fas fa-bars"></i>
                 </div>
                 {{-- Hamburger button --}}
+                <div class="sm:flex">
+                    <div>
+                        <span class="font-bold">VREDNOST PONUDE : </span>
+                        <span class="mr-6 font-bold text-neutral-700 text-shadow">{{$bid->offer}}€</span>
+                    </div>
 
-                <div>
-                    <span class="font-bold">VREDNOST PONUDE : </span>
-                    <span class="mr-6 font-bold text-neutral-600 text-shadow">{{$bid->offer}}€</span>
-                </div>
-
-                <div>
-                    <span class="font-bold">PONUĐENI ROK :</span>
-                    <span class="font-bold text-neutral-600 text-shadow">{{$bid->days*24}}h</span>
+                    <div>
+                        <span class="font-bold">PONUĐENI ROK :</span>
+                        <span class="font-bold text-neutral-700 text-shadow">{{$bid->days*24}}h</span>
+                    </div>
                 </div>
             </div>
 
@@ -93,9 +99,15 @@
         <div x-show="expanded_menu" x-collapse x-cloak class="flex justify-between my-2">
 
             <div>
-                {{-- <a class="btn-gray-small" href="{{route('bid.index')}}">Nazad</a> --}}
-                <a class="btn-amber-xs" href="#">Ponude</a>
-
+                @if($bid->bidstatus->id == 1)
+                <a class="btn-blue-xs" href="{{route('bid.select',$bid)}}">Izaberi</a>
+                @endif
+                @if($bid->bidstatus->id == 2)
+                <a class="btn-purple-xs" href="{{route('bid.deliver',$bid)}}">Isporuči</a>
+                @endif
+                @if($bid->bidstatus->id == 3)
+                <a class="btn-gray-xs" href="{{route('bid.accept',$bid)}}">Prihvati</a>
+                @endif
             </div>
             <div>
                 @if($bid->user_id == auth()->user()->id)

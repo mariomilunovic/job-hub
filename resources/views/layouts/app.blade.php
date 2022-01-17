@@ -37,11 +37,11 @@
 
 <body class="bg-neutral-400 antialiased z-0">
 
-    <section id="container" class="bg-neutral-400 h-screen">
+    <section id="container" class="h-screen">
 
-        <header class="card flex-row mt-3 bg-neutral-600 svg-cogs max-h-32">@include('sections.header')</header>
+        <header class="card flex-row mt-3 bg-neutral-600 max-h-32 gradient_black">@include('sections.header')</header>
 
-        <nav class="card flex-col bg-blue-600">@include('sections.navbar')</nav>
+        <nav class="card flex-col  bg-blue-600 gradient_blue">@include('sections.navbar')</nav>
 
         <main class="card relative flex place-content-center bg-neutral-300 overflow-y-auto svg-dots">
             <div class="absolute right-0 top-0"><livewire:toasts/></div>
@@ -49,7 +49,7 @@
 
         </main>
 
-        <footer class="card flex-row items-center justify-center mb-3 bg-neutral-600 max-h-32 svg-cogs">@include('sections.footer')</footer>
+        <footer class="card flex-row items-center justify-center mb-3 bg-neutral-600 max-h-32 gradient_black">@include('sections.footer')</footer>
 
     </section>
 

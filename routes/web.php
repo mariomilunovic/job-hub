@@ -18,3 +18,4 @@ require __DIR__. '/web/user.php';
 require __DIR__. '/web/skill.php';
 require __DIR__. '/web/job.php';
 require __DIR__. '/web/bid.php';
+require __DIR__. '/web/transaction.php';

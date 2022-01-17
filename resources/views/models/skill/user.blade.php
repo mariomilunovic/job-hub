@@ -6,7 +6,6 @@
 
     <x-title title="Prikaz mojih veština"/>
 
-
     @foreach($userSkills as $skill)
 
     @if (true)

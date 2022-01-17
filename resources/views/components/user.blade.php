@@ -2,15 +2,9 @@
 
     <!-- User -->
 
-    <div class="card flex-col p-3 mb-3 transition duration-300 bg-neutral-200 hover:ring-4 hover:ring-neutral-400 ease-in-out">
+    <div class="card flex-col p-3 mb-3 gradient_silver transition duration-300 bg-neutral-200 hover:ring-4 hover:ring-neutral-400 ease-in-out">
         <div class="flex justify-between">
-            {{-- <div class="flex items-center justify-between mb-1">
-                <span class="mr-4"><img class="rounded-full" src="/images/ui/user.png" width="25" height="25" alt=""></span>
-                <span class="mr-4">{{$user->firstname}} {{$user->lastname}}</span>
-                <span class="mr-4">{{$user->email}}</span>
-                <span class="mr-4">{{$user->roles()->first()->name}}</span>
-                <span class="mr-4">{{Carbon\Carbon::parse($user->created_at)->diffForHumans()}}</span>
-            </div> --}}
+
             <div class="flex items-center">
                 <div>
                     <img class="rounded-full mr-2" src="/images/ui/user.png" width="25" height="25" alt="">
@@ -142,11 +136,7 @@
             </div>
         </div>
 
-
-
         {{-- Alpinejs Buttons end --}}
     </div>
-
-
 
 </div>

@@ -14,7 +14,7 @@ class JobController extends Controller
     public function index()
     {
 
-        $joblist = Job::orderBy('updated_at','desc')->paginate(4);
+        $joblist = Job::orderBy('updated_at','desc')->paginate(3);
 
         return view('models.job.index')
         ->with(['allJobs'=>$joblist]);
@@ -85,7 +85,7 @@ class JobController extends Controller
 
     public function bids (Job $job)
     {
-        $bids = $job->bids()->latest()->paginate(4);
+        $bids = $job->bids()->latest()->paginate(3);
 
         if($bids->count() == 0)
         {

@@ -2,48 +2,53 @@
 
 @section('content')
 
-<div class="flex-col">
+<div class="flex-col justify-items-center p-3">
 
-    <form action="{{route('user.store')}}" method="post" autocomplete="off">
+    <x-title title="Unos novog korisnika"/>
+
+    <form action="{{route('user.store')}}" method="post" class="" autocomplete="off">
 
         @csrf
 
-        <h2 class="text-xl font-bold text-gray-500">Unos novog korisnika</h2>
-        <hr class="mb-6 border-2 border-gray-500 rounded drop-shadow">
+        <!-- User input start -->
+        <div class="card bg-neutral-300 gradient_silver flex-col p-3 mb-3">
 
-        <label for="firstname" class="mt-4 text-sm font-bold text-gray-500">Ime</label>
-        <input autocomplete="false" type="text" id="firstname" name="firstname" placeholder="Unesi ime" value="{{old('firstname')}}" class="w-full px-4 py-2 leading-tight text-gray-700 bg-gray-200 border-2 border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-purple-500">
-        <div class="mb-3 text-sm text-red-500">@error ('firstname'){{ $message }}@enderror</div>
+            <label for="firstname" class="label">Ime</label>
+            <input autocomplete="false" type="text" id="firstname" name="firstname" placeholder="Unesi ime" value="{{old('firstname')}}" class="w-full input">
+            <div class="error">@error ('firstname'){{ $message }}@enderror</div>
 
-        <label for="lastname" class="mt-4 text-sm font-bold text-gray-500">Prezime</label>
-        <input autocomplete="false" type="text" id="lastname" name="lastname" placeholder="Unesi prezime" value="{{old('lastname')}}" class="w-full px-4 py-2 leading-tight text-gray-700 bg-gray-200 border-2 border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-purple-500">
-        <div class="mb-3 text-sm text-red-500">@error ('lastname'){{ $message }}@enderror</div>
+            <label for="lastname" class="label">Prezime</label>
+            <input autocomplete="false" type="text" id="lastname" name="lastname" placeholder="Unesi prezime" value="{{old('lastname')}}" class="w-full input">
+            <div class="error">@error ('lastname'){{ $message }}@enderror</div>
 
-        <label for="email" class="mt-4 text-sm font-bold text-gray-500">Email</label>
-        <input autocomplete="false" type="text" id="email"name="email" placeholder="Unesi email" value="{{old('email')}}" class="w-full px-4 py-2 leading-tight text-gray-700 bg-gray-200 border-2 border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-purple-500">
-        <div class="mb-3 text-sm text-red-500">@error ('email'){{ $message }}@enderror</div>
+            <label for="email" class="label">Email</label>
+            <input autocomplete="false" type="text" id="email"name="email" placeholder="Unesi email" value="{{old('email')}}" class="w-full input">
+            <div class="error">@error ('email'){{ $message }}@enderror</div>
 
-        <label for="role_id" class="mt-4 text-sm font-bold text-gray-500">Uloga</label>
-        <select id="role_id" name="role_id" class="w-full px-4 py-2 leading-tight text-gray-700 bg-gray-200 border-2 border-gray-200 rounded focus:outline-none focus:bg-white focus:border-purple-500">
-            <option value="">Izaberite ulogu</option>
-            @foreach($roles as $role )
-            <option value="{{$role->id}}">{{$role->name}}</option>
-            @endforeach
-        </select>
-        <div class="mb-3 text-sm text-red-500">@error('role_id'){{ $message }}@enderror</div>
+            <label for="role_id" class="label">Uloga</label>
+            <select id="role_id" name="role_id" class="w-full input">
+                <option value="">Izaberite ulogu</option>
+                @foreach($roles as $role )
+                <option value="{{$role->id}}">{{$role->name}}</option>
+                @endforeach
+            </select>
+            <div class="error">@error('role_id'){{ $message }}@enderror</div>
 
-        <label for="password" class="mt-4 text-sm font-bold text-gray-500">Lozinka</label>
-        <input autocomplete="false" type="password" id="password" name="password" placeholder="Unesi lozinku" value="{{old('password')}}" class="w-full px-4 py-2 leading-tight text-gray-700 bg-gray-200 border-2 border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-purple-500">
-        <div class="mb-3 text-sm text-red-500">@error ('password'){{ $message }}@enderror</div>
+            <label for="password" class="label">Lozinka</label>
+            <input autocomplete="false" type="password" id="password" name="password" placeholder="Unesi lozinku" value="{{old('password')}}" class="w-full input">
+            <div class="error">@error ('password'){{ $message }}@enderror</div>
 
-        <label for="password_confirmation" class="mt-4 text-sm font-bold text-gray-500" >Ponovi lozinku</label>
-        <input autocomplete="false" type="password" id="password" name="password_confirmation" placeholder="Ponovi lozinku" value="{{old('password')}}" class="w-full px-4 py-2 leading-tight text-gray-700 bg-gray-200 border-2 border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-purple-500">
-        <div class="text-sm text-red-500">@error ('password'){{ $message }}@enderror</div>
+            <label for="password_confirmation" class="label" >Ponovi lozinku</label>
+            <input autocomplete="false" type="password" id="password" name="password_confirmation" placeholder="Ponovi lozinku" value="{{old('password')}}" class="w-full input">
+            <div class="error">@error ('password'){{ $message }}@enderror</div>
 
 
-        <button type="submit" class="w-full px-4 py-2 mt-5 font-bold text-white bg-yellow-500 rounded shadow hover:bg-yellow-600 focus:shadow-outline focus:outline-none">
-            Unesi
-        </button>
+            <button type="submit" class="mt-3 w-full btn-blue-medium">
+                Unesi
+            </button>
+            <a href="{{route('user.index')}}" class="block mt-3 w-full btn-red-medium">Odustani</a>
+        </div>
+        <!-- User input end -->
 
     </form>
 </div>
