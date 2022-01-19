@@ -39,7 +39,7 @@
 
     <section id="container" class="h-screen">
 
-        <header class="card flex-row mt-3 bg-neutral-600 max-h-32">@include('sections.header')</header>
+        <header class="card flex-row mt-3 bg-neutral-700 max-h-32">@include('sections.header')</header>
 
         <nav class="card flex-col  bg-blue-600">@include('sections.navbar')</nav>
 
@@ -49,7 +49,7 @@
 
         </main>
 
-        <footer class="card flex-row items-center justify-center mb-3 bg-neutral-600 max-h-32">@include('sections.footer')</footer>
+        <footer class="card flex-row items-center justify-center mb-3 bg-neutral-800 max-h-32">@include('sections.footer')</footer>
 
     </section>
 

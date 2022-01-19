@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\TransactionCreated;
 use Illuminate\Http\Request;
 use Auth;
 use App\Models\Transaction;
@@ -35,12 +36,11 @@ class WithdrawController extends Controller
             'transaction_type_id'=>2,
         ];
 
-        //dd($depositData);
 
         $transaction = Transaction::create($withdrawData);
 
+        event(new TransactionCreated($transaction));
 
-        toast()->success('Uspešna isplata')->push();
         return redirect(route('transaction.show',$transaction));
 
     }

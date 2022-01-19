@@ -14,9 +14,9 @@
     @endforeach
 
     {{$myTransactions->links()}}
-    
+
     @else
-    <div>Nemate objavljenih poslova</div>
+    <div>Nemate ni jednu transakciju</div>
     @endif
 
 </div>

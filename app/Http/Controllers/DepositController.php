@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Transaction;
+use App\Events\TransactionCreated;
 use Auth;
+use App\Models\Transaction;
 
 class DepositController extends Controller
 {
@@ -35,12 +36,10 @@ class DepositController extends Controller
             'transaction_type_id'=>1,
         ];
 
-        //dd($depositData);
-
         $transaction = Transaction::create($depositData);
 
+        event(new TransactionCreated($transaction));
 
-        toast()->success('Uspešna uplata')->push();
         return redirect(route('transaction.show',$transaction));
 
     }
