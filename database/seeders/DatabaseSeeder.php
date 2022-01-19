@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\BankAccount;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -22,5 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call(JobSeeder::class);
         $this->call(BidSeeder::class);
         $this->call(TransactionTypeSeeder::class);
+        $this->call(PaymentMethodSeeder::class);
+        $this->call(BankAccountSeeder::class);
     }
 }

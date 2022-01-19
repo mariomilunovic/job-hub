@@ -7,11 +7,11 @@
 
     <x-title title="Prikaz svih transakcija"/>
 
-    @foreach ($allTransactions as $transaction)
+    @foreach ($myTransactions as $transaction)
     <x-transaction :transaction="$transaction"/>
     @endforeach
 
-    {{$allTransactions->links()}}
+    {{$myTransactions->links()}}
 
 </div>
 

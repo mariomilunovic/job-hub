@@ -43,20 +43,38 @@ class Transaction extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['amount'];
+    //protected $fillable = ['amount'];
+    protected $guarded = [];
 
-    public function category(){
-        return $this->belongsTo(Category::class);
-    }
-
-    public function users(){
-        return $this->belongsToMany(User::class)->withPivot('points');
-    }
-
-    public function jobs()
+    public function from_user()
     {
-        return $this->belongsToMany(Job::class);
+        return $this->belongsTo(User::class, 'from_user_id');
     }
 
-   
+    public function to_user()
+    {
+        return $this->belongsTo(User::class, 'to_user_id');
+    }
+
+    public function bid()
+    {
+        return $this->belongsTo(Bid::class);
+    }
+
+    public function transactiontype()
+    {
+        return $this->belongsTo(TransactionType::class,'transaction_type_id');
+    }
+
+    public function bankaccount()
+    {
+        return $this->belongsTo(BankAccount::class,'bank_account_id');
+    }
+
+    public function paymentmethod()
+    {
+        return $this->belongsTo(PaymentMethod::class,'payment_method_id');
+    }
+
+
 }

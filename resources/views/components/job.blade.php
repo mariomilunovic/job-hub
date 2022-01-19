@@ -123,7 +123,10 @@
 
             <div>
                 {{-- <a class="btn-gray-small" href="{{route('job.index')}}">Nazad</a> --}}
-                <a class="btn-amber-small" href="{{route('job.bids',$job)}}">Ponude</a>
+                @if($job->bids->count()>0)
+                <a class="btn-amber-small" href="{{route('job.bids',$job)}}">Prikaži ponude</a>
+                @endif
+                <a class="btn-amber-small" href="{{route('bid.create',$job)}}">Unesi ponudu</a>
 
             </div>
             <div>

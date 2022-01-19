@@ -119,6 +119,24 @@ class User extends Authenticatable
 
     }
 
+    public function paymentmethods()
+    {
+        return $this->HasMany(PaymentMethod::class);
+
+    }
+
+    public function bankaccounts()
+    {
+        return $this->HasMany(BankAccount::class);
+
+    }
+
+    public function transactions()
+    {
+        return $this->HasMany(Transaction::class,'from_user_id');
+
+    }
+
     // funkcije za middleware za proveru rola
     public function hasRole($role): bool
     {

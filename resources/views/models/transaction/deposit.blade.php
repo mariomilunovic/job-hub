@@ -4,25 +4,33 @@
 
 <div class="flex-col">
 
-    <form action="{{route('transaction.store')}}" method="post" autocomplete="off">
+    <form action="{{route('deposit.store')}}" method="post" autocomplete="off">
 
         @csrf
 
         <x-title title="Uplata"/>
 
+        <div>
+            <span class="mt-4 font-bold text-neutral-500">Trenutno stanje</span>
+            <div class="font-bold text-white text-3xl ">
+                {{auth()->user()->balance}} €
+            </div>
+        </div>
 
-        <label for="ammount" class="mt-4 font-bold text-neutral-500">Iznos</label>
-        <input type="number" id="ammount" name="ammount" placeholder="Unesite iznos" value="{{old('ammount')}}" class="w-full p-1 input">
-        <div class="mb-3 px-1 text-sm font-bold text-red-500">@error ('ammount'){{ $message }}@enderror</div>
+        <label for="amount" class="mt-4 font-bold text-neutral-500">Iznos za uplatu</label>
+        <input type="number" id="amount" name="amount" placeholder="Unesite iznos" value="{{old('ammount')}}" class="w-full p-1 input">
+        <div class="error">@error ('amount'){{ $message }}@enderror</div>
 
-        <label for="paymethod_id" class="mt-4 font-bold text-neutral-500">Način plaćanja</label>
-        <select id="paymethod_id" name="paymethod_id" class="w-full p-1 input">
+        <label for="payment_method_id" class="mt-4 font-bold text-neutral-500">Način plaćanja</label>
+        <select id="payment_method_id" name="payment_method_id" class="w-full p-1 input">
             <option value="">Izaberite način plaćanja</option>
-            {{-- @foreach($paymethods as $paymethod )
-            <option value="{{$paymethod->id}}">{{$paymethod->name}}</option>
-            @endforeach --}}
+            @foreach($payment_methods as $payment_method )
+            <option value="{{$payment_method->id}}" {{(old("payment_method_id") == $payment_method->id ? "selected":"")}}>{{$payment_method->name}} / {{$payment_method->card_number}}</option>
+            @endforeach
         </select>
-        <div class="mb-3 text-sm text-red-500">@error('paymethod_id'){{ $message }}@enderror</div>
+        <div class="error">@error('payment_method_id'){{ $message }}@enderror</div>
+
+        {{-- <input type="hidden" id="job_id" name="job_id" value="{{$job->id}}"> --}}
 
         <button type="submit" class="w-full mt-2 btn-yellow-medium">
             Potvrdi uplatu

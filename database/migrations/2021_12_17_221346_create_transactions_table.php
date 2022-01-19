@@ -16,9 +16,20 @@ class CreateTransactionsTable extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
 
-
             $table->unsignedDecimal('amount');
 
+
+            $table->unsignedBigInteger('transaction_type_id');
+            $table->foreign('transaction_type_id')->references('id')->on('transaction_types');
+
+            $table->unsignedBigInteger('bid_id')->nullable()->unsigned();
+            $table->foreign('bid_id')->references('id')->on('bids');
+
+            $table->unsignedBigInteger('bank_account_id')->nullable();
+            $table->foreign('bank_account_id')->references('id')->on('bank_accounts');
+
+            $table->unsignedBigInteger('payment_method_id')->nullable();
+            $table->foreign('payment_method_id')->references('id')->on('payment_methods');
 
 
             $table->unsignedBigInteger('from_user_id');
@@ -26,12 +37,6 @@ class CreateTransactionsTable extends Migration
 
             $table->unsignedBigInteger('to_user_id');
             $table->foreign('to_user_id')->references('id')->on('users');
-
-            $table->unsignedBigInteger('type_id');
-            $table->foreign('type_id')->references('id')->on('transaction_types');
-
-            $table->unsignedBigInteger('bid_id')->nullable()->unsigned();
-            $table->foreign('bid_id')->references('id')->on('bids');
 
             $table->timestamps();
             $table->softDeletes();

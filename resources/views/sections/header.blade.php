@@ -3,14 +3,14 @@
     {{-- left side --}}
     <div id="Logo" class="my-2 mx-4 justify-content-center">
         <a href="{{Route('page.home')}}">
-            <img src="/images/ui/logo.png" alt="{{config('app.name','job-hub')}}" class="h-20">
+            <img src="/images/ui/logo.png" alt="{{config('app.name','job-hub')}}" class="w-36 sm:w-52">
         </a>
     </div>
 
     {{-- right side --}}
     <div class="flex">
 
-        <div class="">
+        <div>
             @guest
             <a class="btn-amber-small mr-3" href="{{route('register.form')}}">Registracija</a>
             <a class="btn-green-small mr-6" href="{{route('login.form')}}">Prijava</a>
@@ -22,17 +22,15 @@
         <div x-data="{ isOpen: false }" class="mr-6">
 
             <div class="relative flex items-center">
-
-                <div class="pr-2 font-semibold text-white text-right">
+                <div class="pr-2 font-semibold text-white text-right invisible sm:visible ">
                     {{ auth()->user()->firstname}}  {{ auth()->user()->lastname}}
                 </div>
-
-                <button @click="isOpen = !isOpen" class="z-50 w-12 h-12 overflow-hidden border-4 border-gray-400 rounded-full hover:border-gray-300 focus:border-gray-300 focus:outline-none">
+                <button @click="isOpen = !isOpen" class="z-50 w-10 sm:w-12 overflow-hidden  border-4 border-gray-400 rounded-full hover:border-gray-300 focus:border-gray-300 focus:outline-none">
                     <img src="/images/ui/user.png">
                 </button>
 
                 {{-- alpinejs menu --}}
-                <div x-show="isOpen" class="z-50 absolute right-0 w-32 py-2 text-center bg-white rounded-lg shadow-lg top-14" x-cloak>
+                <div x-show="isOpen" @click.outside="isOpen = false"  class="z-50 absolute right-0 w-32 py-2 text-center bg-white rounded-lg shadow-lg top-14" x-cloak>
                     <a href="{{route('user.show',auth()->user())}}" class="block px-4 py-2 account-link hover:bg-blue-400">Profil</a>
                     <a href="{{route('logout.logout')}}" class="block px-4 py-2 account-link hover:bg-blue-400">Odjava</a>
                 </div>
