@@ -1,14 +1,14 @@
 <div x-data="{ expanded_all: false }">
 
 
-    <div class="sm:hidden flex items-center">
+    <div class="sm:hidden flex justify-center items-center p-1">
 
 
-            <button @click="expanded_all = !expanded_all" x-cloak>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-            </button>
+        <button @click="expanded_all = !expanded_all" x-cloak>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+        </button>
 
 
 
@@ -28,7 +28,7 @@
                         <span class="mx-4 font-bold">Poslovi</span>
                     </a>
                     {{-- submenu_text --}}
-                    <div x-show="expanded_poslovi" @click.outside="expanded_poslovi = false" x-collapse x-cloak class="text-sm text-center submenu_item">
+                    <div x-show="expanded_poslovi"  x-collapse x-cloak class="text-sm text-center submenu_item">
                         <a class="submenu_text" href="{{route('job.index')}}">Svi poslovi</a>
                         <a class="submenu_text" href="{{route('job.my')}}">Moji poslovi</a>
                         <a class="submenu_text" href="{{route('job.create')}}">Objavi posao</a>
@@ -45,7 +45,7 @@
                         <span class="mx-4 font-bold">Ponude</span>
                     </a>
 
-                    <div x-show="expanded_ponude" @click.outside="expanded_ponude = false" x-collapse x-cloak class="text-sm text-center submenu_item">
+                    <div x-show="expanded_ponude" x-collapse x-cloak class="text-sm text-center submenu_item">
                         <a class="submenu_text" href="{{route('bid.index')}}">Sve ponude</a>
                         <a class="submenu_text" href="{{route('bid.user',auth()->user())}}">Poslate ponude</a>
                         <a class="submenu_text" href="{{route('user.index')}}">Primljene ponude</a>
@@ -62,7 +62,7 @@
                         <span class="mx-4 font-bold">Veštine</span>
                     </a>
 
-                    <div x-show="expanded_vestine" @click.outside="expanded_vestine = false" x-collapse x-cloak class="text-sm text-center submenu_item">
+                    <div x-show="expanded_vestine"  x-collapse x-cloak class="text-sm text-center submenu_item">
                         <a class="submenu_text" href="{{route('skill.index')}}">Sve veštine</a>
                         @if(auth()->user())
                         <a class="submenu_text" href="{{route('skill.user',auth()->user())}}">Moje veštine</a>
@@ -85,7 +85,7 @@
                     </a>
 
 
-                    <div x-show="expanded_novac" @click.outside="expanded_novac = false" x-collapse x-cloak class="text-sm text-center submenu_item">
+                    <div x-show="expanded_novac" x-collapse x-cloak class="text-sm text-center submenu_item">
                         <a class="submenu_text" href="{{route('deposit.create')}}">Uplata</a>
                         <a class="submenu_text" href="{{route('withdraw.create')}}">Isplata</a>
 
@@ -113,7 +113,7 @@
                         <span class="mx-4 font-bold">Korisnici</span>
                     </a>
 
-                    <div x-show="expanded_korisnici" @click.outside="expanded_korisnici = false" x-collapse x-cloak class="text-sm text-center submenu_item">
+                    <div x-show="expanded_korisnici" x-collapse x-cloak class="text-sm text-center submenu_item">
                         <a class="submenu_text" href="{{route('user.index')}}">Svi korisnici</a>
                         <a class="submenu_text" href="{{route('user.create')}}">Unesi novog</a>
                         <a class="submenu_text" href="{{route('user.search')}}">Pretraga</a>

@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="flex-col">
+<div class="flex-col m-3 p-3">
 
     <form action="{{route('deposit.store')}}" method="post" autocomplete="off">
 

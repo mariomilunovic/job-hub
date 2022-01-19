@@ -7,11 +7,17 @@
 
     <x-title title="Prikaz svih transakcija"/>
 
+    @if ($myTransactions->count()>0)
+
     @foreach ($myTransactions as $transaction)
     <x-transaction :transaction="$transaction"/>
     @endforeach
 
     {{$myTransactions->links()}}
+    
+    @else
+    <div>Nemate objavljenih poslova</div>
+    @endif
 
 </div>
 

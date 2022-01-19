@@ -45,7 +45,7 @@
 
         <main class="card relative flex place-content-center bg-neutral-300 overflow-y-auto svg-dots">
             <div class="absolute right-0 top-0"><livewire:toasts/></div>
-            <div class="sm:w-800">@yield('content')</div>
+            <div class="p-4 sm:w-800">@yield('content')</div>
 
         </main>
 
