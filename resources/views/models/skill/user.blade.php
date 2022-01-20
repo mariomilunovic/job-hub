@@ -2,22 +2,27 @@
 
 @section('content')
 
-<div class="flex-col">
+
+<div class="flex-col sm:w-600">
+
 
     <x-title title="Prikaz mojih veština"/>
 
-    @foreach($userSkills as $skill)
+    <div>
+        @foreach ($skillCategories as $category)
 
-    @if (true)
-    <div class="py-2 my-2">
-        <span class="btn-blue-small text-shadow">{{$skill->category->name}}</span>
-        <span class="btn-red-small text-shadow">{{$skill->name}}</span>
-        <span class="btn-yellow-small text-shadow">Nivo: {{$skill->pivot->points}}</span>
+        <div class="text-2xl btn-blue-medium text-shadow mb-3">{{$category->name}}</div>
+
+        @foreach($category->skills as $skill)
+
+        @if($user->hasSkill($skill->name))
+        <x-skill :skill="$skill"/>
+        @endif
+
+        @endforeach
+
+        @endforeach
     </div>
-    @endif
-
-    @endforeach
 
 </div>
-
 @endsection

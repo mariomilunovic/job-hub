@@ -4,6 +4,7 @@ use App\Http\Controllers\UserController;
 
 //CUSTOM ROUTES =====>
 Route::get('user/search',[UserController::class,'search'])->name('user.search')->middleware('check_roles:administrator,user');
+Route::get('user/skill/{skill}',[UserController::class,'skill'])->name('user.skill')->middleware('check_roles:administrator,user');
 
 //RESOURCE ROUTES =====> Route::resource('user', UserController::class);
 Route::get('/user',[UserController::class,'index'])->name('user.index')->middleware('check_roles:administrator,user');

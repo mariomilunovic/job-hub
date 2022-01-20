@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Role;
 use App\Models\User;
+use App\Models\Skill;
 use Illuminate\Support\Facades\Hash;
 use Monolog\Handler\FirePHPHandler;
 use PhpParser\NodeVisitor\FirstFindingVisitor;
@@ -21,6 +22,15 @@ class UserController extends Controller
     {
         $users = User::orderBy('updated_at','desc')->paginate(5);
         return view('models.user.index', compact('users'));
+    }
+
+    public function skill(Skill $skill)
+    {
+        $users = $skill->users()->orderBy('pivot_points','desc')->paginate();
+        //dd($users);
+        return view('models.user.skills')
+        ->with('users',$users)
+        ->with('skill',$skill);
     }
 
     /**

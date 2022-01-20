@@ -4,6 +4,8 @@ use App\Http\Controllers\SkillController;
 
 //CUSTOM ROUTES =====>
 Route::get('/skill/{user}/user',[SkillController::class,'user'])->name('skill.user')->middleware('check_roles:administrator,user');
+Route::get('/skill/jobs',[SkillController::class,'jobs'])->name('skill.jobs')->middleware('check_roles:administrator,user');
+
 
 //RESOURCE ROUTES =====> Route::resource('skill', SkillController::class);
 Route::get('/skill',[SkillController::class,'index'])->name('skill.index')->middleware('check_roles:administrator,user');

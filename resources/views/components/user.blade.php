@@ -2,7 +2,8 @@
 
     <!-- User -->
 
-    <div class="card flex-col p-3 mb-3 gradient_silver transition duration-300 bg-neutral-200 hover:ring-4 hover:ring-neutral-400 ease-in-out">
+    <div class="card flex-col p-3 mb-3  transition duration-300 bg-neutral-200 hover:ring-4 hover:ring-neutral-400 ease-in-out
+    {{ $user->hasRole('administrator') ? " gradient_red":"gradient_teal" }}">
         <div class="flex justify-between">
 
             <div class="flex items-center">
@@ -19,7 +20,7 @@
                     {{$user->email}}
                 </div>
                 {{-- Hamburger button --}}
-                <div @click="expanded_menu = !expanded_menu" class="font-bold btn-gray-xs hover:cursor-pointer mr-3">
+                <div @click="expanded_menu = !expanded_menu" class="font-bold btn-gray-xs hover:cursor-pointer">
                     <i class="fas fa-bars"></i>
                 </div>
                 {{-- Hamburger button --}}

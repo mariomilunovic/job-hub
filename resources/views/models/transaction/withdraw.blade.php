@@ -21,9 +21,9 @@
         <input type="number" id="amount" name="amount" placeholder="Unesite iznos" max={{auth()->user()->balance}} value="{{old('amount')}}" class="w-full p-1 input">
         <div class="error">@error ('amount'){{ $message }}@enderror</div>
 
-        <label for="bank_account_id" class="mt-4 font-bold text-neutral-500">Način plaćanja</label>
+        <label for="bank_account_id" class="mt-4 font-bold text-neutral-500">Račun primaoca</label>
         <select id="bank_account_id" name="bank_account_id" class="w-full p-1 input">
-            <option value="">Izaberite način plaćanja</option>
+            <option value="">Izaberite račun primaoca</option>
             @foreach($bank_accounts as $bank_account )
             <option value="{{$bank_account->id}}"  {{(old("bank_account_id") == $bank_account->id ? "selected":"")}} >{{$bank_account->name}} / {{$bank_account->account_number}}</option>
             @endforeach

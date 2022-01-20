@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Job;
 use App\Models\Category;
 use App\Models\Skill;
+use App\Models\User;
 use Auth;
 use URL;
 
@@ -20,12 +21,21 @@ class JobController extends Controller
         ->with(['allJobs'=>$joblist]);
     }
 
-    public function my()
+    public function user(User $user)
     {
-        $myJobs = Job::where('user_id',Auth::user()->id)->latest()->paginate(4);
+        $userJobs = Job::where('user_id',$user->id)->latest()->paginate(4);
 
-        return view('models.job.my')
-        ->with(['myJobs'=>$myJobs]);
+        return view('models.job.user')
+        ->with(['userJobs'=>$userJobs]);
+    }
+
+    public function skill(Skill $skill)
+    {
+        $jobs = $skill->jobs()->orderBy('updated_at','desc')->paginate();
+        //dd($users);
+        return view('models.job.skill')
+        ->with('jobs',$jobs)
+        ->with('skill',$skill);
     }
 
 
@@ -38,7 +48,7 @@ class JobController extends Controller
     {
         $job->delete();
         toast()->success('Posao je obrisan')->push();
-        return redirect(route('job.my'));
+        return redirect(route('job.user',auth()->user()));
 
     }
 
@@ -79,7 +89,7 @@ class JobController extends Controller
         $newJob->skills()->attach($skill);
 
         toast()->success('Uspešna objava posla')->push();
-        return redirect(route('job.my'));
+        return redirect(route('job.user',auth()->user()));
 
     }
 

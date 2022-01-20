@@ -19,14 +19,30 @@ class SkillController extends Controller
 
     }
 
-    public function user( User $user)
+    public function show(Skill $skill)
     {
+        //ddd($skill);
+        return view('models.skill.show')
+        ->with('skill',$skill);
+    }
+
+    public function user(User $user)
+    {
+        $skillCategories = [];
+
         $userSkills = $user->skills()->get();
-        $allCategories = Category::all();
+
+        foreach($userSkills as $skill)
+        {
+            array_push($skillCategories,$skill->category);
+        }
+
+        //ddd(array_unique($skillCategories));
 
         return view ('models.skill.user')
+        ->with('user',$user)
         ->with('userSkills',$userSkills)
-        ->with('allCategories',$allCategories);
+        ->with('skillCategories',array_unique($skillCategories));
     }
 
     public function create()
@@ -46,6 +62,9 @@ class SkillController extends Controller
     }
 
 
+   
+
+
     public function validateSkill()
     {
         return request()->validate([
@@ -53,4 +72,6 @@ class SkillController extends Controller
             'category_id' => 'required'
         ]);
     }
+
+
 }

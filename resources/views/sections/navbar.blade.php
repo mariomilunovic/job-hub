@@ -30,7 +30,7 @@
                     {{-- submenu_text --}}
                     <div x-show="expanded_poslovi"  x-collapse x-cloak class="text-sm  submenu_item">
                         <a class="submenu_text" href="{{route('job.index')}}">Svi poslovi</a>
-                        <a class="submenu_text" href="{{route('job.my')}}">Moji poslovi</a>
+                        <a class="submenu_text" href="{{route('job.user',auth()->user())}}">Moji poslovi</a>
                         <a class="submenu_text" href="{{route('job.create')}}">Objavi posao</a>
                     </div>
                 </div>

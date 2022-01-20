@@ -6,9 +6,9 @@
 
     <x-title title="Prikaz mojih poslova"/>
 
-    @if ($myJobs->count()>0)
+    @if ($userJobs->count()>0)
 
-        @foreach ($myJobs as $job)
+        @foreach ($userJobs as $job)
         <x-job :job="$job"/>
         @endforeach
 
@@ -17,7 +17,7 @@
     @endif
 
 
-    {{$myJobs->links()}}
+    {{$userJobs->links()}}
 
 </div>
 

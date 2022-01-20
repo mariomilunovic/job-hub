@@ -3,26 +3,29 @@
 @section('content')
 
 
-<div class="flex-col">
+<div class="flex-col sm:w-600">
 
 
     <x-title title="Prikaz svih veština"/>
 
+    <div>
+        @foreach ($allCategories as $category)
 
-    @foreach ($allCategories as $category)
-    <div class="py-3 my-2">
-        <span class="btn-blue-small text-shadow">{{$category->name}}</span>
+        <div class="text-2xl btn-blue-medium text-shadow mb-3">{{$category->name}}</div>
 
         @foreach($category->skills as $skill)
-        <span class="btn-red-small text-shadow">{{$skill->name}}</span>
+        <x-skill :skill="$skill"/>
         @endforeach
 
         @if (auth()->user()->hasRole('administrator'))
-        <a href="{{route('skill.create',$category)}}"><span class="btn-yellow-small text-shadow"> + dodaj </span></a>
+        <a href="{{route('skill.create',$category)}}"><span class="btn-yellow-medium text-shadow block w-full"> + dodaj </span></a>
         <br>
         @endif
+
+        @endforeach
     </div>
-    @endforeach
+
+
 
 </div>
 
