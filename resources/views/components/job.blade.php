@@ -95,7 +95,13 @@
 
                     <div class="text-left">
                         <span class="font-bold">OČEKIVANI ROK :</span>
-                        <span class="font-bold text-yellow-400 text-shadow">{{$job->days*24}}h</span>
+                        <span class="font-bold text-yellow-400 text-shadow">
+                            @if ($job->days > 1)
+                            {{$job->days}} dana
+                            @else
+                            {{$job->days}} dan
+                            @endif
+                        </span>
                     </div>
                 </div>
             </div>
