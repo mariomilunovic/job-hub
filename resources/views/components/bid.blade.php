@@ -98,7 +98,13 @@
 
                     <div>
                         <span class="font-bold">PONUĐENI ROK :</span>
-                        <span class="font-bold text-neutral-700 text-shadow">{{$bid->days*24}}h</span>
+                        <span class="font-bold text-neutral-700 text-shadow">
+                            @if ($bid->days > 1)
+                            {{$bid->days}} dana
+                            @else
+                            {{$bid->days}} dan
+                            @endif
+                        </span>
                     </div>
                 </div>
             </div>

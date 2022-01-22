@@ -25,7 +25,7 @@
             <div class="sm:flex justify-between">
                 <div>
                     <label for="offer" class="label">Ponuđena vrednost</label>
-                    <input type="number" id="offer" name="offer" placeholder="Unesi vrednost" value="{{old('reward')}}" class="w-full input">
+                    <input type="number" id="offer" name="offer" placeholder="Unesi vrednost" value="{{old('offer')}}" class="w-full input">
                     <div class="error">@error ('offer'){{ $message }}@enderror</div>
                 </div>
 

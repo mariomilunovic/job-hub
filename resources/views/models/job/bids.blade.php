@@ -14,7 +14,9 @@
     @endif
 
     @foreach ($bids as $bid)
-    <x-bid :bid="$bid"/>
+    <div class="mb-3">
+        <x-bid :bid="$bid"/>
+    </div>
     @endforeach
 
     @if($job->user_id != auth()->user()->id && $job->status_id== 1)
