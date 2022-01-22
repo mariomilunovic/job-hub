@@ -19,9 +19,9 @@ class CreateBidsTable extends Migration
             $table->tinyInteger('days');
             $table->text('message');
 
-            $table->timestamp('bid_selected_at')->nullable();
-            $table->timestamp('work_delievered_at')->nullable();
-            $table->timestamp('work_accepted_at')->nullable();
+            $table->timestamp('selected_at')->nullable();
+            $table->timestamp('delievered_at')->nullable();
+            $table->timestamp('accepted_at')->nullable();
             $table->timestamps();
 
             $table->softDeletes();

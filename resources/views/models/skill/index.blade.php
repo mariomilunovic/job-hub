@@ -17,10 +17,12 @@
         <x-skill :skill="$skill"/>
         @endforeach
 
+        @auth
         @if (auth()->user()->hasRole('administrator'))
         <a href="{{route('skill.create',$category)}}"><span class="btn-yellow-medium text-shadow block w-full"> + dodaj </span></a>
         <br>
         @endif
+        @endauth
 
         @endforeach
     </div>

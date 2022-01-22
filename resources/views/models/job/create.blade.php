@@ -11,7 +11,7 @@
         @csrf
 
         <!-- Job input start -->
-        <div class="card bg-neutral-500 flex-col p-3 mb-3 gradient_gray">
+        <div class="card bg-neutral-400 flex-col p-3 mb-3 ">
             <div class="flex-col">
                 <div>
                     <label for="skill_id" class="label">Izaberite veštinu potrebnu za posao</label>

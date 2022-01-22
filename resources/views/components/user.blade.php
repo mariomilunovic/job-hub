@@ -3,7 +3,7 @@
     <!-- User -->
 
     <div class="card flex-col p-3 mb-3  transition duration-300 bg-neutral-200 hover:ring-4 hover:ring-neutral-400 ease-in-out
-    {{ $user->hasRole('administrator') ? " gradient_red":"gradient_teal" }}">
+    {{ $user->hasRole('administrator') ? " bg-red-400":"bg-teal-400" }}">
         <div class="flex justify-between">
 
             <div class="flex items-center">

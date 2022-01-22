@@ -8,9 +8,12 @@ class PageController extends Controller
 {
 
     function home(){
+
         return view('page.home');
+
     }
     function dashboard(){
+
         return view('page.dashboard');
     }
 

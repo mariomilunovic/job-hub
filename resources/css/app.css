@@ -107,6 +107,27 @@ footer{
     @apply block py-2 pl-16 sm:pl-16 font-semibold transition duration-500 ease-in-out hover:bg-blue-700;
 }
 
+
+
+/* Bid status  */
+
+.bid_status_red {
+    @apply py-0.5 px-4 text-sm font-medium text-center text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:ring-red-400 rounded-md
+}
+
+.bid_status_blue {
+    @apply py-0.5 px-4 text-sm font-medium text-center text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-400 rounded-md
+}
+
+.bid_status_green {
+    @apply py-0.5 px-4 text-sm font-medium text-center text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:ring-green-400 rounded-md
+}
+
+.bid_status_black {
+    @apply py-0.5 px-4 text-sm font-medium text-center text-white bg-neutral-700 hover:bg-neutral-700 focus:ring-4 focus:ring-neutral-600 rounded-md
+}
+
+
 /* Gradients */
 
 .gradient_black {
@@ -156,6 +177,9 @@ footer{
 
 /* Buttons */
 
+
+
+
 .btn-blue-small {
     @apply py-1.5 px-3 text-sm font-medium text-center text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 rounded-md  my-1   dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800
 }
@@ -184,6 +208,10 @@ footer{
     @apply py-1 px-3 text-sm font-medium text-center text-white bg-amber-600 hover:bg-amber-700 focus:ring-4 focus:ring-amber-500 rounded-md my-1  dark:focus:ring-neutral-900
 }
 
+.btn-orange-xs {
+    @apply py-1 px-3 text-sm font-medium text-center text-white bg-orange-600 hover:bg-orange-700 focus:ring-4 focus:ring-orange-500 rounded-md my-1  dark:focus:ring-neutral-900
+}
+
 .btn-blue-xs {
     @apply py-1 px-3 text-sm font-medium text-center text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-500 rounded-md my-1  dark:focus:ring-neutral-900
 }
@@ -194,6 +222,10 @@ footer{
 
 .btn-green-small {
     @apply py-1.5 px-3 text-sm font-medium text-center text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-green-500 rounded-md my-1  dark:focus:ring-neutral-900
+}
+
+.btn-orange-small {
+    @apply py-1.5 px-3 text-sm font-medium text-center text-white bg-orange-600 hover:bg-orange-700 focus:ring-4 focus:ring-orange-500 rounded-md my-1  dark:focus:ring-neutral-900
 }
 
 .btn-purple-small {

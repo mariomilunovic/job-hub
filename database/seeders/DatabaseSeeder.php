@@ -20,8 +20,8 @@ class DatabaseSeeder extends Seeder
         $this->call(BidStatusSeeder::class);
         $this->call(CategorySeeder::class);
         $this->call(SkillSeeder::class);
-        $this->call(JobSeeder::class);
-        $this->call(BidSeeder::class);
+       // $this->call(JobSeeder::class);
+       // $this->call(BidSeeder::class);
         $this->call(TransactionTypeSeeder::class);
         $this->call(PaymentMethodSeeder::class);
         $this->call(BankAccountSeeder::class);

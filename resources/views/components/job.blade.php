@@ -1,7 +1,7 @@
 <div x-data="{ expanded_menu : false }">
 
     {{-- job card start --}}
-    <div class="card flex-col gradient_gray transition duration-300 bg-neutral-500 hover:ring-4 hover:ring-neutral-600 ease-in-out p-3 mb-3">
+    <div class="card flex-col  transition duration-300 bg-neutral-400 hover:ring-4 hover:ring-neutral-600 ease-in-out p-3 mb-3">
 
         {{-- Job header start --}}
         <div class="sm:flex justify-between mb-1 items-center">
@@ -9,41 +9,51 @@
             <div class="text-sm text-white whitespace-nowrap">
                 <div>
                     <span class="font-bold">POSAO : </span>
-                    <span class="font-bold text-yellow-500 text-shadow mr-6">ID#{{$job->id}}</span>
+                    <span class="font-bold text-yellow-400 text-shadow mr-6">ID#{{$job->id}}</span>
                     <span class="font-bold ">POSLODAVAC :</span>
-                    <span class="font-bold text-shadow {{ $job->user_id == auth()->user()->id ? " text-red-400":"text-yellow-500 " }}">{{$job->user->firstname}} {{$job->user->lastname}}</span>
+                    <span class="font-bold text-shadow @auth{{ $job->user_id == auth()->user()->id ? " text-red-500":"text-yellow-400 " }} @endauth">{{$job->user->firstname}} {{$job->user->lastname}}</span>
                 </div>
                 <div>
                     <span class="font-bold">VEŠTINA :</span>
-                    <span class="font-bold text-yellow-500 text-shadow">{{$job->skills->first()->category->name}} / {{$job->skills->first()->name}}</span>
+                    <span class="font-bold text-yellow-400 text-shadow">{{$job->skills->first()->category->name}} / {{$job->skills->first()->name}}</span>
                 </div>
             </div>
 
             <div class="text-sm text-white justify-items-end sm:text-right">
 
-                <div class="whitespace-nowrap font-bold">
-                    POSLEDNJA PROMENA :
+                <div class="whitespace-nowrap">
+
                     @switch($job->status->id)
                     @case(1)
-                    <span class="text-yellow-500 text-shadow">{{$job->created_at}}</span>
+                    <div>
+                        <span class="font-bold">STATUS :</span> <span class="bid_status_blue text-shadow">{{$job->status->name}}</span>
+                    </div>
+                    <span class="text-yellow-400 font-bold text-sm text-shadow">{{$job->created_at}}</span>
                     @break
 
                     @case(2)
-                    <span class="text-yellow-500 text-shadow">{{$job->bid_selected_at}}</span>
+                    <div>
+                        <span class="font-bold">STATUS :</span> <span class="bid_status_red  text-shadow">{{$job->status->name}}</span>
+                    </div>
+                    <span class="text-yellow-400 font-bold text-sm  text-shadow">{{$job->bid_selected_at}}</span>
                     @break
 
                     @case(3)
-                    <span class="text-yellow-500 text-shadow">{{$job->work_recieved_at}}</span>
+                    <div>
+                        <span class="font-bold">STATUS :</span> <span class="bid_status_green text-shadow">{{$job->status->name}}</span>
+                    </div>
+                    <span class="text-yellow-400 font-bold text-sm text-shadow">{{$job->work_recieved_at}}</span>
                     @break
 
                     @case(4)
-                    <span class="text-yellow-500 text-shadow">{{$job->work_accepted_at}}</span>
+                    <div>
+                        <span class="font-bold">STATUS :</span> <span class="bid_status_black text-shadow">{{$job->status->name}}</span>
+                    </div>
+                    <span class="text-yellow-400 font-bold text-sm text-shadow">{{$job->work_accepted_at}}</span>
                     @break
                     @endswitch
                 </div>
-                <div>
-                    <span class="font-bold">STATUS :</span> <span class="font-bold text-yellow-500 text-shadow">{{$job->status->name}}</span>
-                </div>
+
             </div>
         </div>
         {{-- Job header end --}}
@@ -53,8 +63,8 @@
         {{-- Job description start --}}
         @if(strlen($job->description)>200)
         <div class="text-sm text-white mb-2" x-data="{ isCollapsed: false }">
-            <span  x-text="isCollapsed ? '{{$job->description}}': '{{Str::limit($job->description,200)}}'"></span>
-            <span  x-text="isCollapsed ? ' Sakrij tekst' : ' Prikaži ceo tekst'" x-on:click="isCollapsed = !isCollapsed" class="font-bold hover:cursor-pointer"></span>
+            <span  x-text="isCollapsed ? '{{json_encode($job->description)}}': '{{json_encode(Str::limit($job->description,200))}}'"></span>
+            <span  x-text="isCollapsed ? ' Sakrij tekst' : ' Prikaži ceo tekst'" x-on:click="isCollapsed = !isCollapsed" @click.outside="isCollapsed = false"  class="font-bold hover:cursor-pointer"></span>
         </div>
         @else
         <div class="text-sm text-white mb-2">
@@ -62,6 +72,7 @@
         </div>
         @endif
         {{-- Job description start --}}
+
 
         <hr class="border-neutral-600 my-2">
 
@@ -79,12 +90,12 @@
                 <div class="sm:flex">
                     <div class="text-left">
                         <span class="font-bold">VREDNOST POSLA : </span>
-                        <span class="mr-6 font-bold text-yellow-500 text-shadow">{{$job->reward}}€</span>
+                        <span class="mr-6 font-bold text-yellow-400 text-shadow">{{$job->reward}}€</span>
                     </div>
 
                     <div class="text-left">
                         <span class="font-bold">OČEKIVANI ROK :</span>
-                        <span class="font-bold text-yellow-500 text-shadow">{{$job->days*24}}h</span>
+                        <span class="font-bold text-yellow-400 text-shadow">{{$job->days*24}}h</span>
                     </div>
                 </div>
             </div>
@@ -120,22 +131,27 @@
 
         {{-- Alpinejs Buttons start --}}
         <div x-show="expanded_menu" x-collapse x-cloak class="flex justify-between my-2">
-
+            @auth
             <div>
                 {{-- <a class="btn-gray-small" href="{{route('job.index')}}">Nazad</a> --}}
                 @if($job->bids->count()>0)
-                <a class="btn-amber-small" href="{{route('job.bids',$job)}}">Prikaži ponude</a>
+                <a class="btn-orange-small" href="{{route('job.bids',$job)}}">Prikaži ponude</a>
                 @endif
-                <a class="btn-amber-small" href="{{route('bid.create',$job)}}">Unesi ponudu</a>
+                @if($job->user_id != auth()->user()->id && $job->status_id == 1)
+                <a class="btn-orange-small" href="{{route('bid.create',$job)}}">Unesi ponudu</a>
+                @endif
 
             </div>
+
             <div>
-                @if($job->user_id == auth()->user()->id)
+
+                @if($job->user_id == auth()->user()->id && $job->status_id == 1)
                 <a class="btn-green-small mr-2" href="{{route('job.edit',$job)}}">Izmeni</a>
                 <a class="btn-red-small" href="{{route('job.destroy',$job)}}">Obriši</a>
 
                 @endif
             </div>
+            @endauth
 
         </div>
         {{-- Alpinejs Buttons end --}}

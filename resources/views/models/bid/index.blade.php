@@ -7,7 +7,9 @@
 
     <x-title title="Prikaz svih ponuda"/>
     @foreach ($bids as $bid)
-    <x-bid :bid="$bid"/>
+    <div class="mb-3">
+        <x-bid :bid="$bid"/>
+    </div>
     @endforeach
 
     {{$bids->links()}}

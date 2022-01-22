@@ -3,29 +3,41 @@
 
 
     <!-- skill card start -->
-    <div class="card flex-col py-3 px-3 mb-3 gradient_silver transition duration-300 bg-neutral-200 hover:ring-4 hover:ring-neutral-400 ease-in-out">
+    <div class="card flex-col py-3 px-3 mb-3  transition duration-300 bg-neutral-200 hover:ring-4 hover:ring-neutral-400 ease-in-out">
 
 
         <div class="flex items-center justify-between">
 
-            <div class="text-xl font-bold text-shadow">
-                <div class="text-xs font-normal">{{$skill->category->name}}</div>
-                <a href="{{route('skill.show',$skill)}}">{{$skill->name}}  </a>
-            </div>
+            <div class="flex-col text-xl font-bold items-center text-shadow">
 
-            <div class="flex items-center">
-                <div class="text-xl text-white text-shadow-md mr-4">
+
+
+                <div class="flex items-center justify-start">
+
+
+                    <a href="{{route('skill.show',$skill)}}" class="px-2 py-1">{{$skill->name}}</a>
+
+
+                    @auth
                     @if(auth()->user()->hasSkill($skill->name))
-                    NIVO : {{auth()->user()->skills->where('id',$skill->id)->first()->pivot->points}}
+
+                    <div class="px-2 py-1 mx-4 text-xs font-bold  text-red-100 bg-red-600 rounded-full">
+                        NIVO :  {{auth()->user()->skills->where('id',$skill->id)->first()->pivot->points}}
+                    </div>
+
                     @endif
+                    @endauth
+
                 </div>
 
-                {{-- Hamburger button --}}
-                <div @click="expanded_menu = !expanded_menu" class="font-bold btn-gray-xs hover:cursor-pointer ">
-                    <i class="fas fa-bars"></i>
-                </div>
-                {{-- Hamburger button --}}
             </div>
+
+            {{-- Hamburger button --}}
+            <div @click="expanded_menu = !expanded_menu" class="font-bold btn-gray-xs hover:cursor-pointer ">
+                <i class="fas fa-bars"></i>
+            </div>
+            {{-- Hamburger button --}}
+
 
         </div>
 
@@ -33,7 +45,7 @@
 
             <hr class="border-neutral-600 my-2">
 
-            <div class="flex justify-between">
+            <div class="flex justify-between items-center">
                 <div class="flex">
                     {{-- jobs counter start--}}
                     <div class="text-right mr-3">
@@ -84,8 +96,12 @@
                     {{-- users counter end--}}
                 </div>
 
-            </div>
+                <div class="text-sm font-normal">
+                    {{$skill->category->name}}
+                </div>
 
+            </div>
+            @auth
             @if(auth()->user()->hasRole('administrator'))
             <hr class="border-neutral-600 my-4">
 
@@ -94,6 +110,7 @@
                 <a class="btn-red-small" href="{{route('user.destroy',$skill)}}">Obriši</a>
             </div>
             @endif
+            @endauth
 
         </div>
 

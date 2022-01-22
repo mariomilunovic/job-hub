@@ -49,6 +49,22 @@ class UpdateBalance
             toast()->success('Uspešna isplata. Novo stanje'.' '.$recipient->balance)->push();
         }
 
+        if($transaction_type  == "rezervacija")
+        {
+            $payer->balance -= $amount;
+            $payer->save();
+
+            toast()->success('Ponuda je izabrana. Rezervisana su sredtstva u vrednosti izabrane ponude. Raspoloživo stanje :'.' '.$payer->balance)->push();
+        }
+
+        if($transaction_type  == "zarada")
+        {
+            $recipient->balance += $amount;
+            $recipient->save();
+
+            toast()->success('Radovi su prihvaćeni. Rezervisana su sredstva su prebačena ponuđaču. Raspoloživo stanje :'.' '.$payer->balance)->push();
+        }
+
 
     }
 }

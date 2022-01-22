@@ -1,7 +1,7 @@
 <div x-data="{ expanded_menu : false }">
 
     {{-- bid card start --}}
-    <div class="card flex-col transition duration-300 bg-amber-500 hover:ring-4 hover:ring-neutral-600 ease-in-out p-3 mb-3 gradient_amber">
+    <div class="card flex-col transition duration-300 bg-orange-400 hover:ring-4 hover:ring-neutral-600 ease-in-out p-3">
 
         {{-- bid header start --}}
         <div class="sm:flex justify-between mb-1 items-center">
@@ -23,28 +23,42 @@
 
             <div class="text-sm text-white sm:text-right">
                 <div class="whitespace-nowrap font-bold">
-                    POSLEDNJA PROMENA :
+
                     @switch($bid->bidstatus->id)
                     @case(1)
-                    <span class="font-bold text-neutral-700 text-shadow"">{{$bid->created_at}}</span>
+
+                    <div>
+                        <span class="font-bold">STATUS :</span> <span class="bid_status_blue text-shadow">{{$bid->bidstatus->name}}</span>
+                    </div>
+                    <span class="font-bold text-neutral-700 text-shadow mt-2">{{$bid->created_at}}</span>
                     @break
 
                     @case(2)
-                    <span class="font-bold text-neutral-700 text-shadow"">{{$bid->bid_selected_at}}</span>
+
+                    <div>
+                        <span class="font-bold">STATUS :</span> <span class="bid_status_red text-shadow">{{$bid->bidstatus->name}}</span>
+                    </div>
+                    <span class="font-bold text-neutral-700 text-shadow mt-2">{{$bid->bid_selected_at}}</span>
                     @break
 
                     @case(3)
-                    <span class="font-bold text-neutral-700 text-shadow"">{{$bid->work_delievered_at}}</span>
+
+                    <div>
+                        <span class="font-bold">STATUS :</span> <span class="bid_status_green text-shadow">{{$bid->bidstatus->name}}</span>
+                    </div>
+                    <span class="font-bold text-neutral-700 text-shadow mt-2">{{$bid->work_delievered_at}}</span>
                     @break
 
                     @case(4)
-                    <span class="font-bold text-neutral-700 text-shadow"">{{$bid->work_accepted_at}}</span>
+
+                    <div>
+                        <span class="font-bold">STATUS :</span> <span class="bid_status_black text-shadow">{{$bid->bidstatus->name}}</span>
+                    </div>
+                    <span class="font-bold text-neutral-700 text-shadow mt-2">{{$bid->work_accepted_at}}</span>
                     @break
                     @endswitch
                 </div>
-                <div>
-                    <span class="font-bold">STATUS :</span> <span class="font-bold text-neutral-700 text-shadow">{{$bid->bidstatus->name}}</span>
-                </div>
+
             </div>
         </div>
         {{-- bid header end --}}
@@ -54,7 +68,7 @@
         {{-- bid message start --}}
         @if(strlen($bid->message)>200)
         <div class="text-sm text-white mb-2" x-data="{ isCollapsed: false }">
-            <span  x-text="isCollapsed ? '{{$bid->message}}': '{{Str::limit($bid->message,200)}}'"></span>
+            <span  x-text="isCollapsed ? '{{json_encode($bid->message)}}': '{{json_encode(Str::limit($bid->message,200))}}'"></span>
             <span  x-text="isCollapsed ? ' Sakrij tekst' : ' Prikaži ceo tekst'" x-on:click="isCollapsed = !isCollapsed" class="font-bold hover:cursor-pointer"></span>
         </div>
         @else
@@ -72,7 +86,7 @@
             <div class="flex items-center ">
 
                 {{-- Hamburger button --}}
-                <div @click="expanded_menu = !expanded_menu" class="font-bold btn-amber-xs hover:cursor-pointer mr-3">
+                <div @click="expanded_menu = !expanded_menu" class="font-bold btn-orange-xs hover:cursor-pointer mr-3">
                     <i class="fas fa-bars"></i>
                 </div>
                 {{-- Hamburger button --}}
@@ -99,18 +113,27 @@
         <div x-show="expanded_menu" x-collapse x-cloak class="flex justify-between my-2">
 
             <div>
+                {{-- korisnik ne može da izabere svoju ponudu --}}
+                @if($bid->user_id != auth()->user()->id)
                 @if($bid->bidstatus->id == 1)
                 <a class="btn-blue-xs" href="{{route('bid.select',$bid)}}">Izaberi</a>
                 @endif
+                @endif
+
+                {{-- korisnik može da isporuči samo svoju ponudu --}}
+                @if($bid->user_id == auth()->user()->id)
                 @if($bid->bidstatus->id == 2)
                 <a class="btn-purple-xs" href="{{route('bid.deliver',$bid)}}">Isporuči</a>
                 @endif
-                @if($bid->bidstatus->id == 3)
-                <a class="btn-gray-xs" href="{{route('bid.accept',$bid)}}">Prihvati</a>
                 @endif
+
+                @if($bid->bidstatus->id == 3)
+                <a class="btn-gray-xs" href="{{route('bid.accept',$bid)}}">Prihvati radove</a>
+                @endif
+
             </div>
             <div>
-                @if($bid->user_id == auth()->user()->id)
+                @if($bid->user_id == auth()->user()->id && $bid->bidstatus_id == 1)
                 <a class="btn-green-small mr-2" href="{{route('bid.edit',$bid)}}">Izmeni</a>
                 <a class="btn-red-small" href="{{route('bid.destroy',$bid)}}">Obriši</a>
 

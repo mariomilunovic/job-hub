@@ -4,16 +4,18 @@
 
 <div class="flex-col mb-3 p-3">
 
-    <x-title title="Prikaz mojih poslova"/>
+    @if ($userJobs->count()==0)
+    <x-title title="Nemate objavljenih poslova"/>
+    <a href="{{route('job.create')}}" class="btn-blue-medium mt-3">Objavi posao</a>
 
-    @if ($userJobs->count()>0)
+    @else
+    <x-title title="Lista mojih poslova"/>
 
         @foreach ($userJobs as $job)
         <x-job :job="$job"/>
         @endforeach
 
-    @else
-        <div>Nemate objavljenih poslova</div>
+
     @endif
 
 

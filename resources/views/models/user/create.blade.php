@@ -11,7 +11,7 @@
         @csrf
 
         <!-- User input start -->
-        <div class="card bg-neutral-300 gradient_silver flex-col p-3 mb-3">
+        <div class="card bg-neutral-400 flex-col p-3 mb-3">
 
             <label for="firstname" class="label">Ime</label>
             <input autocomplete="false" type="text" id="firstname" name="firstname" placeholder="Unesi ime" value="{{old('firstname')}}" class="w-full input">

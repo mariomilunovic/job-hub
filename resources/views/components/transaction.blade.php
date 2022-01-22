@@ -1,5 +1,5 @@
     {{-- transaction card start --}}
-    <div class="card flex items-center justify-between transition duration-300 bg-amber-500 hover:ring-4 hover:ring-neutral-600 ease-in-out p-3 mb-3 gradient_yellow">
+    <div class="card flex items-center justify-between transition duration-300 bg-lime-500 hover:ring-4 hover:ring-neutral-600 ease-in-out p-3 mb-3">
         <div class="sm:flex items-center">
 
             <div>
@@ -20,7 +20,7 @@
                     </div>
                     <div>
                         <span class="font-bold">PRIMALAC : </span>
-                        <span class="font-bold text-neutral-700 text-shadow mr-3">{{$transaction->from_user->firstname}} {{$transaction->from_user->lastname}}</span>
+                        <span class="font-bold text-neutral-700 text-shadow mr-3">{{$transaction->to_user->firstname}} {{$transaction->to_user->lastname}}</span>
                     </div>
 
                 </div>
@@ -65,7 +65,13 @@
             <span class="font-bold text-red-500 text-2xl text-shadow-sm mx-3">- {{strtoupper($transaction->amount)}}</span>
             @break
             @case('uplata')
-            <span class="font-bold text-green-600 text-2xl text-shadow-sm mx-3">+ {{strtoupper($transaction->amount)}}</span>
+            <span class="font-bold text-green-700 text-2xl text-shadow-sm mx-3">+ {{strtoupper($transaction->amount)}}</span>
+            @break
+            @case('rezervacija')
+            <span class="font-bold text-blue-700 text-2xl text-shadow-sm mx-3">- {{strtoupper($transaction->amount)}}</span>
+            @break
+            @case('zarada')
+            <span class="font-bold text-neutral-700 text-2xl text-shadow-sm mx-3">- {{strtoupper($transaction->amount)}}</span>
             @break
             @endswitch
         </div>

@@ -8,7 +8,7 @@ Route::get('/skill/jobs',[SkillController::class,'jobs'])->name('skill.jobs')->m
 
 
 //RESOURCE ROUTES =====> Route::resource('skill', SkillController::class);
-Route::get('/skill',[SkillController::class,'index'])->name('skill.index')->middleware('check_roles:administrator,user');
+Route::get('/skill',[SkillController::class,'index'])->name('skill.index');
 Route::post('/skill',[SkillController::class,'store'])->name('skill.store')->middleware('check_roles:administrator,user');
 Route::get('/skill/create',[SkillController::class,'create'])->name('skill.create')->middleware('check_roles:administrator,user');
 Route::get('/skill/{skill}',[SkillController::class,'show'])->name('skill.show')->middleware('check_roles:administrator,user');

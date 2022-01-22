@@ -13,16 +13,25 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
+
         $this->validate($request, [
             'email' => 'required|email|max:255',
             'password' => 'required|min:6|max:20'
         ]);
 
-        if (!auth()->attempt($request->only('email', 'password'),$request->input('remember'))) {
+        $remember_me = $request->has('remember') ? true : false;
+        //dd($remember_me);
+
+        if (!auth()->attempt($request->only('email', 'password'),$remember_me))
+        {
             toast()->danger('Neispravni email ili lozinka')->push();
             return back()->with('error', 'Neispravni podaci');
         }
-        toast()->success('Uspešna prijava')->push();
+        else
+        {
+            toast()->success('Uspešna prijava')->push();
+        }
+
         return redirect(route('page.dashboard'));
     }
 }
