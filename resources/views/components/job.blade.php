@@ -9,13 +9,13 @@
             <div class="text-sm text-white whitespace-nowrap">
                 <div>
                     <span class="font-bold">POSAO : </span>
-                    <span class="font-bold text-yellow-400 text-shadow mr-6">ID#{{$job->id}}</span>
+                    <span class="font-bold text-neutral-600 text-shadow mr-6">ID#{{$job->id}}</span>
                     <span class="font-bold ">POSLODAVAC :</span>
-                    <span class="font-bold text-shadow @auth{{ $job->user_id == auth()->user()->id ? " text-red-500":"text-yellow-400 " }} @endauth">{{$job->user->firstname}} {{$job->user->lastname}}</span>
+                    <span class="font-bold text-shadow @auth{{ $job->user_id == auth()->user()->id ? " text-red-500":"text-neutral-600 " }} @endauth">{{$job->user->firstname}} {{$job->user->lastname}}</span>
                 </div>
                 <div>
                     <span class="font-bold">VEŠTINA :</span>
-                    <span class="font-bold text-yellow-400 text-shadow">{{$job->skills->first()->category->name}} / {{$job->skills->first()->name}}</span>
+                    <span class="font-bold text-neutral-600 text-shadow">{{$job->skills->first()->category->name}} / {{$job->skills->first()->name}}</span>
                 </div>
             </div>
 
@@ -28,28 +28,36 @@
                     <div>
                         <span class="font-bold">STATUS :</span> <span class="bid_status_blue text-shadow">{{$job->status->name}}</span>
                     </div>
-                    <span class="text-yellow-400 font-bold text-sm text-shadow">{{Carbon\Carbon::parse($job->created_at)->diffForHumans()}} ({{$job->created_at}})</span>
+                    <span class="text-neutral-600 font-bold text-sm text-shadow">
+                        {{Carbon\Carbon::parse($job->created_at)->diffForHumans()}} ({{$job->created_at}})
+                    </span>
                     @break
 
                     @case(2)
                     <div>
-                        <span class="font-bold">STATUS :</span> <span class="bid_status_red  text-shadow">{{$job->status->name}}</span>
+                        <span class="font-bold">STATUS :</span> <span class="bid_status_red text-shadow">{{$job->status->name}}</span>
                     </div>
-                    <span class="text-yellow-400 font-bold text-sm text-shadow">{{Carbon\Carbon::parse($job->bid_selected_at)->diffForHumans()}} ({{$job->bid_selected_at}})</span>
+                    <span class="text-neutral-600 font-bold text-sm text-shadow">
+                        {{Carbon\Carbon::parse($job->bid_selected_at)->diffForHumans()}} ({{$job->bid_selected_at}})
+                    </span>
                     @break
 
                     @case(3)
                     <div>
                         <span class="font-bold">STATUS :</span> <span class="bid_status_green text-shadow">{{$job->status->name}}</span>
                     </div>
-                    <span class="text-yellow-400 font-bold text-sm text-shadow">{{Carbon\Carbon::parse($job->work_recieved_at)->diffForHumans()}} ({{$job->work_recieved_at}})</span>
+                    <span class="text-neutral-600 font-bold text-sm text-shadow">
+                        {{Carbon\Carbon::parse($job->work_recieved_at)->diffForHumans()}} ({{$job->work_recieved_at}})
+                    </span>
                     @break
 
                     @case(4)
                     <div>
                         <span class="font-bold">STATUS :</span> <span class="bid_status_black text-shadow">{{$job->status->name}}</span>
                     </div>
-                    <span class="text-yellow-400 font-bold text-sm text-shadow">{{Carbon\Carbon::parse($job->work_accepted_at)->diffForHumans()}} ({{$job->work_accepted_at}})</span>
+                    <span class="text-neutral-600 font-bold text-sm text-shadow">
+                        {{Carbon\Carbon::parse($job->work_accepted_at)->diffForHumans()}} ({{$job->work_accepted_at}})
+                    </span>
                     @break
                     @endswitch
                 </div>
@@ -90,12 +98,12 @@
                 <div class="sm:flex">
                     <div class="text-left">
                         <span class="font-bold">VREDNOST POSLA : </span>
-                        <span class="mr-6 font-bold text-yellow-400 text-shadow">{{$job->reward}}€</span>
+                        <span class="mr-6 font-bold text-neutral-600 text-shadow">{{$job->reward}}€</span>
                     </div>
 
                     <div class="text-left">
                         <span class="font-bold">OČEKIVANI ROK :</span>
-                        <span class="font-bold text-yellow-400 text-shadow">
+                        <span class="font-bold text-neutral-600 text-shadow">
                             @if ($job->days > 1)
                             {{$job->days}} dana
                             @else

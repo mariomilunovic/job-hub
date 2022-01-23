@@ -15,7 +15,7 @@
 
         @foreach($category->skills as $skill)
 
-        @if($user->hasSkill($skill->name))
+        @if($user->hasSkill($skill))
         <x-skill :skill="$skill"/>
         @endif
 

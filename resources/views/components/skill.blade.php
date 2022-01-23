@@ -19,7 +19,7 @@
 
 
                     @auth
-                    @if(auth()->user()->hasSkill($skill->name))
+                    @if(auth()->user()->hasSkill($skill))
 
                     <div class="px-2 py-1 mx-4 text-xs font-bold  text-red-100 bg-red-600 rounded-full">
                         NIVO :  {{auth()->user()->skills->where('id',$skill->id)->first()->pivot->points}}

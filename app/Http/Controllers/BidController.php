@@ -211,12 +211,30 @@ class BidController extends Controller
         $bid->bidstatus_id = 4;
         $bid->save();
 
+        // update job
         $job = $bid->job;
         $job->status_id = 4;
         $job->work_accepted_at = now();
         $job->save();
 
+        // add skill point to bid owner
+        foreach($job->skills as $skill)
+        {
+            $bid->user->addSkill($skill);
+        }
+
+
         return redirect(route('job.bids',$job));
+
+        // Query example
+        // public function updateOrderedQuantity($quantity, $orderId, $productId, $attribute)
+        // {
+        //     $query = DB::table('order_product')
+        //         ->where('order_id', $orderId)
+        //         ->where('product_id', $productId)
+        //         ->where('attribute', $attribute)
+        //         ->update(['quantity' => $quantity]);
+        // }
 
     }
 

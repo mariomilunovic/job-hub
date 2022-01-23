@@ -16,30 +16,30 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $roleAdministrator = Role::where('name','administrator')->first();
-        $roleSandardUser = Role::where('name','user')->first();
+        $role_administrator = Role::where('name','administrator')->first();
+        $role_user = Role::where('name','user')->first();
 
 
         // administrators 1
-        $userAdministrator = User::create([
+        $administrator = User::create([
             'firstname'=>'Marko',
             'lastname'=>'Marković',
             'email'=>'marko@safemail.com',
             'password'=>Hash::make('123123'),
             'balance'=>1000
         ]);
-        $userAdministrator->roles()->attach($roleAdministrator);
+        $administrator->roles()->attach($role_administrator);
 
 
         // administrator 2
-        $userAdministrator = User::create([
+        $administrator = User::create([
             'firstname'=>'Petar',
             'lastname'=>'Petrović',
             'email'=>'petar@safemail.com',
             'password'=>Hash::make('123123'),
             'balance'=>1000
         ]);
-        $userAdministrator->roles()->attach($roleAdministrator);
+        $administrator->roles()->attach($role_administrator);
 
 
         // user 1
@@ -50,7 +50,7 @@ class UserSeeder extends Seeder
             'password'=>Hash::make('123123'),
             'balance'=>1000
         ]);
-        $userStandard->roles()->attach($roleSandardUser);
+        $userStandard->roles()->attach($role_user);
 
 
         // user 2
@@ -61,13 +61,13 @@ class UserSeeder extends Seeder
             'password'=>Hash::make('123123'),
             'balance'=>1000
         ]);
-        $userStandard->roles()->attach($roleSandardUser);
+        $userStandard->roles()->attach($role_user);
 
 
         // more users
         for ($i=1;$i<=10;$i++) {
             $userStandard = User::factory()->create();
-            $userStandard->roles()->attach($roleSandardUser);
+            $userStandard->roles()->attach($role_user);
         }
     }
 

@@ -15,7 +15,7 @@
     <div class="card flex-col p-3 mb-3  ">
         <x-job :job="$job"/>
 
-        @foreach($job->bids as $bid)
+        @foreach($job->bids()->orderBy('created_at','desc')->get() as $bid)
         <div class="mb-3">
             <x-bid :bid="$bid"/>
         </div>

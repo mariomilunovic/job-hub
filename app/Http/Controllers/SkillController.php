@@ -52,6 +52,30 @@ class SkillController extends Controller
         ->with('allCategories',$allCategories);
     }
 
+    public function edit(Skill $skill)
+    {
+        $allCategories = Category::all();
+        return view ('models.skill.edit')
+        ->with('skill',$skill)
+        ->with('allCategories',$allCategories);
+    }
+
+    public function update(Skill $skill)
+    {
+        request()->validate([
+            'name' => 'required|max:255',
+            'category_id' => 'required'
+        ]);
+
+        $skill->name = request('name');
+        $skill->category_id = request('category_id');
+
+        $skill->save();
+        toast()->success('Uspešna izmena veštine')->push();
+        return redirect(route('skill.index'));
+
+    }
+
 
     public function store(Request $request)
     {
@@ -62,7 +86,7 @@ class SkillController extends Controller
     }
 
 
-   
+
 
 
     public function validateSkill()

@@ -58,24 +58,31 @@
 
             </div>
         </div>
+        <div class="flex-col text-right">
+            <div>
+                @switch($transaction->transactiontype->name)
+                @case('isplata')
+                <span class="font-bold text-red-500 text-2xl text-shadow">- {{strtoupper($transaction->amount)}}</span>
+                @break
+                @case('uplata')
+                <span class="font-bold text-green-700 text-2xl text-shadow">+ {{strtoupper($transaction->amount)}}</span>
+                @break
+                @case('rezervacija')
+                <span class="font-bold text-blue-700 text-2xl text-shadow">
+                    {{$transaction->to_user_id == auth()->user()->id ? '':'- '.strtoupper($transaction->amount)}}
+                </span>
+                @break
+                @case('plata')
+                <span class="font-bold text-2xl text-shadow {{$transaction->to_user_id == auth()->user()->id ? 'text-green-700':'text-red-500'}}">
+                    {{$transaction->to_user_id == auth()->user()->id ? '+':'-'}} {{strtoupper($transaction->amount)}}
+                </span>
 
-        <div>
-            @switch($transaction->transactiontype->name)
-            @case('isplata')
-            <span class="font-bold text-red-500 text-2xl text-shadow-sm mx-3">- {{strtoupper($transaction->amount)}}</span>
-            @break
-            @case('uplata')
-            <span class="font-bold text-green-700 text-2xl text-shadow-sm mx-3">+ {{strtoupper($transaction->amount)}}</span>
-            @break
-            @case('rezervacija')
-            <span class="font-bold text-blue-700 text-2xl text-shadow-sm mx-3">- {{strtoupper($transaction->amount)}}</span>
-            @break
-            @case('zarada')
-            <span class="font-bold {{$transaction->to_user_id == auth()->user()->id ? 'text-green-700':'text-red-500'}} text-2xl text-shadow-sm mx-3">
-                {{$transaction->to_user_id == auth()->user()->id ? '+':'-'}} {{strtoupper($transaction->amount)}}
-            </span>
-            @break
-            @endswitch
+                @break
+                @endswitch
+            </div>
+            <div class="text-neutral-600 font-bold text-xs text-shadow">
+                {{$transaction->created_at}}
+            </div>
         </div>
 
     </div>

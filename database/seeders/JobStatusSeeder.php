@@ -16,7 +16,7 @@ class JobStatusSeeder extends Seeder
     {
         JobStatus::create(['name'=>'Prikuplja ponude']);
         JobStatus::create(['name'=>'Radovi u toku']);
-        JobStatus::create(['name'=>'Radovi isporučeni']);
+        JobStatus::create(['name'=>'Radovi primljeni']);
         JobStatus::create(['name'=>'Radovi prihvaćeni']);
     }
 }

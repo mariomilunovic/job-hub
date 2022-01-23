@@ -9,13 +9,13 @@
             <div class="text-sm text-white">
                 <div>
                     <span class="font-bold">PONUDA :</span>
-                    <span class="font-bold text-neutral-700 text-shadow mr-3">ID#{{$bid->id}}</span>
+                    <span class="font-bold text-neutral-600 text-shadow mr-3">ID#{{$bid->id}}</span>
                     <span class="font-bold">POSAO :</span>
-                    <span class="font-bold text-neutral-700 text-shadow">ID#{{$bid->job->id}}</span>
+                    <span class="font-bold text-neutral-600 text-shadow">ID#{{$bid->job->id}}</span>
                 </div>
                 <div>
                     <span class="font-bold">KANDIDAT :</span>
-                    <span class="font-bold text-shadow {{ $bid->user_id == auth()->user()->id ? " text-red-500":"text-neutral-700 " }}">{{$bid->user->firstname}} {{$bid->user->lastname}}</span>
+                    <span class="font-bold text-shadow {{ $bid->user_id == auth()->user()->id ? " text-red-500":"text-neutral-600 " }}">{{$bid->user->firstname}} {{$bid->user->lastname}}</span>
 
                 </div>
 
@@ -30,7 +30,9 @@
                     <div>
                         <span class="font-bold">STATUS :</span> <span class="bid_status_blue text-shadow">{{$bid->bidstatus->name}}</span>
                     </div>
-                    <span class="font-bold text-neutral-700 text-shadow mt-2">{{$bid->created_at}}</span>
+                    <span class="font-bold text-neutral-600 text-shadow mt-2">
+                        {{Carbon\Carbon::parse($bid->created_at)->diffForHumans()}} ({{$bid->created_at}})
+                    </span>
                     @break
 
                     @case(2)
@@ -38,7 +40,9 @@
                     <div>
                         <span class="font-bold">STATUS :</span> <span class="bid_status_red text-shadow">{{$bid->bidstatus->name}}</span>
                     </div>
-                    <span class="font-bold text-neutral-700 text-shadow mt-2">{{$bid->bid_selected_at}}</span>
+                    <span class="font-bold text-neutral-600 text-shadow mt-2">
+                        {{Carbon\Carbon::parse($bid->selected_at)->diffForHumans()}} ({{$bid->selected_at}})
+                    </span>
                     @break
 
                     @case(3)
@@ -46,7 +50,9 @@
                     <div>
                         <span class="font-bold">STATUS :</span> <span class="bid_status_green text-shadow">{{$bid->bidstatus->name}}</span>
                     </div>
-                    <span class="font-bold text-neutral-700 text-shadow mt-2">{{$bid->work_delievered_at}}</span>
+                    <span class="font-bold text-neutral-600 text-shadow mt-2">
+                        {{Carbon\Carbon::parse($bid->delievered_at)->diffForHumans()}} ({{$bid->delievered_at}})
+                    </span>
                     @break
 
                     @case(4)
@@ -54,7 +60,9 @@
                     <div>
                         <span class="font-bold">STATUS :</span> <span class="bid_status_black text-shadow">{{$bid->bidstatus->name}}</span>
                     </div>
-                    <span class="font-bold text-neutral-700 text-shadow mt-2">{{$bid->work_accepted_at}}</span>
+                    <span class="font-bold text-neutral-600 text-shadow mt-2">
+                        {{Carbon\Carbon::parse($bid->accepted_at)->diffForHumans()}} ({{$bid->accepted_at}})
+                    </span>
                     @break
                     @endswitch
                 </div>
@@ -93,12 +101,12 @@
                 <div class="sm:flex">
                     <div>
                         <span class="font-bold">VREDNOST PONUDE : </span>
-                        <span class="mr-6 font-bold text-neutral-700 text-shadow">{{$bid->offer}}€</span>
+                        <span class="mr-6 font-bold text-neutral-600 text-shadow">{{$bid->offer}}€</span>
                     </div>
 
                     <div>
                         <span class="font-bold">PONUĐENI ROK :</span>
-                        <span class="font-bold text-neutral-700 text-shadow">
+                        <span class="font-bold text-neutral-600 text-shadow">
                             @if ($bid->days > 1)
                             {{$bid->days}} dana
                             @else

@@ -18,7 +18,7 @@ class JobFactory extends Factory
             'days' => $this->faker->randomDigitNot(0),
             'reward' =>  $this->faker->randomDigitNot(0)*10,
             'rating' => $this->faker->randomDigitNot(0),
-            'user_id' => random_int(3,12),
+            'user_id' => random_int(1,14),
             'status_id' => 1,
         ];
     }

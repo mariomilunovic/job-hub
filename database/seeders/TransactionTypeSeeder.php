@@ -17,6 +17,6 @@ class TransactionTypeSeeder extends Seeder
         TransactionType::create(['name'=>'uplata']);
         TransactionType::create(['name'=>'isplata']);
         TransactionType::create(['name'=>'rezervacija']);
-        TransactionType::create(['name'=>'zarada']);
+        TransactionType::create(['name'=>'plata']);
     }
 }

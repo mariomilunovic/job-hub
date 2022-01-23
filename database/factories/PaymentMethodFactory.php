@@ -20,7 +20,7 @@ class PaymentMethodFactory extends Factory
             'exp_month' => $this->faker->month,
             'exp_year' => $this->faker->numberBetween($min = 2022, $max = 2027),
             'cvc' => $this->faker->numberBetween($min = 000, $max = 999),
-            'user_id'  => $this->faker->numberBetween($min = 1, $max = 10),
+            'user_id'  => $this->faker->numberBetween($min = 1, $max = 14),
         ];
     }
 }

@@ -19,7 +19,6 @@ class SkillSeeder extends Seeder
         $randomUser1 = User::where('id', random_int(1, 5))->get();
         $randomUser2 = User::where('id', random_int(6, 13))->get();
         $newSkill->users()->attach($randomUser1, ['points' => 5]);
-
         $newSkill->users()->attach($randomUser2, ['points' => 2]);
 
         $newSkill = Skill::create(['name' => 'PHP','category_id' => 1]);

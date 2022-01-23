@@ -138,9 +138,9 @@ class User extends Authenticatable
     }
 
     // funkcije za middleware za proveru rola
-    public function hasRole($role): bool
+    public function hasRole($roleName): bool
     {
-        if($this->roles()->where('name',$role)->first())
+        if($this->roles()->where('name',$roleName)->first())
         {
             return true;
         }
@@ -170,10 +170,30 @@ class User extends Authenticatable
     // da li user poseduje zadati skill
     public function hasSkill($skill): bool
     {
-        if($this->skills()->where('name',$skill)->first())
+        if($this->skills->where('id',$skill->id)->count()>0)
         {
             return true;
         }
         return false;
     }
+
+    // dodavanje skill-a user-u
+    public function addSkill($skill)
+    {
+        if($this->hasSkill($skill))
+        {
+            $skillpoints = $this->skills->where('id',$skill->id)->first()->pivot->points;
+            $skillpoints++;
+            $this->skills()->updateExistingPivot($skill->id,['points'=>$skillpoints]);
+
+        }
+        else
+        {
+            $skillpoints = 1;
+            $this->skills()->attach($skill);
+            $this->skills()->updateExistingPivot($skill->id,['points'=>$skillpoints]);
+        }
+
+    }
+
 }

@@ -15,14 +15,10 @@ class JobSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=1;$i<=10;$i++) {
+        for ($i=1;$i<=20;$i++) {
             $newJob = Job::factory()->create();
-            $randomSkill1 = Skill::where('id', random_int(1, 5))->get();
-            $newJob->skills()->attach($randomSkill1);
-
-            $randomSkill2 = Skill::where('id', random_int(6, 10))->get();
-            $newJob->skills()->attach($randomSkill2);
-
+            $randomSkill = Skill::where('id', random_int(1, 19))->get();
+            $newJob->skills()->attach($randomSkill);
         }
     }
 }

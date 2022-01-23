@@ -21,7 +21,7 @@
                         @foreach($allCategories as $category )
                         @foreach($category->skills as $skill )
 
-                        <option value="{{$skill->id}}" {{$skill->id == $job->skills()->first()->id ?'selected':''}}) }}>{{$category->name}}/{{$skill->name}}</option>
+                        <option value="{{$skill->id}}" {{$skill->id == $job->skills()->first()->id ?'selected':''}}>{{$category->name}}/{{$skill->name}}</option>
 
                         @endforeach
                         @endforeach
