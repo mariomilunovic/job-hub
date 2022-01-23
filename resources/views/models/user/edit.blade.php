@@ -27,9 +27,8 @@
 
         <label for="role_id" class="label">Uloga</label>
         <select id="role_id" name="role_id" class="input">
-            <option value="">Izaberite ulogu</option>
             @foreach($roles as $role )
-            <option value="{{$role->id}}"{{$role->id == $user->roles()->first()->id ?'selected':''}}>{{$role->name}}</option>
+            <option value="{{$role->id}}" {{$role->id == $user->roles()->first()->id ?'selected':''}}>{{$role->name}}</option>
             @endforeach
         </select>
         <div class="error">@error('role_id'){{ $message }}@enderror</div>

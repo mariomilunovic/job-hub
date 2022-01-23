@@ -139,13 +139,11 @@ class UserController extends Controller
         $user->lastname = request('lastname');
         $user->password = request('password');
 
-        $role = Role::where('id',$user->role_id)->first();
-        $user->roles()->detach($role);
+        $oldrole = Role::where('id',$user->role_id)->first();
+        $user->roles()->detach($oldrole);
 
-
-
-        $role = Role::where('id',request('role_id'))->first();
-        $user->roles()->attach($role);
+        $newrole = Role::where('id',request('role_id'))->first();
+        $user->roles()->attach($newrole);
 
         $user->save();
         toast()->success('Uspešna izmena podataka korisnika')->push();

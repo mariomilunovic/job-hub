@@ -71,7 +71,9 @@
             <span class="font-bold text-blue-700 text-2xl text-shadow-sm mx-3">- {{strtoupper($transaction->amount)}}</span>
             @break
             @case('zarada')
-            <span class="font-bold text-neutral-700 text-2xl text-shadow-sm mx-3">- {{strtoupper($transaction->amount)}}</span>
+            <span class="font-bold {{$transaction->to_user_id == auth()->user()->id ? 'text-green-700':'text-red-500'}} text-2xl text-shadow-sm mx-3">
+                {{$transaction->to_user_id == auth()->user()->id ? '+':'-'}} {{strtoupper($transaction->amount)}}
+            </span>
             @break
             @endswitch
         </div>

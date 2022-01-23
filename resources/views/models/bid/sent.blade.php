@@ -6,12 +6,12 @@
 <div class="flex-col mb-3 p-3">
 
     @if($bids->count() == 0)
-    <x-title title="Nemate unetih ponuda"/>
+    <x-title title="Nemate ni jednu poslatu ponudu"/>
     <a href="{{route('job.index')}}" class="btn-blue-medium mt-3">Pogledajte objavljene poslove</a>
 
     @else
 
-    <x-title title="Prikaz mojih ponuda"/>
+    <x-title title="Prikaz svih poslatih ponuda"/>
 
     @foreach ($bids as $bid)
     <div class="card flex-col p-3 mb-3  ">

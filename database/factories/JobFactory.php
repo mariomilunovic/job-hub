@@ -19,7 +19,7 @@ class JobFactory extends Factory
             'reward' =>  $this->faker->randomDigitNot(0)*10,
             'rating' => $this->faker->randomDigitNot(0),
             'user_id' => random_int(3,12),
-            'status_id' => random_int(1,4),
+            'status_id' => 1,
         ];
     }
 }

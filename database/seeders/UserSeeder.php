@@ -40,13 +40,24 @@ class UserSeeder extends Seeder
             'balance'=>1000
         ]);
         $userAdministrator->roles()->attach($roleAdministrator);
-        
+
 
         // user 1
         $userStandard = User::create([
             'firstname'=>'Kosta',
             'lastname'=>'Kostić',
             'email'=>'kosta@safemail.com',
+            'password'=>Hash::make('123123'),
+            'balance'=>1000
+        ]);
+        $userStandard->roles()->attach($roleSandardUser);
+
+
+        // user 2
+        $userStandard = User::create([
+            'firstname'=>'Ana',
+            'lastname'=>'Antić',
+            'email'=>'ana@safemail.com',
             'password'=>Hash::make('123123'),
             'balance'=>1000
         ]);

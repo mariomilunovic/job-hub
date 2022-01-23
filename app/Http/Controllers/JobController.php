@@ -59,6 +59,43 @@ class JobController extends Controller
         return view('models.job.create')
         ->with('allCategories',$allCategories);
 
+
+    }
+
+    public function edit (Job $job)
+    {
+        $allCategories = Category::all();
+
+        return view('models.job.edit')
+        ->with('allCategories',$allCategories)
+        ->with('job',$job);
+
+    }
+
+    public function update (Job $job)
+    {
+        request()->validate([
+            'description' => 'required',
+            'reward' => 'required|numeric|gt:0',
+            'days' => 'required|numeric|gt:0',
+            'skill_id' => 'required',
+        ]);
+
+        $job->description = request('description');
+        $job->reward = request('reward');
+        $job->days = request('days');
+
+        $oldskill = Skill::where('id',$job->skill_id)->first();
+        $job->skills()->detach($oldskill);
+
+        $newskill = Skill::where('id',request('skill_id'))->first();
+        $job->skills()->attach($newskill);
+
+        $job->save();
+
+        toast()->success('Uspešna izmena podataka o poslu')->push();
+        return redirect(route('job.show',$job));
+
     }
 
     public function store(Request $request)

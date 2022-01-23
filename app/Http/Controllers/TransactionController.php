@@ -16,7 +16,9 @@ class TransactionController extends Controller
 
     public function user(User $user)
     {
-        $myTransactions = $user->transactions()->latest()->paginate(3);
+        // $myTransactions = $user->transactions()->latest()->paginate(3);
+        $myTransactions = Transaction::where('from_user_id','=',$user->id)
+        ->orwhere('to_user_id','=',$user->id)->latest()->paginate(3);
         return view('models.transaction.user')
         ->with('myTransactions',$myTransactions);
     }
@@ -35,7 +37,7 @@ class TransactionController extends Controller
         ->with('transaction',$transaction);
     }
 
-    
+
 
 
 

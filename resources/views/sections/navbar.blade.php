@@ -48,7 +48,9 @@
                 </a>
 
                 <div x-show="expanded_ponude" x-collapse x-cloak class="text-sm  submenu_item">
-                    <a class="submenu_text" href="{{route('bid.index')}}">Sve ponude</a>
+                    @if(auth()->user()->hasRole('administrator'))
+                    <a class="submenu_text text-orange-400" href="{{route('bid.index')}}">Sve ponude</a>
+                    @endif
                     <a class="submenu_text" href="{{route('bid.sent',auth()->user())}}">Poslate ponude</a>
                     <a class="submenu_text" href="{{route('bid.recieved',auth()->user())}}">Primljene ponude</a>
                 </div>
@@ -68,7 +70,9 @@
                     <a class="submenu_text" href="{{route('skill.index')}}">Sve veštine</a>
                     @if(auth()->user())
                     <a class="submenu_text" href="{{route('skill.user',auth()->user())}}">Moje veštine</a>
-                    <a class="submenu_text" href="{{route('skill.create')}}">Unesi novu</a>
+                    @if(auth()->user()->hasRole('administrator'))
+                    <a class="submenu_text text-orange-400" href="{{route('skill.create')}}">Unesi novu</a>
+                    @endif
                     @endif
                 </div>
             </div>
@@ -95,7 +99,7 @@
 
 
                     @if(auth()->user()->hasRole('administrator'))
-                    <a class="submenu_text" href="{{route('transaction.index')}}">Sve transakcije</a>
+                    <a class="submenu_text text-orange-400" href="{{route('transaction.index')}}">Sve transakcije</a>
                     @endif
 
 
@@ -106,6 +110,7 @@
 
             {{-- KORISNICI --}}
             @auth
+            @if(auth()->user()->hasRole('administrator'))
             <div x-data="{ expanded_korisnici: $persist(false) }">
                 <a @click="expanded_korisnici = !expanded_korisnici" class="flex  py-2 menu_item" href="#">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -116,11 +121,12 @@
                 </a>
 
                 <div x-show="expanded_korisnici" x-collapse x-cloak class="text-sm  submenu_item">
-                    <a class="submenu_text" href="{{route('user.index')}}">Svi korisnici</a>
-                    <a class="submenu_text" href="{{route('user.create')}}">Unesi novog</a>
-                    <a class="submenu_text" href="{{route('user.search')}}">Pretraga</a>
+                    <a class="submenu_text text-orange-400" href="{{route('user.index')}}">Svi korisnici</a>
+                    <a class="submenu_text text-orange-400" href="{{route('user.create')}}">Unesi novog</a>
+                    <a class="submenu_text text-orange-400" href="{{route('user.search')}}">Pretraga</a>
                 </div>
             </div>
+            @endif
             @endauth
 
         </nav>

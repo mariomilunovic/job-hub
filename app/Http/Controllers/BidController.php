@@ -70,6 +70,31 @@ class BidController extends Controller
         return redirect(route('job.bids',$job));
 
     }
+    public function edit (Bid $bid)
+    {
+        return view('models.bid.edit')
+        ->with('bid',$bid)
+        ->with('job',$bid->job->first());
+    }
+
+    public function update (Bid $bid)
+    {
+        request()->validate([
+            'message' => 'required',
+            'offer' => 'required|numeric|gt:0',
+            'days' => 'required|numeric|gt:0',
+        ]);
+
+        $bid->message = request('message');
+        $bid->offer = request('offer');
+        $bid->days = request('days');
+
+        $bid->save();
+
+        toast()->success('Uspešna izmena ponude')->push();
+        return redirect(route('bid.show',$bid));
+
+    }
 
     public function index()
     {
@@ -104,9 +129,8 @@ class BidController extends Controller
     public function recieved (User $user)
     {
         $jobs = $user->jobs()->latest()->paginate(3);
-        //$bids  = $user->bids()->latest()->paginate(3);
 
-        dd($jobs);
+        //dd($jobs);
         return view ('models.bid.recieved')
         ->with('jobs',$jobs);
     }

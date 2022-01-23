@@ -28,28 +28,28 @@
                     <div>
                         <span class="font-bold">STATUS :</span> <span class="bid_status_blue text-shadow">{{$job->status->name}}</span>
                     </div>
-                    <span class="text-yellow-400 font-bold text-sm text-shadow">{{$job->created_at}}</span>
+                    <span class="text-yellow-400 font-bold text-sm text-shadow">{{Carbon\Carbon::parse($job->created_at)->diffForHumans()}} ({{$job->created_at}})</span>
                     @break
 
                     @case(2)
                     <div>
                         <span class="font-bold">STATUS :</span> <span class="bid_status_red  text-shadow">{{$job->status->name}}</span>
                     </div>
-                    <span class="text-yellow-400 font-bold text-sm  text-shadow">{{$job->bid_selected_at}}</span>
+                    <span class="text-yellow-400 font-bold text-sm text-shadow">{{Carbon\Carbon::parse($job->bid_selected_at)->diffForHumans()}} ({{$job->bid_selected_at}})</span>
                     @break
 
                     @case(3)
                     <div>
                         <span class="font-bold">STATUS :</span> <span class="bid_status_green text-shadow">{{$job->status->name}}</span>
                     </div>
-                    <span class="text-yellow-400 font-bold text-sm text-shadow">{{$job->work_recieved_at}}</span>
+                    <span class="text-yellow-400 font-bold text-sm text-shadow">{{Carbon\Carbon::parse($job->work_recieved_at)->diffForHumans()}} ({{$job->work_recieved_at}})</span>
                     @break
 
                     @case(4)
                     <div>
                         <span class="font-bold">STATUS :</span> <span class="bid_status_black text-shadow">{{$job->status->name}}</span>
                     </div>
-                    <span class="text-yellow-400 font-bold text-sm text-shadow">{{$job->work_accepted_at}}</span>
+                    <span class="text-yellow-400 font-bold text-sm text-shadow">{{Carbon\Carbon::parse($job->work_accepted_at)->diffForHumans()}} ({{$job->work_accepted_at}})</span>
                     @break
                     @endswitch
                 </div>
@@ -151,7 +151,7 @@
 
             <div>
 
-                @if($job->user_id == auth()->user()->id && $job->status_id == 1)
+                @if($job->user_id == auth()->user()->id && $job->bids->count()==0)
                 <a class="btn-green-small mr-2" href="{{route('job.edit',$job)}}">Izmeni</a>
                 <a class="btn-red-small" href="{{route('job.destroy',$job)}}">Obriši</a>
 

@@ -17,7 +17,7 @@ class BidFactory extends Factory
             'offer' =>  $this->faker->randomDigitNot(0)*10,
             'days' => $this->faker->randomDigitNot(0),
             'message' =>  $this->faker->text(400),
-            'bidstatus_id' => random_int(1,3),
+            'bidstatus_id' => 1,
             'user_id' => random_int(3,12),
             'job_id' => random_int(1,10),
         ];

@@ -119,24 +119,28 @@
         <div x-show="expanded_menu" x-collapse x-cloak class="flex justify-between my-2">
 
             <div>
-                {{-- korisnik ne može da izabere svoju ponudu --}}
-                @if($bid->user_id != auth()->user()->id)
-                @if($bid->bidstatus->id == 1)
+
+                @if($bid->user_id != auth()->user()->id) {{-- korisnik ne može da izabere svoju ponudu --}}
+                @if($bid->bidstatus->id == 1) {{-- može da izabere samo ponudu koja ima status 'kreirana' --}}
+                @if($bid->job->status_id == 1) {{-- posao mora da ima status 'prikuplja ponude' --}}
                 <a class="btn-blue-xs" href="{{route('bid.select',$bid)}}">Izaberi</a>
                 @endif
                 @endif
+                @endif
 
-                {{-- korisnik može da isporuči samo svoju ponudu --}}
-                @if($bid->user_id == auth()->user()->id)
-                @if($bid->bidstatus->id == 2)
+                @if($bid->user_id == auth()->user()->id) {{-- korisnik može da isporuči samo svoju ponudu --}}
+                @if($bid->bidstatus->id == 2) {{-- može da isporuči samo ponudu koja ima status 'izabrana' --}}
+                @if($bid->job->status_id == 2) {{-- posao mora da ima status 'čeka radove' --}}
                 <a class="btn-purple-xs" href="{{route('bid.deliver',$bid)}}">Isporuči</a>
                 @endif
                 @endif
-
-                @if($bid->bidstatus->id == 3)
-                <a class="btn-gray-xs" href="{{route('bid.accept',$bid)}}">Prihvati radove</a>
                 @endif
 
+                @if($bid->bidstatus->id == 3) {{-- može da prihvati radove  samo za ponudu koja ima status 'radovi isporučeni' --}}
+                @if($bid->job->status_id == 3) {{-- posao mora da ima status 'Radovi isporučeni' --}}
+                <a class="btn-gray-xs" href="{{route('bid.accept',$bid)}}">Prihvati radove</a>
+                @endif
+                @endif
             </div>
             <div>
                 @if($bid->user_id == auth()->user()->id && $bid->bidstatus_id == 1)
