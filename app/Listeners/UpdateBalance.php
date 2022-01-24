@@ -28,12 +28,12 @@ class UpdateBalance
     {
         $payer = $event->transaction->from_user;
         $recipient = $event->transaction->to_user;
-        $transaction_type = $event->transaction->transactiontype->name;
+        $transaction_type_id = $event->transaction->transactiontype->id;
         $amount = $event->transaction->amount;
 
         //dd($event->transaction->transactiontype);
 
-        if($transaction_type  == "uplata")
+        if($transaction_type_id  == 1) //uplata
         {
             $recipient->balance += $amount;
             $recipient->save();
@@ -41,7 +41,7 @@ class UpdateBalance
             toast()->success('Uspešna uplata. Novo stanje'.' '.$recipient->balance)->push();
         }
 
-        if($transaction_type  == "isplata")
+        if($transaction_type_id  == 2) //isplata
         {
             $recipient->balance -= $amount;
             $recipient->save();
@@ -49,7 +49,7 @@ class UpdateBalance
             toast()->success('Uspešna isplata. Novo stanje'.' '.$recipient->balance)->push();
         }
 
-        if($transaction_type  == "rezervacija")
+        if($transaction_type_id  == 3) //rezervacija
         {
             $payer->balance -= $amount;
             $payer->save();
@@ -57,7 +57,7 @@ class UpdateBalance
             toast()->success('Ponuda je izabrana. Rezervisana su sredstva u vrednosti izabrane ponude. Raspoloživo stanje :'.' '.$payer->balance)->push();
         }
 
-        if($transaction_type  == "zarada")
+        if($transaction_type_id  == 4) //plata
         {
             $recipient->balance += $amount;
             $recipient->save();
