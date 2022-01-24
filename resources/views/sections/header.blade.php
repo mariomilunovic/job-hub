@@ -2,7 +2,7 @@
 
     {{-- left side --}}
     <div id="Logo" class="my-2 mx-4 justify-content-center">
-        <a href="{{Route('page.home')}}">
+        <a href="{{Route('page.dashboard')}}">
             <img src="/images/ui/logo.png" alt="{{config('app.name','job-hub')}}" class="w-36 sm:w-52">
         </a>
     </div>
@@ -10,10 +10,10 @@
     {{-- right side --}}
     <div class="flex">
 
-        <div>
+        <div class="flex">
             @guest
             <a class="btn-amber-small mr-3" href="{{route('register.form')}}">Registracija</a>
-            <a class="btn-green-small mr-6" href="{{route('login.form')}}">Prijava</a>
+            <a class="btn-green-small mr-3" href="{{route('login.form')}}">Prijava</a>
             @endguest
 
         </div>

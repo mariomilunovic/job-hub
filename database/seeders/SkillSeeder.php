@@ -108,13 +108,13 @@ class SkillSeeder extends Seeder
         $newSkill = Skill::create(['name' => 'Japanski jezik','category_id' => 5]);
         $randomUser1 = User::where('id', random_int(1, 5))->get();
         $randomUser2 = User::where('id', random_int(6, 13))->get();
-        $newSkill->users()->attach($randomUser1, ['points' => 0]);
+        $newSkill->users()->attach($randomUser1, ['points' => 1]);
         $newSkill->users()->attach($randomUser2, ['points' => 2]);
 
         $newSkill = Skill::create(['name' => 'Hemija','category_id' => 5]);
         $randomUser1 = User::where('id', random_int(1, 5))->get();
         $randomUser2 = User::where('id', random_int(6, 13))->get();
-        $newSkill->users()->attach($randomUser1, ['points' => 0]);
+        $newSkill->users()->attach($randomUser1, ['points' => 1]);
         $newSkill->users()->attach($randomUser2, ['points' => 2]);
 
         $newSkill = Skill::create(['name' => 'Matematika','category_id' => 5]);
@@ -127,6 +127,6 @@ class SkillSeeder extends Seeder
         $randomUser1 = User::where('id', random_int(1, 5))->get();
         $randomUser2 = User::where('id', random_int(6, 13))->get();
         $newSkill->users()->attach($randomUser1, ['points' => 2]);
-        $newSkill->users()->attach($randomUser2, ['points' => 0]);
+        $newSkill->users()->attach($randomUser2, ['points' => 1]);
     }
 }

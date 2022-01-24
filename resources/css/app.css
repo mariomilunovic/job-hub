@@ -34,7 +34,7 @@
 
 /* CSS Grid page layout */
 /* Layout for large screens */
-@media screen and (min-width: 760px)
+@media screen and (min-width: 1080px)
 {
     #container
     {
@@ -53,7 +53,7 @@
 }
 
 /* Layout for small screens */
-@media screen and (max-width: 760px)
+@media screen and (max-width: 1080px)
 {
     #container
     {

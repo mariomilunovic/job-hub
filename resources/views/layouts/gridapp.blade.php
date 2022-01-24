@@ -39,17 +39,17 @@
 
     <section id="container" class="h-screen">
 
-        <header class="card flex-row mt-3 bg-neutral-600 max-h-32 gradient_black">@include('sections.header')</header>
+        <header class="card flex-row mt-3 bg-neutral-700 max-h-32">@include('sections.header')</header>
 
         <nav class="card flex-col  bg-blue-600">@include('sections.navbar')</nav>
 
         <main class="card relative flex place-content-center bg-neutral-300 overflow-y-auto svg-dots">
             <div class="absolute right-0 top-0"><livewire:toasts/></div>
-            <div class="py-4 sm:w-800">@yield('content')</div>
+            <div class="p-4 sm:w-800">@yield('content')</div>
 
         </main>
 
-        <footer class="card flex-row items-center justify-center mb-3 bg-neutral-600 max-h-32 gradient_black">@include('sections.footer')</footer>
+        <footer class="card flex-row items-center justify-center mb-3 bg-neutral-800 max-h-32">@include('sections.footer')</footer>
 
     </section>
 

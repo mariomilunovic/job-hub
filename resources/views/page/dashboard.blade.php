@@ -6,7 +6,7 @@
     <hr class="mb-6 border-2 border-gray-500 rounded drop-shadow">
 
     <div class="flex gap-3">
-        <div class="card text-white font-bold bg-blue-400 w-64 h-64 p-3 mb-3">Poslovi</div>
+        <livewire:job.dashboard />
         <div class="card text-white font-bold bg-yellow-400 w-64 h-64 p-3 mb-3">Ponude</div>
         <div class="card text-white font-bold bg-red-400 w-64 h-64 p-3 mb-3">Veštine</div>
         <div class="card text-white font-bold bg-green-400 w-64 h-64 p-3 mb-3">Transakcije</div>
