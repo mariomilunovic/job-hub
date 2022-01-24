@@ -3,7 +3,7 @@
 @section('content')
 
 
-<div class="flex-col mb-3 p-3">
+<div class="flex-col mb-3 pb-3">
 
     @if($bids->count() == 0)
     <x-title title="Nemate ni jednu poslatu ponudu"/>

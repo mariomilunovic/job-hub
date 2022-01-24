@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="flex-col">
+<div class="flex-col pb-3 mb-3">
 
     <form action="{{route('withdraw.store')}}" method="post" autocomplete="off">
 
@@ -12,7 +12,7 @@
 
         <div>
             <span class="mt-4 font-bold text-neutral-500">Raspoloživa sredstva</span>
-            <div class="font-bold text-white text-3xl ">
+            <div class="font-bold text-white text-3xl text-shadow-md">
                 {{auth()->user()->balance}} €
             </div>
         </div>

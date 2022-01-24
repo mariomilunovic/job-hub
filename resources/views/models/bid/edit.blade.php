@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="flex-col justify-items-center p-3 w-96 sm:w-800">
+<div class="flex-col pb-3">
 
     <x-title title="Izmena ponude za izabrani posao"/>
 

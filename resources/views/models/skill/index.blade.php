@@ -3,7 +3,7 @@
 @section('content')
 
 
-<div class="flex-col sm:w-600">
+<div class="flex-col md:max-w-fit mb-3">
 
 
     <x-title title="Prikaz svih veština"/>

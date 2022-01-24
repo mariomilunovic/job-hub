@@ -1,7 +1,7 @@
 <div x-data="{ expanded_menu : false }">
 
     {{-- bid card start --}}
-    <div class="card flex-col transition duration-300 bg-orange-400 hover:ring-4 hover:ring-neutral-600 ease-in-out p-3">
+    <div class="card flex-col transition duration-300 sm:w-800 bg-orange-400 hover:ring-4 hover:ring-neutral-600 ease-in-out p-3">
 
         {{-- bid header start --}}
         <div class="sm:flex justify-between mb-1 items-center">
@@ -31,7 +31,9 @@
                         <span class="font-bold">STATUS :</span> <span class="bid_status_blue text-shadow">{{$bid->bidstatus->name}}</span>
                     </div>
                     <span class="font-bold text-neutral-600 text-shadow mt-2">
-                        {{Carbon\Carbon::parse($bid->created_at)->diffForHumans()}} ({{$bid->created_at}})
+                        <span class="font-bold text-white">VREME :</span>
+                        <span>{{Carbon\Carbon::parse($bid->created_at)->diffForHumans()}}</span>
+                        <span class="font-normal text-xs">({{$bid->created_at}})</span>
                     </span>
                     @break
 
@@ -41,7 +43,9 @@
                         <span class="font-bold">STATUS :</span> <span class="bid_status_red text-shadow">{{$bid->bidstatus->name}}</span>
                     </div>
                     <span class="font-bold text-neutral-600 text-shadow mt-2">
-                        {{Carbon\Carbon::parse($bid->selected_at)->diffForHumans()}} ({{$bid->selected_at}})
+                        <span class="font-bold text-white">VREME :</span>
+                        <span>{{Carbon\Carbon::parse($bid->selected_at)->diffForHumans()}}</span>
+                        <span class="font-normal text-xs">({{$bid->selected_at}})</span>
                     </span>
                     @break
 
@@ -51,7 +55,9 @@
                         <span class="font-bold">STATUS :</span> <span class="bid_status_green text-shadow">{{$bid->bidstatus->name}}</span>
                     </div>
                     <span class="font-bold text-neutral-600 text-shadow mt-2">
-                        {{Carbon\Carbon::parse($bid->delievered_at)->diffForHumans()}} ({{$bid->delievered_at}})
+                        <span class="font-bold text-white">VREME :</span>
+                        <span>{{Carbon\Carbon::parse($bid->delievered_at)->diffForHumans()}}</span>
+                        <span class="font-normal text-xs">({{$bid->delievered_at}})</span>
                     </span>
                     @break
 
@@ -61,7 +67,9 @@
                         <span class="font-bold">STATUS :</span> <span class="bid_status_black text-shadow">{{$bid->bidstatus->name}}</span>
                     </div>
                     <span class="font-bold text-neutral-600 text-shadow mt-2">
-                        {{Carbon\Carbon::parse($bid->accepted_at)->diffForHumans()}} ({{$bid->accepted_at}})
+                        <span class="font-bold text-white">VREME :</span>
+                        <span>{{Carbon\Carbon::parse($bid->accepted_at)->diffForHumans()}}</span>
+                        <span class="font-normal text-xs">({{$bid->accepted_at}})</span>
                     </span>
                     @break
                     @endswitch

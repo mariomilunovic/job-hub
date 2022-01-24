@@ -1,17 +1,21 @@
 <div x-data="{ expanded_menu : false }">
 
     {{-- job card start --}}
-    <div class="card flex-col  transition duration-300 bg-neutral-400 hover:ring-4 hover:ring-neutral-600 ease-in-out p-3 mb-3">
+    <div class="card flex-col  transition duration-300 sm:w-800 bg-neutral-400 hover:ring-4 hover:ring-neutral-600 ease-in-out p-3 mb-3">
 
         {{-- Job header start --}}
-        <div class="sm:flex justify-between mb-1 items-center">
+        <div class="sm:flex justify-between mb-1">
 
-            <div class="text-sm text-white whitespace-nowrap">
-                <div>
-                    <span class="font-bold">POSAO : </span>
-                    <span class="font-bold text-neutral-600 text-shadow mr-6">ID#{{$job->id}}</span>
-                    <span class="font-bold ">POSLODAVAC :</span>
-                    <span class="font-bold text-shadow @auth{{ $job->user_id == auth()->user()->id ? " text-red-500":"text-neutral-600 " }} @endauth">{{$job->user->firstname}} {{$job->user->lastname}}</span>
+            <div class="text-sm flex-col sm:flex text-white whitespace-nowrap">
+                <div class="sm:flex">
+                    <div>
+                        <span class="font-bold">POSAO : </span>
+                        <span class="font-bold text-neutral-600 text-shadow mr-6">ID#{{$job->id}}</span>
+                    </div>
+                    <div>
+                        <span class="font-bold ">POSLODAVAC :</span>
+                        <span class="font-bold text-shadow text-neutral-600 @auth{{ $job->user_id == auth()->user()->id ? " text-red-500":"text-neutral-600" }} @endauth">{{$job->user->firstname}} {{$job->user->lastname}}</span>
+                    </div>
                 </div>
                 <div>
                     <span class="font-bold">VEŠTINA :</span>
@@ -19,7 +23,7 @@
                 </div>
             </div>
 
-            <div class="text-sm text-white justify-items-end sm:text-right">
+            <div class="text-sm text-white justify-items-end sm:text-left sm:text-right">
 
                 <div class="whitespace-nowrap">
 
@@ -29,7 +33,9 @@
                         <span class="font-bold">STATUS :</span> <span class="bid_status_blue text-shadow">{{$job->status->name}}</span>
                     </div>
                     <span class="text-neutral-600 font-bold text-sm text-shadow">
-                        {{Carbon\Carbon::parse($job->created_at)->diffForHumans()}} ({{$job->created_at}})
+                        <span class="font-bold text-white">VREME :</span>
+                        <span>{{Carbon\Carbon::parse($job->created_at)->diffForHumans()}}</span>
+                        <span class="font-normal text-xs">({{$job->created_at}})</span>
                     </span>
                     @break
 
@@ -38,7 +44,9 @@
                         <span class="font-bold">STATUS :</span> <span class="bid_status_red text-shadow">{{$job->status->name}}</span>
                     </div>
                     <span class="text-neutral-600 font-bold text-sm text-shadow">
-                        {{Carbon\Carbon::parse($job->bid_selected_at)->diffForHumans()}} ({{$job->bid_selected_at}})
+                        <span class="font-bold text-white">VREME :</span>
+                        <span>{{Carbon\Carbon::parse($job->bid_selected_at)->diffForHumans()}}</span>
+                        <span class="font-normal text-xs">({{$job->bid_selected_at}})</span>
                     </span>
                     @break
 
@@ -47,7 +55,9 @@
                         <span class="font-bold">STATUS :</span> <span class="bid_status_green text-shadow">{{$job->status->name}}</span>
                     </div>
                     <span class="text-neutral-600 font-bold text-sm text-shadow">
-                        {{Carbon\Carbon::parse($job->work_recieved_at)->diffForHumans()}} ({{$job->work_recieved_at}})
+                        <span class="font-bold text-white">VREME :</span>
+                        <span>{{Carbon\Carbon::parse($job->work_recieved_at)->diffForHumans()}}</span>
+                        <span class="font-normal text-xs">({{$job->work_recieved_at}})</span>
                     </span>
                     @break
 
@@ -56,7 +66,9 @@
                         <span class="font-bold">STATUS :</span> <span class="bid_status_black text-shadow">{{$job->status->name}}</span>
                     </div>
                     <span class="text-neutral-600 font-bold text-sm text-shadow">
-                        {{Carbon\Carbon::parse($job->work_accepted_at)->diffForHumans()}} ({{$job->work_accepted_at}})
+                        <span class="font-bold text-white">VREME :</span>
+                        <span>{{Carbon\Carbon::parse($job->work_accepted_at)->diffForHumans()}}</span>
+                        <span class="font-normal text-xs">({{$job->work_accepted_at}})</span>
                     </span>
                     @break
                     @endswitch
@@ -86,22 +98,26 @@
 
 
         {{-- Job footer start --}}
-        <div class="flex text-sm text-white items-center  justify-between">
+        <div class="flex text-sm text-white justify-between items-end">
 
-            <div class="flex items-center ">
+            {{-- Hamburger button --}}
+            @auth
+            <div @click="expanded_menu = !expanded_menu" class="font-bold btn-gray-xs hover:cursor-pointer mr-3  items-center">
+                <i class="fas fa-bars"></i>
+            </div>
+            @endauth
+            {{-- Hamburger button --}}
 
-                {{-- Hamburger button --}}
-                <div @click="expanded_menu = !expanded_menu" class="font-bold btn-gray-xs hover:cursor-pointer mr-3 w-10">
-                    <i class="fas fa-bars"></i>
-                </div>
-                {{-- Hamburger button --}}
-                <div class="sm:flex">
-                    <div class="text-left">
+            <div class="sm:flex">
+
+                <div class="sm:flex ">
+
+                    <div class="text-left sm:text-right">
                         <span class="font-bold">VREDNOST POSLA : </span>
-                        <span class="mr-6 font-bold text-neutral-600 text-shadow">{{$job->reward}}€</span>
+                        <span class="font-bold text-neutral-600 text-shadow">{{$job->reward}}€</span>
                     </div>
 
-                    <div class="text-left">
+                    <div class="text-left sm:text-right sm:ml-3">
                         <span class="font-bold">OČEKIVANI ROK :</span>
                         <span class="font-bold text-neutral-600 text-shadow">
                             @if ($job->days > 1)
@@ -111,32 +127,36 @@
                             @endif
                         </span>
                     </div>
+
                 </div>
+
+                {{-- bid counter start --}}
+                <div class="sm:ml-3">
+                    @if($job->bids->count()==0)
+                    <a href="{{route('job.bids',$job)}}">
+                        <span class="font-bold text-white text-shadow">
+                            PONUDE :
+                            <span class="px-2 py-1 text-xs font-bold leading-none text-red-100 bg-neutral-700 rounded-full">
+                                {{$job->bids->count()}}
+                            </span>
+                        </span>
+                    </a>
+                    @else
+                    <a href="{{route('job.bids',$job)}}">
+                        <span class="font-bold text-white text-shadow">
+                            PONUDE :
+                            <span class="inline-flex justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full">
+                                {{$job->bids->count()}}
+                            </span>
+                        </span>
+                    </a>
+                    @endif
+                </div>
+                {{-- bid counter end --}}
+
             </div>
 
-            {{-- bid counter start --}}
-            <div class="grid justify-items-end">
-                @if($job->bids->count()==0)
-                <a href="{{route('job.bids',$job)}}">
-                    <span class="font-bold text-white text-shadow">
-                        PONUDE :
-                        <span class="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-neutral-700 rounded-full">
-                            {{$job->bids->count()}}
-                        </span>
-                    </span>
-                </a>
-                @else
-                <a href="{{route('job.bids',$job)}}">
-                    <span class="font-bold text-white text-shadow">
-                        PONUDE :
-                        <span class="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full">
-                            {{$job->bids->count()}}
-                        </span>
-                    </span>
-                </a>
-                @endif
-            </div>
-            {{-- bid counter end --}}
+
 
 
         </div>

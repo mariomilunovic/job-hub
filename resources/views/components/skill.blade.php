@@ -3,7 +3,7 @@
 
 
     <!-- skill card start -->
-    <div class="card flex-col py-3 px-3 mb-3  transition duration-300 bg-neutral-200 hover:ring-4 hover:ring-neutral-400 ease-in-out">
+    <div class="card flex-col py-3 px-3 mb-3  sm:w-600 transition duration-300 bg-neutral-200 hover:ring-4 hover:ring-neutral-400 ease-in-out">
 
 
         <div class="flex items-center justify-between">
@@ -48,7 +48,7 @@
             <div class="flex justify-between items-center">
                 <div class="flex">
                     {{-- jobs counter start--}}
-                    <div class="text-right mr-3">
+                    <div class="mr-3">
                         @if($skill->jobs->count()==0)
                         <a href="#">
                             <span class="text-shadow">
@@ -72,7 +72,7 @@
                     {{-- jobs counter end--}}
 
                     {{-- users counter start--}}
-                    <div class="text-right">
+                    <div class="">
                         @if($skill->users->count()==0)
                         <a href="#">
                             <span class="text-shadow">
@@ -96,9 +96,9 @@
                     {{-- users counter end--}}
                 </div>
 
-                <div class="text-sm font-normal">
+                {{-- <div class="text-sm font-normal">
                     {{$skill->category->name}}
-                </div>
+                </div> --}}
 
             </div>
             @auth

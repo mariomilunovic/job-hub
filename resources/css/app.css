@@ -112,19 +112,19 @@ footer{
 /* Bid status  */
 
 .bid_status_red {
-    @apply py-0.5 px-4 text-sm font-medium text-center text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:ring-red-400 rounded-md
+    @apply py-0.5 px-8 text-sm font-medium text-center text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:ring-red-400 rounded-md
 }
 
 .bid_status_blue {
-    @apply py-0.5 px-4 text-sm font-medium text-center text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-400 rounded-md
+    @apply py-0.5 px-8 text-sm font-medium text-center text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-400 rounded-md
 }
 
 .bid_status_green {
-    @apply py-0.5 px-4 text-sm font-medium text-center text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:ring-green-400 rounded-md
+    @apply py-0.5 px-8 text-sm font-medium text-center text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:ring-green-400 rounded-md
 }
 
 .bid_status_black {
-    @apply py-0.5 px-4 text-sm font-medium text-center text-white bg-neutral-700 hover:bg-neutral-700 focus:ring-4 focus:ring-neutral-600 rounded-md
+    @apply py-0.5 px-8 text-sm font-medium text-center text-white bg-neutral-700 hover:bg-neutral-700 focus:ring-4 focus:ring-neutral-600 rounded-md
 }
 
 
