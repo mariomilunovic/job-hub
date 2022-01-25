@@ -2,7 +2,7 @@
 
     {{-- left side --}}
     <div id="Logo" class="my-2 mx-4 justify-content-center">
-        <a href="{{Route('page.dashboard')}}">
+        <a href="{{ auth()->user()!=null ? Route('page.dashboard') : Route('page.home') }}">
             <img src="/images/ui/logo.png" alt="{{config('app.name','job-hub')}}" class="w-36 sm:w-52">
         </a>
     </div>

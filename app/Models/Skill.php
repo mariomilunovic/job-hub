@@ -40,7 +40,9 @@ class Skill extends Model
     }
 
     public function users(){
-        return $this->belongsToMany(User::class)->withPivot('points');
+        return $this->belongsToMany(User::class)
+        ->withTimestamps()
+        ->withPivot('points');
     }
 
     public function jobs()
