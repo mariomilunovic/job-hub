@@ -2,19 +2,19 @@
     <x-title title="Poslovi"/>
     <div class="text-sm">
         <div>
-            Svi moji poslovi: <span></span>
+            Svi moji poslovi: <span>{{$myJobs}}</span>
         </div>
         <div>
-            Čekaju ponudu: <span></span>
+            Čekaju ponudu: <span>{{$myJobsCollectingOffers}}</span>
         </div>
         <div>
-            Radovi u toku: <span></span>
+            Radovi u toku: <span>{{$myJobsInProgress}}</span>
         </div>
         <div>
-            Radovi primljeni: <span></span>
+            Radovi primljeni: <span>{{$myJobsFinished}}</span>
         </div>
         <div>
-            Kompletirani: <span></span>
+            Kompletirani: <span>{{$myJobsCompleted}}</span>
         </div>
     </div>
 
