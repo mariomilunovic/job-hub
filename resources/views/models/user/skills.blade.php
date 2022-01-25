@@ -15,7 +15,8 @@
 
         <x-user :user="$user"/>
 
-        <div class="absolute text-xl right-0 top-0 text-white text-shadow-md  mt-3 mr-96">
+        <div class="absolute right-64 top-5 px-2 py-1 mx-4 text-xs font-bold  text-red-100 bg-red-600 rounded-full">
+        {{-- <div class="absolute text-xl right-2 top-1 text-white text-shadow-md  mt-3 mr-96"> --}}
             NIVO : {{$user->pivot->points}}
         </div>
 

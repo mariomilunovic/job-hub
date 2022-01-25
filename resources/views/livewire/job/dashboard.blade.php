@@ -1,1 +1,22 @@
-<div class="card text-white font-bold bg-blue-400 w-64 h-64 p-3 mb-3">Poslovi</div>
+<div>
+    <x-title title="Poslovi"/>
+    <div class="text-sm">
+        <div>
+            Svi moji poslovi: <span></span>
+        </div>
+        <div>
+            Čekaju ponudu: <span></span>
+        </div>
+        <div>
+            Radovi u toku: <span></span>
+        </div>
+        <div>
+            Radovi primljeni: <span></span>
+        </div>
+        <div>
+            Kompletirani: <span></span>
+        </div>
+    </div>
+
+
+</div>
