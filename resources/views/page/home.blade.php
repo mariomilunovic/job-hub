@@ -6,7 +6,7 @@
     <x-title title="Dobrodošli!"/>
 
 
-    <div class="flex-col">
+    <div class="flex-col pb-3">
 
         <div class="sm:flex">
             <div class="card text-white font-bold bg-blue-500 hover:bg-blue-600 p-3 w-full h-60 mb-3 mr-3 justify-center items-start">

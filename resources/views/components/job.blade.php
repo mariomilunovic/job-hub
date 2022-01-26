@@ -131,11 +131,11 @@
                 </div>
 
                 {{-- bid counter start --}}
-                <div class="sm:ml-3">
+                <div class="sm:ml-3 ">
                     @if($job->bids->count()==0)
                     <a href="{{route('job.bids',$job)}}">
                         <span class="font-bold text-white text-shadow">
-                            PONUDE :
+                            PRIMLJENE PONUDE :
                             <span class="px-2 py-1 text-xs font-bold leading-none text-red-100 bg-neutral-700 rounded-full">
                                 {{$job->bids->count()}}
                             </span>
@@ -144,7 +144,7 @@
                     @else
                     <a href="{{route('job.bids',$job)}}">
                         <span class="font-bold text-white text-shadow">
-                            PONUDE :
+                            PRIMLJENE PONUDE :
                             <span class="inline-flex justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full">
                                 {{$job->bids->count()}}
                             </span>

@@ -5,6 +5,9 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PageController;
 
+//TEST
+Route::get('/test',[PageController::class,'test'])->name('test.toast');
+
 
 //PAGE CONTROLLER
 Route::get('/',[PageController::class,'home'])->name('page.home');

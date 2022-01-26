@@ -17,6 +17,11 @@ class PageController extends Controller
         return view('page.dashboard');
     }
 
+    function test(){
+
+        toast()->success('Testiranje toast poruke.')->push();
+        return view('page.home');
+    }
 
 }
 

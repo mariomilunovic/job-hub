@@ -12,6 +12,7 @@
 
         <div class="flex">
             @guest
+            <a class="btn-amber-small mr-3" href="{{route('test.toast')}}">Test Toast</a>
             <a class="btn-amber-small mr-3" href="{{route('register.form')}}">Registracija</a>
             <a class="btn-green-small mr-3" href="{{route('login.form')}}">Prijava</a>
             @endguest
@@ -25,7 +26,7 @@
                 <div class="pr-2 font-semibold text-white text-right invisible sm:visible ">
                     {{ auth()->user()->firstname}}  {{ auth()->user()->lastname}}
                 </div>
-                <button x-on:click="isOpen = !isOpen" class="z-50 w-10 sm:w-12 overflow-hidden  border-4 border-gray-400 rounded-full transition duration-500 hover:scale-105 hover:border-gray-300 focus:border-gray-1 00 focus:outline-none">
+                <button x-on:click="isOpen = !isOpen" class="z-40 w-10 sm:w-12 overflow-hidden  border-4 border-gray-400 rounded-full transition duration-500 hover:scale-105 hover:border-gray-300 focus:border-gray-1 00 focus:outline-none">
                     <img src="/images/ui/user.png">
                 </button>
 

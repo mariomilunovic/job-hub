@@ -1,7 +1,7 @@
 <div x-data="{ expanded_all: false }">
 
 
-    <div class="sm:hidden flex  items-center p-1">
+    <div class="lg:hidden flex  items-center p-1">
 
 
         <button @click="expanded_all = !expanded_all" x-cloak>
@@ -16,7 +16,7 @@
 
 
     {{-- big menu --}}
-    <div :class="{ 'block' : expanded_all , 'hidden' : !expanded_all}" class="sm:flex" x-cloak>
+    <div :class="{ 'block' : expanded_all , 'hidden' : !expanded_all}" class="lg:flex" x-cloak>
 
         <nav class="flex-col py-2 w-full">
             <div x-data="{ expanded_poslovi: $persist(false) }" class="">

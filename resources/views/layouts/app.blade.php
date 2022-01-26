@@ -20,7 +20,7 @@
     <!-- Scripts -->
     @toastScripts
 
-    {{-- alpine js --}}
+    {{-- alpine js CDN --}}
     {{-- <script defer src="https://unpkg.com/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
     <script defer src="https://unpkg.com/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script>
     <script defer src="https://unpkg.com/alpinejs@3.5.1/dist/cdn.min.js"></script> --}}
@@ -37,15 +37,17 @@
 
 <body class="bg-neutral-400 antialiased z-0">
 
+    <div class="z-50 absolute right-0 top-0 sm:right-10 sm:top-20"><livewire:toasts/></div>
+
     <section id="container" class="h-screen">
 
         <header class="card flex-row mt-3 bg-neutral-700 max-h-32">@include('sections.header')</header>
 
         <nav class="card flex-col  bg-blue-600">@include('sections.navbar')</nav>
 
-        <main class="card relative flex place-content-center bg-neutral-300 overflow-y-auto svg-dots">
-            <div class="absolute right-0 top-0"><livewire:toasts/></div>
-            <div class="p-4 place-content-center max-w-full">@yield('content')</div>
+        <main class="card p-4 place-content-center bg-neutral-300 overflow-y-auto svg-dots">
+
+            @yield('content')
 
         </main>
 
