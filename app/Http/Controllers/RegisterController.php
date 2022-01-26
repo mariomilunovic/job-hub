@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BankAccount;
 use App\Models\Role;
 use App\Models\User;
+use App\Models\PaymentMethod;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class RegisterController extends Controller
 {
@@ -37,6 +40,29 @@ class RegisterController extends Controller
         $roleSandardUser = Role::where('name','user')->first();
 
         $newUser->roles()->attach($roleSandardUser);
+
+
+         //temporary payment methods for testing///////////////////
+         $newPaymentMethod = PaymentMethod::create([
+            'name' => 'VISA',
+            'card_number' => 1234123412341234,
+            'name_on_card' => $userData['firstname'],
+            'exp_month' => 12,
+            'exp_year' => 2027,
+            'cvc' => 333,
+            'user_id'  => $newUser->id,
+        ]);
+
+        $newBankAccount = BankAccount::create([
+            'name' => 'Moja Banka',
+            'account_number' => '123-1231231231231-23',
+            'account_owner_name' =>  'Ima Prezime',
+            'account_owner_address' => 'Adresa',
+            'user_id'  => $newUser->id,
+        ]);
+        /////////////////////////////////////////////////////////////
+
+
 
         if($newUser)
         {

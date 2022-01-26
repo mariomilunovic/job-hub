@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\PaymentMethod;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\Skill;
@@ -63,6 +64,7 @@ class UserController extends Controller
         $role = Role::where('id',$userdata['role_id'])->first();
 
         $newUser->roles()->attach($role);
+
 
         toast()->success('Uspešan unos novog korisnika')->push();
         return redirect(route('user.show',$newUser));
