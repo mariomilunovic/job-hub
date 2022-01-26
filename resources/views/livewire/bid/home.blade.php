@@ -7,7 +7,7 @@
         <tr>
             <td class="text-right">Sve ponude :</td>
             <td class="w-4"></td>
-            <td class="text-left w-8">{{$Bids}}</td>
+            <td class="text-left w-8">{{$allBids}}</td>
         </tr>
         <tr>
             <td class="text-right">Nisu izabrane :</td>

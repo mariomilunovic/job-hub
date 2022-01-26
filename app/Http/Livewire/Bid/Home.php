@@ -7,15 +7,15 @@ use App\Models\Bid;
 
 class Home extends Component
 {
-    public $Bids;
-    public $BidsCollectingOffers;
-    public $BidsInProgress;
-    public $BidsFinished;
-    public $BidsCompleted;
+    public $allBids;
+    public $createdBids;
+    public $selectedBids;
+    public $deliveredBids;
+    public $completedBids;
 
     public function mount() // mount se pokreće čim se komponenta učita
     {
-        $this->Bids = Bid::all()->count();
+        $this->allBids = Bid::all()->count();
         $this->createdBids = Bid::where('bidstatus_id',1)->count();
         $this->selectedBids = Bid::where('bidstatus_id',2)->count();
         $this->deliveredBids = Bid::where('bidstatus_id',3)->count();

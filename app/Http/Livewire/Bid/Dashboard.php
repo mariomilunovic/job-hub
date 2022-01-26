@@ -9,10 +9,10 @@ class Dashboard extends Component
 
 
     public $myBids;
-    public $myBidsCollectingOffers;
-    public $myBidsInProgress;
-    public $myBidsFinished;
-    public $myBidsCompleted;
+    public $createdBids;
+    public $selectedBids;
+    public $deliveredBids;
+    public $completedBids;
 
     public function mount() // mount se pokreće čim se komponenta učita
     {

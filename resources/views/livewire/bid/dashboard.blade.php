@@ -27,7 +27,7 @@
         <tr>
             <td class="text-right">Plaćene :</td>
             <td class="w-4"></td>
-            <td class="text-left">{{$myBids}}</td>
+            <td class="text-left">{{$completedBids}}</td>
         </tr>
     </table>
 
