@@ -16,11 +16,15 @@
             <td class="text-right">Najjača :</td>
             <td class="w-4"></td>
             <td class="text-left">
+                @if($strongestSkill)
                 <div>{{$strongestSkill->name}}
                     <span class="px-2 py-0.5  text-xs font-bold ml-2 text-red-100 bg-red-600 rounded-full">
                         NIVO : {{$strongestSkill->pivot->points}}
                     </span>
                 </div>
+                @else
+                <span>n/a</span>
+                @endif
 
 
 
@@ -30,11 +34,15 @@
             <td class="text-right">Najslabija :</td>
             <td class="w-4"></td>
             <td class="text-left">
+                @if($weakestSkill)
                 <div>{{$weakestSkill->name}}
                     <span class="px-2 py-0.5  text-xs font-bold ml-2 text-red-100 bg-red-600 rounded-full">
                         NIVO : {{$weakestSkill->pivot->points}}
                     </span>
                 </div>
+                @else
+                <span>n/a</span>
+                @endif
 
 
             </td>
@@ -43,11 +51,15 @@
             <td class="text-right">Najnovija :</td>
             <td class="w-4"></td>
             <td class="text-left">
+                @if($newestSkill)
                 <div>{{$newestSkill->name}}
                     <span class="px-2 py-0.5  text-xs font-bold ml-2 text-red-100 bg-red-600 rounded-full">
                         NIVO : {{$newestSkill->pivot->points}}
                     </span>
                 </div>
+                @else
+                <span>n/a</span>
+                @endif
 
 
 

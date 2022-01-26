@@ -5,7 +5,7 @@
 
     <table class="table-fixed">
         <tr>
-            <td class="text-right">Stanje :</td>
+            <td class="text-right">U sistemu :</td>
             <td class="w-4"></td>
             <td class="text-left w-8">{{$balance}}</td>
         </tr>
