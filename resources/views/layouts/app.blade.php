@@ -37,7 +37,7 @@
 
 <body class="bg-neutral-400 antialiased z-0">
 
-    <div class="z-50 absolute right-0 top-0 sm:right-10 sm:top-20"><livewire:toasts/></div>
+    <div class="z-50 absolute right-0 top-0 md:right-10 md:top-20"><livewire:toasts/></div>
 
     <section id="container" class="h-screen">
 

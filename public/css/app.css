@@ -613,14 +613,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 .h-screen {
   height: 100vh;
 }
+.h-60 {
+  height: 15rem;
+}
 .h-10 {
   height: 2.5rem;
 }
 .h-6 {
   height: 1.5rem;
-}
-.h-60 {
-  height: 15rem;
 }
 .h-8 {
   height: 2rem;
@@ -649,6 +649,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .w-full {
   width: 100%;
 }
+.w-screen {
+  width: 100vw;
+}
 .w-36 {
   width: 9rem;
 }
@@ -658,14 +661,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .w-32 {
   width: 8rem;
 }
-.w-screen {
-  width: 100vw;
+.w-80 {
+  width: 20rem;
 }
 .w-6 {
   width: 1.5rem;
-}
-.w-80 {
-  width: 20rem;
 }
 .w-16 {
   width: 4rem;
@@ -1148,10 +1148,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-text-opacity: 1;
   color: rgb(82 82 82 / var(--tw-text-opacity));
 }
-.text-red-500 {
-  --tw-text-opacity: 1;
-  color: rgb(239 68 68 / var(--tw-text-opacity));
-}
 .text-neutral-500 {
   --tw-text-opacity: 1;
   color: rgb(115 115 115 / var(--tw-text-opacity));
@@ -1183,6 +1179,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-neutral-700 {
   --tw-text-opacity: 1;
   color: rgb(64 64 64 / var(--tw-text-opacity));
+}
+.text-red-500 {
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity));
 }
 .text-black {
   --tw-text-opacity: 1;
@@ -2460,6 +2460,10 @@ footer{
     width: 600px;
   }
 
+  .sm\:w-full {
+    width: 100%;
+  }
+
   .sm\:w-800 {
     width: 800px;
   }
@@ -2470,10 +2474,6 @@ footer{
 
   .sm\:w-12 {
     width: 3rem;
-  }
-
-  .sm\:w-full {
-    width: 100%;
   }
 
   .sm\:flex-1 {
@@ -2545,6 +2545,14 @@ footer{
 
 @media (min-width: 768px) {
 
+  .md\:right-10 {
+    right: 2.5rem;
+  }
+
+  .md\:top-20 {
+    top: 5rem;
+  }
+
   .md\:my-6 {
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
@@ -2566,10 +2574,18 @@ footer{
     width: 50%;
   }
 
+  .md\:w-full {
+    width: 100%;
+  }
+
   .md\:max-w-fit {
     max-width: -webkit-fit-content;
     max-width: -moz-fit-content;
     max-width: fit-content;
+  }
+
+  .md\:border-l-8 {
+    border-left-width: 8px;
   }
 
   .md\:pb-0 {

@@ -1,5 +1,5 @@
 <div
-class="overflow-hidden z-50 p-5 font-semibold  rounded-md sm:border-l-8 shadow-lg cursor-pointer pointer-events-auto select-none"
+class="overflow-hidden z-50 p-5 font-semibold rounded-md sm:border-l-8 w-screen md:w-full shadow-lg cursor-pointer pointer-events-auto select-none"
 x-bind:class="{
     'border-blue-700 bg-blue-500': toast.type === 'info',
     'border-green-700 bg-green-500': toast.type === 'success',
