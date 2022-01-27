@@ -136,7 +136,8 @@
                     <a href="{{route('job.bids',$job)}}">
                         <span class="font-bold text-white text-shadow">
                             PRIMLJENE PONUDE :
-                            <span class="px-2 py-1 text-xs font-bold leading-none text-red-100 bg-neutral-700 rounded-full">
+
+                            <span class="inline-flex px-2 py-1 text-xs font-bold leading-none bg-neutral-700  rounded-full">
                                 {{$job->bids->count()}}
                             </span>
                         </span>
@@ -145,7 +146,8 @@
                     <a href="{{route('job.bids',$job)}}">
                         <span class="font-bold text-white text-shadow">
                             PRIMLJENE PONUDE :
-                            <span class="inline-flex justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full">
+                            {{-- oboji brojač zeleno ako sam konkurisao za posao --}}
+                            <span class="inline-flex px-2 py-1 text-xs font-bold leading-none {{$job->bids()->where('user_id',auth()->user()->id)->count() == 0 ? 'bg-red-500':'bg-green-600'}} rounded-full">
                                 {{$job->bids->count()}}
                             </span>
                         </span>
@@ -156,9 +158,6 @@
 
             </div>
 
-
-
-
         </div>
         {{-- Job footer end --}}
 
@@ -167,22 +166,18 @@
         <div x-show="expanded_menu" x-collapse x-cloak class="flex justify-between my-2">
             @auth
             <div>
-                {{-- <a class="btn-gray-small" href="{{route('job.index')}}">Nazad</a> --}}
                 @if($job->bids->count()>0)
                 <a class="btn-orange-small" href="{{route('job.bids',$job)}}">Prikaži ponude</a>
                 @endif
                 @if($job->user_id != auth()->user()->id && $job->status_id == 1)
                 <a class="btn-orange-small" href="{{route('bid.create',$job)}}">Unesi ponudu</a>
                 @endif
-
             </div>
 
             <div>
-
                 @if($job->user_id == auth()->user()->id && $job->bids->count()==0)
                 <a class="btn-green-small mr-2" href="{{route('job.edit',$job)}}">Izmeni</a>
                 <a class="btn-red-small" href="{{route('job.destroy',$job)}}">Obriši</a>
-
                 @endif
             </div>
             @endauth
