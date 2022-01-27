@@ -3,7 +3,7 @@
 @section('content')
 
 
-<div class="flex-col mb-3 p-3">
+<div class="flex-col pb-3 mb-3 w-full sm:w-800">
 
     <x-title title="Prikaz svih transakcija"/>
 

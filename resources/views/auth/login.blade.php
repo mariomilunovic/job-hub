@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="w-80 md:w-96 md:max-w-fit">
+<div class="flex-col pb-3 mb-3 w-full sm:w-400">
     <form action="{{route('login.login')}}" method="post" autocomplete="off">
         @csrf
 
@@ -16,14 +16,14 @@
         <input type="password" autocomplete="false" id="password" name="password" placeholder="123123" value="{{old('password')}}" class="w-full px-4 py-2 leading-tight text-gray-700 bg-gray-200 border-2 border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-purple-500">
         <div class="text-sm error">@error ('password'){{ $message }}@enderror</div>
 
-        <input class="mt-4 mr-2 leading-tight" type="checkbox" name="remember" {{ old('remember') ? 'checked' : ''}}>
+        <input class="mr-2 leading-tight" type="checkbox" name="remember" {{ old('remember') ? 'checked' : ''}}>
         <span class="text-sm">Zapamti me</span>
 
-        <button type="submit" class="w-full px-4 py-2 mt-5 font-bold text-white bg-purple-500 rounded shadow hover:bg-purple-600 focus:shadow-outline focus:outline-none">
+        <button type="submit" class="w-full mt-4 btn-green-medium">
             Prijava
         </button>
 
-        <a href="{{route('register.form')}}" class="text-sm font-semibold text-blue-600">Napravi novi nalog</a>
+        <a href="{{route('register.form')}}" class="text-sm mt-4 font-semibold text-blue-600">Napravi novi nalog</a>
 
     </form>
 </div>

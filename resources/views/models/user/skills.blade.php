@@ -3,11 +3,11 @@
 @section('content')
 
 
-<div class="flex-col mb-3 p-3">
+<div class="flex-col mb-3 pb-3 w-full sm:w-600">
 
     <x-title title="Prikaz najboljih korisnika za izabranu veštinu"/>
 
-    <x-skill :skill="$skill"/>
+    <x-skill :skill="$skill" :user="null"/>
 
     @foreach ($users as $user)
     <div class="relative">
@@ -15,8 +15,7 @@
 
         <x-user :user="$user"/>
 
-        <div class="absolute right-64 top-5 px-2 py-1 mx-4 text-xs font-bold  text-red-100 bg-red-600 rounded-full">
-        {{-- <div class="absolute text-xl right-2 top-1 text-white text-shadow-md  mt-3 mr-96"> --}}
+        <div class="absolute top-4 left-64 px-2 py-1 mx-4 text-xs font-bold  text-red-100 bg-red-600 rounded-full">
             NIVO : {{$user->pivot->points}}
         </div>
 

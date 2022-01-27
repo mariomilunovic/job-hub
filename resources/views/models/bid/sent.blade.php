@@ -3,10 +3,10 @@
 @section('content')
 
 
-<div class="flex-col mb-3 pb-3">
+<div class="flex-col pb-3 mb-3 w-full sm:w-800">
 
     @if($bids->count() == 0)
-    <x-title title="Nemate ni jednu poslatu ponudu"/>
+    <x-title title="Nema poslatih ponuda"/>
     <a href="{{route('job.index')}}" class="btn-blue-medium mt-3">Pogledajte objavljene poslove</a>
 
     @else

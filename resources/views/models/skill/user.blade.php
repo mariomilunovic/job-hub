@@ -3,10 +3,13 @@
 @section('content')
 
 
-<div class="flex-col sm:w-600">
+<div class="flex-col mb-3 pb-3 w-full sm:w-600">
 
 
-    <x-title title="Prikaz mojih veština"/>
+    <x-title title="Prikaz svih veština korisnika"/>
+
+
+    <x-user :user="$user"/>
 
     <div>
         @foreach ($skillCategories as $category)
@@ -16,7 +19,7 @@
         @foreach($category->skills as $skill)
 
         @if($user->hasSkill($skill))
-        <x-skill :skill="$skill"/>
+        <x-skill :skill="$skill" :user="$user"/>
         @endif
 
         @endforeach

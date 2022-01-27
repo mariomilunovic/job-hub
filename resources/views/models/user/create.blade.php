@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="flex-col justify-items-center p-3">
+<div class="flex-col mb-3 pb-3 w-full sm:w-600">
 
     <x-title title="Unos novog korisnika"/>
 
@@ -11,7 +11,7 @@
         @csrf
 
         <!-- User input start -->
-        <div class="card bg-neutral-400 flex-col p-3 mb-3">
+        <div class="card bg-blue-300 flex-col p-3 mb-3">
 
             <label for="firstname" class="label">Ime</label>
             <input autocomplete="false" type="text" id="firstname" name="firstname" placeholder="Unesi ime" value="{{old('firstname')}}" class="w-full input">

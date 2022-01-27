@@ -92,7 +92,7 @@ footer{
 /* My custom classes */
 
 .card {
-    @apply flex rounded-md shadow-lg
+    @apply flex rounded-md shadow-md
 }
 
 .menu_item {
@@ -112,6 +112,22 @@ footer{
 /* Bid status  */
 
 .bid_status_red {
+    @apply px-2 text-sm font-bold text-center text-shadow-md text-white rounded-md bg-red-500
+}
+
+.bid_status_blue {
+    @apply px-2 text-sm  font-bold text-center text-shadow-md text-white rounded-md bg-blue-600
+}
+
+.bid_status_green {
+    @apply px-2 text-sm  font-bold text-center text-shadow-md text-white rounded-md bg-green-500
+}
+
+.bid_status_black {
+    @apply px-2 text-sm  font-bold text-center text-shadow-md text-white rounded-md bg-white
+}
+
+/* .bid_status_red {
     @apply py-0.5 px-8 text-sm font-medium text-center text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:ring-red-400 rounded-md
 }
 
@@ -125,7 +141,8 @@ footer{
 
 .bid_status_black {
     @apply py-0.5 px-8 text-sm font-medium text-center text-white bg-neutral-700 hover:bg-neutral-700 focus:ring-4 focus:ring-neutral-600 rounded-md
-}
+} */
+
 
 
 /* Gradients */
@@ -237,23 +254,23 @@ footer{
 }
 
 .btn-blue-medium {
-    @apply py-2 px-3 font-medium text-center shadow text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-400 rounded-md
+    @apply py-2 px-3 font-bold text-center drop-shadow-lg text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-400 rounded-md
 }
 
 .btn-red-medium {
-    @apply py-2 px-3 font-medium text-center shadow text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:ring-red-400  rounded-md
+    @apply py-2 px-3 font-bold text-center drop-shadow-lg text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:ring-red-400  rounded-md
 }
 
 .btn-yellow-medium {
-    @apply py-2 px-3 font-medium text-center shadow text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-400 rounded-md
+    @apply py-2 px-3 font-bold text-center drop-shadow-lg text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-400 rounded-md
 }
 
 .btn-green-medium {
-    @apply py-2 px-3 font-medium text-center shadow text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:ring-green-300 rounded-md
+    @apply py-2 px-3 font-bold text-center drop-shadow-lg text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:ring-green-300 rounded-md
 }
 
 .btn-neutral-medium {
-    @apply py-2 px-3 font-medium text-center shadow text-white bg-neutral-500 hover:bg-neutral-600 focus:ring-4 focus:ring-neutral-300 rounded-md
+    @apply py-2 px-3 font-bold text-center drop-shadow-lg text-white bg-neutral-500 hover:bg-neutral-600 focus:ring-4 focus:ring-neutral-300 rounded-md
 }
 
 

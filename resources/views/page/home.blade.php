@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="flex-col w-80 sm:w-800">
+<div class="flex-col w-full sm:w-800">
 
     <x-title title="Dobrodošli!"/>
 

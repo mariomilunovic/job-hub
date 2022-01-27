@@ -1,6 +1,6 @@
     {{-- transaction card start --}}
-    <div class="card flex items-center justify-between transition duration-300 bg-lime-500 hover:ring-4 hover:ring-neutral-600 ease-in-out p-3 mb-3">
-        <div class="sm:flex items-center">
+    <div class="card items-center justify-between transition duration-300 bg-lime-500 hover:ring-4 hover:ring-neutral-600 ease-in-out p-3 mb-3">
+        <div class="sm:flex items-center mr-3">
 
             <div>
                 <span class="font-bold text-neutral-700 text-shadow mr-4">ID#{{$transaction->id}}</span>
@@ -8,23 +8,6 @@
 
 
             <div class="sm:flex-col mb-1">
-
-                <div class="sm:flex justify-start text-sm text-white whitespace-nowrap">
-                    <div>
-                        {{-- <span class="font-bold">TRANSAKCIJA : </span> --}}
-                        {{-- <span class="font-bold text-neutral-700 text-shadow mr-3">ID#{{$transaction->id}}</span> --}}
-                    </div>
-                    <div>
-                        <span class="font-bold">UPLATILAC : </span>
-                        <span class="font-bold text-neutral-700 text-shadow mr-3">{{$transaction->from_user->firstname}} {{$transaction->from_user->lastname}}</span>
-                    </div>
-                    <div>
-                        <span class="font-bold">PRIMALAC : </span>
-                        <span class="font-bold text-neutral-700 text-shadow mr-3">{{$transaction->to_user->firstname}} {{$transaction->to_user->lastname}}</span>
-                    </div>
-
-                </div>
-
 
                 <div class="sm:flex justify-start text-sm text-white whitespace-nowrap">
 
@@ -56,33 +39,56 @@
 
                 </div>
 
+                <div class="sm:flex justify-start text-sm text-white whitespace-nowrap">
+
+                    <div>
+                        <span class="font-bold">UPLATILAC : </span>
+                        <span class="font-bold text-neutral-700 text-shadow mr-3">{{$transaction->from_user->firstname}} {{$transaction->from_user->lastname}}</span>
+                    </div>
+                    <div>
+                        <span class="font-bold">PRIMALAC : </span>
+                        <span class="font-bold text-neutral-700 text-shadow mr-3">{{$transaction->to_user->firstname}} {{$transaction->to_user->lastname}}</span>
+                    </div>
+
+                </div>
+
             </div>
         </div>
-        <div class="flex-col text-right">
+        <div class="flex-wrap content-end text-right">
             <div>
                 @switch($transaction->transactiontype->name)
+
                 @case('isplata')
-                <span class="font-bold text-red-500 text-2xl text-shadow">- {{strtoupper($transaction->amount)}}</span>
+                <div class="font-bold text-red-500 text-2xl whitespace-nowrap text-shadow">
+                    - {{strtoupper($transaction->amount)}}
+                </div>
                 @break
+
                 @case('uplata')
-                <span class="font-bold text-green-700 text-2xl text-shadow">+ {{strtoupper($transaction->amount)}}</span>
+                <div class="font-bold text-green-700 text-2xl whitespace-nowrap text-shadow">
+                    + {{strtoupper($transaction->amount)}}
+                </div>
                 @break
+
                 @case('rezervacija')
-                <span class="font-bold text-blue-700 text-2xl text-shadow">
+                <div class="font-bold text-blue-700 text-2xl whitespace-nowrap text-shadow">
                     {{$transaction->to_user_id == auth()->user()->id ? '':'- '.strtoupper($transaction->amount)}}
-                </span>
+                </div>
                 @break
+
                 @case('plata')
-                <span class="font-bold text-2xl text-shadow {{$transaction->to_user_id == auth()->user()->id ? 'text-green-700':'text-red-500'}}">
+                <div class="font-bold text-2xl whitespace-nowrap text-shadow {{$transaction->to_user_id == auth()->user()->id ? 'text-green-700':'text-red-500'}}">
                     {{$transaction->to_user_id == auth()->user()->id ? '+':'-'}} {{strtoupper($transaction->amount)}}
-                </span>
+                </div>
 
                 @break
                 @endswitch
             </div>
-            <div class="text-neutral-600 font-bold text-xs text-shadow">
+
+            <div class="text-neutral-700 font-bold text-xs text-shadow">
                 {{$transaction->created_at}}
             </div>
+
         </div>
 
     </div>

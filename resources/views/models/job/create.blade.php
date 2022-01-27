@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="flex-col justify-items-center pb-3">
+<div class="flex-col pb-3 mb-3 w-full sm:w-800">
 
     <x-title title="Objava novog posla"/>
 

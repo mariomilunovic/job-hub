@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="flex-col sm:w-600">
+<div class="flex-col mb-3 pb-3 w-full sm:w-600">
 
 
     <x-title title="Izmena veštine"/>

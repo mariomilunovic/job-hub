@@ -13,10 +13,11 @@ class User extends Component
      */
 
     public $user;
-    
-    public function __construct($user)
+    public $expanded;
+    public function __construct($user,$expanded=false)
     {
         $this->user = $user;
+        $this->expanded = $expanded;
     }
 
     /**

@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="flex-col">
+<div class="flex-col mb-3 pb-3 w-full sm:w-800">
 
     <x-title title="Prikaz svih ponuda za izabrani posao"/>
 
@@ -25,7 +25,9 @@
     @endif
     @endif
 
-    {{$bids->links()}}
+    <div class="mb-3">
+        {{$bids->links()}}
+    </div>
 </div>
 
 

@@ -3,7 +3,7 @@
 @section('content')
 
 
-<div class="flex-col mb-3 pb-3">
+<div class="flex-col mb-3 pb-3 w-full sm:w-800">
 
 
 
@@ -19,7 +19,9 @@
     @endforeach
     @endif
 
-    {{$allJobs->links()}}
+    <div class="mb-3">
+        {{$allJobs->links()}}
+    </div>
 
 </div>
 

@@ -1,9 +1,9 @@
 
-<div x-data="{ expanded_menu : false }">
+<div x-data="{ expanded : {{$expanded ? 'true' : 'false'}}}">
 
 
     <!-- skill card start -->
-    <div class="card flex-col py-3 px-3 mb-3  sm:w-600 transition duration-300 bg-neutral-200 hover:ring-4 hover:ring-neutral-400 ease-in-out">
+    <div class="card flex-col py-3 px-3 mb-3 transition duration-300 bg-neutral-200 hover:ring-4 hover:ring-neutral-400 ease-in-out">
 
 
         <div class="flex items-center justify-between">
@@ -14,26 +14,35 @@
 
                 <div class="flex items-center justify-start">
 
+                    <table>
+                        <tr>
+                            <td class="w-60">
+                                <a href="{{route('skill.show',$skill)}}">{{$skill->name}}</a>
+                            </td>
+                            <td>
+                                @auth
+                                @if($user && $user->hasSkill($skill))
 
-                    <a href="{{route('skill.show',$skill)}}" class="px-2 py-1">{{$skill->name}}</a>
+                                <div class="px-2 py-1 mx-4 text-xs font-bold  text-red-100 bg-red-600 whitespace-nowrap rounded-full">
+                                    <span>{{$user->skills->where('id',$skill->id)->count()>0 ? 'MOJ':''}}</span>
+                                    NIVO :  {{$user->skills->where('id',$skill->id)->first()->pivot->points}}
+                                </div>
+
+                                @endif
+                                @endauth
+                            </td>
+                        </tr>
 
 
-                    @auth
-                    @if(auth()->user()->hasSkill($skill))
 
-                    <div class="px-2 py-1 mx-4 text-xs font-bold  text-red-100 bg-red-600 rounded-full">
-                        NIVO :  {{auth()->user()->skills->where('id',$skill->id)->first()->pivot->points}}
-                    </div>
 
-                    @endif
-                    @endauth
-
+                    </table>
                 </div>
 
             </div>
 
             {{-- Hamburger button --}}
-            <div @click="expanded_menu = !expanded_menu" class="font-bold btn-gray-xs hover:cursor-pointer ">
+            <div @click="expanded = !expanded" class="font-bold btn-gray-xs hover:cursor-pointer ">
                 <i class="fas fa-bars"></i>
             </div>
             {{-- Hamburger button --}}
@@ -41,7 +50,9 @@
 
         </div>
 
-        <div x-show="expanded_menu" x-collapse x-cloak class="flex-col justify-between my-2">
+        <div x-show="expanded" x-collapse x-cloak class="flex-col justify-between my-2" @click.outside="expanded = false" >
+
+            <div class="text-xs">{{$skill->category->name}}</div>
 
             <hr class="border-neutral-600 my-2">
 
@@ -102,7 +113,7 @@
 
             </div>
             @auth
-            @if(auth()->user()->hasRole('administrator'))
+            @if($user->hasRole('administrator'))
             <hr class="border-neutral-600 my-4">
 
             <div>

@@ -45,7 +45,7 @@
 
         <nav class="card flex-col  bg-blue-600">@include('sections.navbar')</nav>
 
-        <main class="card p-4 place-content-center bg-neutral-300 overflow-y-auto svg-dots">
+        <main class="card z-10 p-4 place-content-center bg-neutral-300 overflow-y-auto svg-dots">
 
             @yield('content')
 

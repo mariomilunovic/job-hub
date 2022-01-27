@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="flex-col pb-3 mb-3">
+<div class="flex-col pb-3 mb-3 w-full sm:w-600">
 
     <form action="{{route('deposit.store')}}" method="post" autocomplete="off">
 
@@ -10,7 +10,7 @@
 
         <x-title title="Uplata"/>
 
-        <div>
+        <div class="my-4">
             <span class="mt-4 font-bold text-neutral-500">Trenutno stanje</span>
             <div class="font-bold text-white text-3xl text-shadow-md">
                 {{auth()->user()->balance}} €

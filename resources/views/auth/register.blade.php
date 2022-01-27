@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="w-80 md:w-96 md:max-w-fit">
+<div class="flex-col pb-3 mb-3 w-full sm:w-400">
     <form action="{{route('register.register')}}" method="post" autocomplete="off">
         @csrf
 
@@ -29,7 +29,7 @@
         <div class="error">@error ('password'){{ $message }}@enderror</div>
 
 
-        <button type="submit" class="w-full px-4 py-2 mt-5 font-bold text-white rounded shadow bg-yellow-500 hover:bg-yellow-600 focus:shadow-outline focus:outline-none">
+        <button type="submit" class="w-full mt-4 btn-yellow-medium">
             Registruj se
         </button>
 
