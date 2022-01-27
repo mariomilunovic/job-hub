@@ -15,6 +15,8 @@
                 </div>
             </div>
 
+
+
             <div class="flex items-center">
                 <div class="mr-3 hidden sm:block">
                     {{$user->email}}
@@ -134,7 +136,8 @@
 
             <div>
                 <a class="btn-green-small mr-2" href="{{route('user.edit',$user)}}">Izmeni</a>
-                <a class="btn-red-small" href="{{route('user.destroy',$user)}}">Obriši</a>
+                <a class="btn-red-small mr-2" href="{{route('user.destroy',$user)}}">Obriši</a>
+                <a class="btn-purple-small" href="mailto:{{$user->email}}" target="_blank" rel="noopener noreferrer">Email</a>
             </div>
         </div>
 

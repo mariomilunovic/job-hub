@@ -131,6 +131,7 @@
                 </div>
 
                 {{-- bid counter start --}}
+                @auth
                 <div class="sm:ml-3 ">
                     @if($job->bids->count()==0)
                     <a href="{{route('job.bids',$job)}}">
@@ -154,6 +155,7 @@
                     </a>
                     @endif
                 </div>
+                @endauth
                 {{-- bid counter end --}}
 
             </div>
