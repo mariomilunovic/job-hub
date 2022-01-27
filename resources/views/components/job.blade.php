@@ -14,7 +14,7 @@
                     </div>
                     <div>
                         <span class="font-bold ">POSLODAVAC :</span>
-                        <span class="font-bold text-shadow text-neutral-600 @auth{{ $job->user_id == auth()->user()->id ? " text-red-500":"text-neutral-600" }} @endauth">{{$job->user->firstname}} {{$job->user->lastname}}</span>
+                        <span class="font-bold  text-shadow text-neutral-600 @auth{{ $job->user_id == auth()->user()->id ? " bid_status_red":"text-neutral-600" }} @endauth">{{$job->user->firstname}} {{$job->user->lastname}}</span>
                     </div>
                 </div>
                 <div>

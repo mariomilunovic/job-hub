@@ -8,16 +8,17 @@
 
             <div class="text-sm text-white">
                 <div>
+                    <span class="font-bold">KANDIDAT :</span>
+                    <span class="font-bold text-shadow {{ $bid->user_id == auth()->user()->id ? " bid_status_red":"text-neutral-600 " }}">{{$bid->user->firstname}} {{$bid->user->lastname}}</span>
+
+                </div>
+                <div>
                     <span class="font-bold">PONUDA :</span>
                     <span class="font-bold text-neutral-600 text-shadow mr-3">ID#{{$bid->id}}</span>
                     <span class="font-bold">POSAO :</span>
                     <span class="font-bold text-neutral-600 text-shadow">ID#{{$bid->job->id}}</span>
                 </div>
-                <div>
-                    <span class="font-bold">KANDIDAT :</span>
-                    <span class="font-bold text-shadow {{ $bid->user_id == auth()->user()->id ? " text-red-500":"text-neutral-600 " }}">{{$bid->user->firstname}} {{$bid->user->lastname}}</span>
 
-                </div>
 
             </div>
 
