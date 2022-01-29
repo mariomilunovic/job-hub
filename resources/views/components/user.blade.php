@@ -17,7 +17,7 @@
             {{-- <a onClick="javascript:window.open('mailto:{{$user->email}}', 'mail');event.preventDefault()" href="mailto:{{$user->email}}">
                 {{$user->email}}
             </a> --}}
-            <div class="hidden sm:block">
+            <div class="sm:block">
                 {{-- Hamburger button --}}
                 <div @click="expanded = !expanded" @click.outside="expanded = false" class="font-bold btn-gray-xs hover:cursor-pointer">
                     <i class="fas fa-bars"></i>
