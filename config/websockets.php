@@ -8,7 +8,7 @@ return [
      * Set a custom dashboard configuration
      */
     'dashboard' => [
-        'port' => env('LARAVEL_WEBSOCKETS_PORT', 6001),
+        'port' => env('LARAVEL_WEBSOCKETS_PORT', 8443),
     ],
 
     /*
@@ -31,6 +31,7 @@ return [
             'capacity' => null,
             'enable_client_messages' => false,
             'enable_statistics' => true,
+            'encrypted' => true,
         ],
     ],
 
@@ -130,6 +131,8 @@ return [
         'passphrase' => env('LARAVEL_WEBSOCKETS_SSL_PASSPHRASE', null),
 
         'verify_peer' => false,
+
+        'allow_self_signed' => true,
     ],
 
     /*
