@@ -207,8 +207,12 @@
                 <div>
                     @if($job->user_id == auth()->user()->id && $job->bids->count()==0)
                     <a class="btn-green-small mr-2" href="{{route('job.edit',$job)}}">Izmeni</a>
+
+                    @endif
+                    @if($job->user_id == auth()->user()->id)
                     <a class="btn-red-small" href="{{route('job.destroy',$job)}}">Obriši</a>
                     @endif
+                    
                 </div>
                 @endauth
 

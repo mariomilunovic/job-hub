@@ -41,7 +41,7 @@ return [
                 'useTLS' => false,
                 'debug' => true,
                 'host' => env('APP_URL'),
-                'port' => 8443,
+                'port' => 6001,
                 'scheme' => 'https'
             ],
         ],

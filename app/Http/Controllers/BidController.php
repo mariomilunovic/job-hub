@@ -26,16 +26,28 @@ class BidController extends Controller
             if($bid->user_id == auth()->id())
             {
                 toast()->danger('Možete dati samo jednu ponudu za izabrani posao')->push();
-            return redirect(route('job.bids',$job));
+                return redirect(route('job.bids',$job));
             }
         }
         return view ('models.bid.create')
         ->with('job',$job);
     }
 
+    public function bidAllreadyExist (Job $job, User $user)
+    {
+        foreach($job->bids as $bid)
+        {
+            if($bid->user_id == $user->id)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
     public function store(Request $request)
     {
-
         $bidData = request()->validate([
             'message' => 'required',
             'offer' => 'required|numeric|gt:0',
@@ -45,31 +57,26 @@ class BidController extends Controller
 
         $job = Job::where('id',$bidData['job_id'])->first();
 
-        foreach($job->bids as $bid)
+        if ( $this->bidAllreadyExist($job, Auth::user()))
         {
-            if($bid->user_id == auth()->id())
-            {
-                toast()->danger('Možete dati samo jednu ponudu za izabrani posao')->push();
+            toast()->danger('Možete dati samo jednu ponudu za izabrani posao')->push();
             return redirect(route('job.bids',$job));
-            }
         }
-
-
-        // if($job->bids)
 
         $bidData += [
             'user_id'=>Auth::user()->id,
             'bidstatus_id'=>1,
         ];
 
-        $newBid = Bid::create($bidData);
-
-
+        Bid::create($bidData);
 
         toast()->success('Ponuda je uspešno kreirana')->push();
         return redirect(route('job.bids',$job));
-
     }
+
+
+
+
     public function edit (Bid $bid)
     {
         return view('models.bid.edit')
@@ -135,46 +142,62 @@ class BidController extends Controller
         ->with('jobs',$jobs);
     }
 
-    public function select (Bid $bid)
+    public function userHasEnoughMoney (Bid $bid)
     {
 
         //check if job owner has enough money
         if($bid->job->user->balance < $bid->offer)
         {
+            return false;
+        }
+        return true;
+    }
+
+    public function select (Bid $bid)
+    {
+
+        //dd($this->userHasEnoughMoney($bid));
+
+        //if job owner has enough money for bid
+        if($this->userHasEnoughMoney($bid))
+        {
+            // create reservation Transaction
+            $reservationData = [
+                'amount' => $bid->offer,
+                'transaction_type_id'=>3,
+                'bid_id'=>$bid->id,
+                'from_user_id'=>$bid->job->user_id,
+                'to_user_id'=>$bid->user_id,
+                'payment_method_id' => null,
+                'bank_account_id'=>null,
+            ];
+
+            $transaction = Transaction::create($reservationData);
+
+            // fire an event
+            event(new TransactionCreated($transaction));
+
+            // update bid status
+            $bid->selected_at = now();
+            $bid->bidstatus_id = 2;
+            $bid->save();
+
+            // update job status
+            $job = $bid->job;
+            $job->status_id = 2;
+            $job->bid_selected_at = now();
+            $job->save();
+
+            return redirect(route('job.bids',$job));
+        }
+
+        else
+        {
             toast()->danger('Nemate dovoljno sredstava za ovu ponudu!')->push();
             return redirect(route('job.bids',$bid->job));
         }
 
-        // create money reservation
-        $reservationData = [
-            'amount' => $bid->offer,
-            'transaction_type_id'=>3,
-            'bid_id'=>$bid->id,
-            'from_user_id'=>$bid->job->user_id,
-            'to_user_id'=>$bid->user_id,
-            'payment_method_id' => null,
-            'bank_account_id'=>null,
 
-        ];
-        $transaction = Transaction::create($reservationData);
-
-
-        // fire an event
-        event(new TransactionCreated($transaction));
-
-
-        // update bid status
-        $bid->selected_at = now();
-        $bid->bidstatus_id = 2;
-        $bid->save();
-
-        // update job status
-        $job = $bid->job;
-        $job->status_id = 2;
-        $job->bid_selected_at = now();
-        $job->save();
-
-        return redirect(route('job.bids',$job));
 
     }
 
@@ -207,6 +230,9 @@ class BidController extends Controller
 
         // fire an event
         event(new TransactionCreated($transaction));
+
+
+        // update bid
         $bid->accepted_at = now();
         $bid->bidstatus_id = 4;
         $bid->save();
@@ -229,13 +255,13 @@ class BidController extends Controller
         // Query example
         // public function updateOrderedQuantity($quantity, $orderId, $productId, $attribute)
         // {
-        //     $query = DB::table('order_product')
-        //         ->where('order_id', $orderId)
-        //         ->where('product_id', $productId)
-        //         ->where('attribute', $attribute)
-        //         ->update(['quantity' => $quantity]);
-        // }
+            //     $query = DB::table('order_product')
+            //         ->where('order_id', $orderId)
+            //         ->where('product_id', $productId)
+            //         ->where('attribute', $attribute)
+            //         ->update(['quantity' => $quantity]);
+            // }
+
+        }
 
     }
-
-}
